@@ -4,7 +4,7 @@ Donate link: http://www.aldolat.it/wordpress/wordpress-plugins/private-content/
 Tags: content, private
 Requires at least: 3.0
 Tested up to: 3.5
-Stable tag: 1.1
+Stable tag: 1.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -70,6 +70,10 @@ The shortcode generates a &lt;p&gt; HTML tag with two classes:
 2. The shortcode in action. On the left, the text revealed to Administrators only; on the right, the page as seen by lower roles (Editors, Authors, etc., or simply readers).
 
 == Changelog ==
+
+= 1.2 =
+
+* Now the inline style appears only if necessary.
 
 = 1.1 =
 

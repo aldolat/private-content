@@ -5,7 +5,7 @@
  * Plugin URI: http://www.aldolat.it/wordpress/wordpress-plugins/private-content/
  * Author: Aldo Latino
  * Author URI: http://www.aldolat.it/
- * Version: 1.1
+ * Version: 1.2
  * License: GPLv3 or later
  * Text Domain: private
  * Domain Path: /languages/
@@ -26,7 +26,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  * @package PrivateContent
- * @version 1.1
+ * @version 1.2
  * @author Aldo Latino <aldolat@gmail.com>, Jeff Starr
  * @copyright Copyright (c) 2009-2012, Aldo Latino
  * @link http://www.aldolat.it/wordpress/wordpress-plugins/private-content/
@@ -40,16 +40,14 @@
 */
 
 /**
- * ubn_private_content( $atts, $content = null )
- *
  * Shortcode to display private post content only to users of a specific role.
  *
  * @example
  * [private role="administrator"]Text for administrators[/private]
- * [private role="editor"]Text for editors[/private]
+ * [private role="editor" align="center"]Text for editors[/private]
  * [private role="author"]Text for authors[/private]
- * [private role="contributor"]Text for contributors[/private]
- * [private role="subscriber"]Text for subscribers[/private]
+ * [private role="contributor" align="right"]Text for contributors[/private]
+ * [private role="subscriber" align="justify"]Text for subscribers[/private]
  *
  * Please, note that an administrator can read an editor private content or a subscriber private content, and so on.
  * Same thing for editor, author, contributor, and subscriber: a higher role can read a lower role content.
