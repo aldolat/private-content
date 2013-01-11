@@ -48,7 +48,7 @@
  * [private role="administrator"]Text for administrators[/private]
  * [private role="editor"]Text for editors[/private]
  * [private role="author"]Text for authors[/private]
- * [private role="contributor"]Text for contributor[/private]
+ * [private role="contributor"]Text for contributors[/private]
  * [private role="subscriber"]Text for subscribers[/private]
  *
  * Please, note that an administrator can read an editor private content or a subscriber private content, and so on.
@@ -86,6 +86,8 @@ function ubn_private_content( $atts, $content = null ) {
 				$align_style = ' style="text-align: justify;"';
 			break;
 		}
+	} else {
+		$align_style = '';
 	}
 
 	switch( $role ) {
