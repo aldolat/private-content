@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== Private Content ===
 Contributors: aldolat, specialk
 Donate link: http://www.aldolat.it/wordpress/wordpress-plugins/private-content/
 Tags: content, private

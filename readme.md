@@ -1,12 +1,12 @@
-# Plugin Name #
-**Contributors:** aldolat, specialk
-**Donate link:** http://www.aldolat.it/wordpress/wordpress-plugins/private-content/
-**Tags:** content, private
-**Requires at least:** 3.0
-**Tested up to:** 3.5
-**Stable tag:** 1.2
-**License:** GPLv3 or later
-**License URI:** http://www.gnu.org/licenses/gpl-3.0.html
+# Private Content #
+**Contributors:** aldolat, specialk  
+**Donate link:** http://www.aldolat.it/wordpress/wordpress-plugins/private-content/  
+**Tags:** content, private  
+**Requires at least:** 3.0  
+**Tested up to:** 3.5  
+**Stable tag:** 1.2  
+**License:** GPLv3 or later  
+**License URI:** http://www.gnu.org/licenses/gpl-3.0.html  
 
 Display private post content only to users of a specific role
 
