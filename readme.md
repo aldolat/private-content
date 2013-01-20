@@ -1,12 +1,12 @@
 # Plugin Name #
-**Contributors:** aldolat, specialk  
-**Donate link:** http://www.aldolat.it/wordpress/wordpress-plugins/private-content/  
-**Tags:** content, private  
-**Requires at least:** 3.0  
-**Tested up to:** 3.5  
-**Stable tag:** 1.2  
-**License:** GPLv3 or later  
-**License URI:** http://www.gnu.org/licenses/gpl-3.0.html  
+**Contributors:** aldolat, specialk
+**Donate link:** http://www.aldolat.it/wordpress/wordpress-plugins/private-content/
+**Tags:** content, private
+**Requires at least:** 3.0
+**Tested up to:** 3.5
+**Stable tag:** 1.2
+**License:** GPLv3 or later
+**License URI:** http://www.gnu.org/licenses/gpl-3.0.html
 
 Display private post content only to users of a specific role
 
@@ -16,33 +16,34 @@ This plugin provides a shortcode to display a portion of a post's content only t
 
 Usage:
 
-Display this text only to Administrators:<br />
-`[private role="administrator"]Text for administrators[/private]`
+Display this text only to Administrators:
 
-Display this text only to Administrators and Editors:<br />
-`[private role="editor"]Text for editors[/private]`
+	[private role="administrator"]Text for administrators[/private]
 
-Display this text only to Administrators, Editors, and Authors:<br />
-`[private role="author"]Text for authors[/private]`
+Display this text only to Administrators and Editors:
 
-Display this text only to Administrators, Editors, Authors, and Contributors:<br />
-`[private role="contributor"]Text for contributor[/private]`
+	[private role="editor"]Text for editors[/private]
 
-Display this text only to Administrators, Editors, Authors, Contributors, and Subscribers:<br />
-`[private role="subscriber"]Text for subscribers[/private]`
+Display this text only to Administrators, Editors, and Authors:
+
+	[private role="author"]Text for authors[/private]
+
+Display this text only to Administrators, Editors, Authors, and Contributors:
+
+	[private role="contributor"]Text for contributor[/private]
+
+Display this text only to Administrators, Editors, Authors, Contributors, and Subscribers:
+
+	[private role="subscriber"]Text for subscribers[/private]
 
 Please, note that an administrator can read an editor private content or a subscriber private content, and so on. Same thing for editor, author, contributor, and subscriber: a higher role can read a lower role content.
 
 WordPress roles in descending order:
 
  * Administrator
-
  * Editor
-
  * Author
-
  * Contributor
-
  * Subscriber
 
 ## Installation ##
@@ -60,9 +61,9 @@ This section describes how to install the plugin and get it working.
 Yes, you have to edit the CSS file of your current theme.
 The shortcode generates a &lt;p&gt; HTML tag with two classes:
 
-* "private" to stylize all private contents
+* `private` to stylize all private contents
 
-* "[role]-content" to stylize the content for that specific [role].
+* `[role]-content` to stylize the content for that specific [role].
 
 ## Screenshots ##
 
@@ -98,5 +99,4 @@ No upgrade notice.
 Many thanks to:
 
 * [Jean Baptiste Jung](http://www.wprecipes.com/add-private-notes-to-your-wordpress-blog-posts) for the idea behind this plugin;
-
 * [Jeff Starr](http://digwp.com/2010/05/private-content-posts-shortcode) for the initial code.
