@@ -83,6 +83,9 @@ function ubn_private_content( $atts, $content = null ) {
 			case 'justify' :
 				$align_style = ' style="text-align: justify;"';
 			break;
+
+			default :
+				$align_style = '';
 		}
 	} else {
 		$align_style = '';
