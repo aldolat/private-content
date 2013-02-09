@@ -131,7 +131,7 @@ function ubn_private_content( $atts, $content = null ) {
 		break;
 
 		case 'editor-only' :
-			if( current_user_can( 'read_editor_notes' ) )
+			if( current_user_can( 'read_ubn_editor_notes' ) )
 				$text = '<p class="private editor-content editor-only"' . $align_style . '>' . $content . '</p>';
 		break;
 
@@ -141,7 +141,7 @@ function ubn_private_content( $atts, $content = null ) {
 		break;
 
 		case 'author-only' :
-			if( current_user_can( 'read_author_notes' ) )
+			if( current_user_can( 'read_ubn_author_notes' ) )
 				$text = '<p class="private author-content author-only"' . $align_style . '>' . $content . '</p>';
 		break;
 
@@ -151,7 +151,7 @@ function ubn_private_content( $atts, $content = null ) {
 		break;
 
 		case 'contributor-only' :
-			if( current_user_can( 'read_contributor_notes' ) )
+			if( current_user_can( 'read_ubn_contributor_notes' ) )
 				$text = '<p class="private contributor-content contributor-only"' . $align_style . '>' . $content . '</p>';
 		break;
 
@@ -161,7 +161,7 @@ function ubn_private_content( $atts, $content = null ) {
 		break;
 
 		case 'subscriber-only' :
-			if( current_user_can( 'read_subscriber_notes' ) )
+			if( current_user_can( 'read_ubn_subscriber_notes' ) )
 				$text = '<p class="private subscriber-content subscriber-only"' . $align_style . '>' . $content . '</p>';
 		break;
 
