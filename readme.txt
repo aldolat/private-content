@@ -99,7 +99,7 @@ A third class is added, in case you make a note only for a specific role, for ex
 
 = 2.0 =
 
-In order to use this version in all new changes, you have to deactivate and uninstall this plugin. Then, you can install it again. This is necessary to let the plugin create the new capabilities.
+Upgrade in order to use the new role-only feature.
 
 = 1.0 =
 
