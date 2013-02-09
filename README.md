@@ -31,7 +31,7 @@ Display this text only to Administrators, Editors, Authors, and Contributors:<br
 Display this text only to Administrators, Editors, Authors, Contributors, and Subscribers:<br />
 `[private role="subscriber"]Text for subscribers[/private]`
 
-Please, note that an administrator can read an editor private content or a subscriber private content, and so on. Same thing for editor, author, contributor, and subscriber: a higher role can read a lower role content.
+Please, note that an Administrator can read an Editor private content or a Subscriber private content, and so on. Same thing for Editor, Author, Contributor, and Subscriber: a higher role can read a lower role content.
 
 If you want to show a note only to a certain role, you have to use a `<role>-only` option.<br />
 In this way, for example, an Administrator or an Editor (roles higher than Author) can't read a note only for Authors.
