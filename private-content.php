@@ -60,6 +60,25 @@
  * Subscriber.
  */
 
+function ubn_add_capabilities() {
+
+	// The 'administrator' role doesn't need any custom capability.
+
+	$editor_role = get_role( 'editor' );
+	$editor_role->add_cap( 'read_editor_notes' );
+
+	$author_role = get_role( 'author' );
+	$author_role->add_cap( 'read_author_notes' );
+
+	$contributor_role = get_role( 'contributor' );
+	$contributor_role->add_cap( 'read_contributor_notes' );
+
+	$subscriber_role = get_role( 'subscriber' );
+	$subscriber_role->add_cap( 'read_subscriber_notes' );
+}
+register_activation_hook( __FILE__, 'ubn_add_capabilities' );
+
+
 function ubn_private_content( $atts, $content = null ) {
 	extract( shortcode_atts( array(
 		'role'  => 'administrator', // The default role if none has been provided
@@ -103,9 +122,19 @@ function ubn_private_content( $atts, $content = null ) {
 				$text = '<p class="private editor-content"' . $align_style . '>' . $content . '</p>';
 		break;
 
+		case 'editor-only' :
+			if( current_user_can( 'read_editor_notes' ) )
+				$text = '<p class="private editor-content editor-only"' . $align_style . '>' . $content . '</p>';
+		break;
+
 		case 'author' :
 			if( current_user_can( 'publish_posts' ) )
 				$text = '<p class="private author-content"' . $align_style . '>' . $content . '</p>';
+		break;
+
+		case 'author-only' :
+			if( current_user_can( 'read_author_notes' ) )
+				$text = '<p class="private author-content author-only"' . $align_style . '>' . $content . '</p>';
 		break;
 
 		case 'contributor' :
@@ -113,11 +142,23 @@ function ubn_private_content( $atts, $content = null ) {
 				$text = '<p class="private contributor-content"' . $align_style . '>' . $content . '</p>';
 		break;
 
+		case 'contributor-only' :
+			if( current_user_can( 'read_contributor_notes' ) )
+				$text = '<p class="private contributor-content contributor-only"' . $align_style . '>' . $content . '</p>';
+		break;
+
 		case 'subscriber' :
 			if( current_user_can( 'read' ) )
 				$text = '<p class="private subscriber-content"' . $align_style . '>' . $content . '</p>';
 		break;
 
+		case 'subscriber-only' :
+			if( current_user_can( 'read_subscriber_notes' ) )
+				$text = '<p class="private subscriber-content subscriber-only"' . $align_style . '>' . $content . '</p>';
+		break;
+
+		default :
+			$text = '<p class="private administrator-content"' . $align_style . '>' . $content . '</p>';
 	}
 
 	if( isset( $text ) )
