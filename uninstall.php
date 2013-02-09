@@ -13,14 +13,8 @@ if ( ! defined( 'ABSPATH' ) && ! defined( 'WP_UNINSTALL_PLUGIN' ) )
 
 // Delete custom capabilities from the database
 
-$editor_role = get_role( 'editor' );
-$editor_role->remove_cap( 'read_editor_notes' );
-
-$author_role = get_role( 'author' );
-$author_role->remove_cap( 'read_author_notes' );
-
-$contributor_role = get_role( 'contributor' );
-$contributor_role->remove_cap( 'read_contributor_notes' );
-
-$subscriber_role = get_role( 'subscriber' );
-$subscriber_role->remove_cap( 'read_subscriber_notes' );
+global $wp_roles;
+$wp_roles->remove_cap( 'editor',      'read_ubn_editor_notes'      );
+$wp_roles->remove_cap( 'author',      'read_ubn_author_notes'      );
+$wp_roles->remove_cap( 'contributor', 'read_ubn_contributor_notes' );
+$wp_roles->remove_cap( 'subscriber',  'read_ubn_subscriber_notes'  );

@@ -67,25 +67,26 @@
  * Subscriber.
  */
 
+
+/**
+ * Add the new capabilities to WordPress standard roles.
+ * Note that the "Administrator" role doesn't need any custom capability.
+ */
 function ubn_add_capabilities() {
-
-	// The 'administrator' role doesn't need any custom capability.
-
-	$editor_role = get_role( 'editor' );
-	$editor_role->add_cap( 'read_editor_notes' );
-
-	$author_role = get_role( 'author' );
-	$author_role->add_cap( 'read_author_notes' );
-
-	$contributor_role = get_role( 'contributor' );
-	$contributor_role->add_cap( 'read_contributor_notes' );
-
-	$subscriber_role = get_role( 'subscriber' );
-	$subscriber_role->add_cap( 'read_subscriber_notes' );
+	global $wp_roles;
+	$wp_roles->add_cap( 'editor',      'read_ubn_editor_notes'      );
+	$wp_roles->add_cap( 'author',      'read_ubn_author_notes'      );
+	$wp_roles->add_cap( 'contributor', 'read_ubn_contributor_notes' );
+	$wp_roles->add_cap( 'subscriber',  'read_ubn_subscriber_notes'  );
 }
 register_activation_hook( __FILE__, 'ubn_add_capabilities' );
 
 
+/*
+ * Create the shortcode "private"
+ *
+ * @usage [private role="role" align="align"]Text to show[/private]
+ */
 function ubn_private_content( $atts, $content = null ) {
 	extract( shortcode_atts( array(
 		'role'  => 'administrator', // The default role if none has been provided
@@ -171,7 +172,6 @@ function ubn_private_content( $atts, $content = null ) {
 	if( isset( $text ) )
 		// The "do_shortcode" function is necessary to let WordPress execute another nested shortcode.
 		return do_shortcode( $text );
-
 }
 add_shortcode( 'private', 'ubn_private_content' );
 
