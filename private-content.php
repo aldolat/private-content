@@ -87,7 +87,6 @@ register_activation_hook( __FILE__, 'ubn_private_add_cap' );
  * This check is useful only when upgrading this plugin from version below 2.0.
  * This function will be removed in future.
  */
-
 function ubn_private_check_capability_exists() {
 	$editor_role = get_role( 'editor' );
 	if ( ! isset( $editor_role->capabilities['read_ubn_editor_notes'] ) ) {
@@ -95,6 +94,7 @@ function ubn_private_check_capability_exists() {
 	}
 }
 add_action( 'init', 'ubn_private_check_capability_exists' );
+
 
 /*
  * Create the shortcode 'private'.
@@ -188,6 +188,7 @@ function ubn_private_content( $atts, $content = null ) {
 		return do_shortcode( $text );
 }
 add_shortcode( 'private', 'ubn_private_content' );
+
 
 /***********************************************************************
  *                            CODE IS POETRY
