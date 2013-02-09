@@ -17,26 +17,35 @@ This plugin provides a shortcode to display a portion of a post's content only t
 Usage:
 
 Display this text only to Administrators:<br />
-`[private role="administrator"]Text for administrators[/private]`
+`[private role="administrator"]Text for Administrators[/private]`
 
 Display this text only to Administrators and Editors:<br />
-`[private role="editor"]Text for editors[/private]`
+`[private role="editor"]Text for Editors[/private]`
 
 Display this text only to Administrators, Editors, and Authors:<br />
-`[private role="author"]Text for authors[/private]`
+`[private role="author"]Text for Authors[/private]`
 
 Display this text only to Administrators, Editors, Authors, and Contributors:<br />
-`[private role="contributor"]Text for contributor[/private]`
+`[private role="contributor"]Text for Contributor[/private]`
 
 Display this text only to Administrators, Editors, Authors, Contributors, and Subscribers:<br />
-`[private role="subscriber"]Text for subscribers[/private]`
+`[private role="subscriber"]Text for Subscribers[/private]`
 
 Please, note that an administrator can read an editor private content or a subscriber private content, and so on. Same thing for editor, author, contributor, and subscriber: a higher role can read a lower role content.
 
 If you want to show a note only to a certain role, you have to use a `<role>-only` option.
-For example:
-`[private role="author-only"]Text for authors only[/private]`
-In this way, Administrators and Editors (roles higher than Editors) can't read a note only for Authors.
+In this way, for example, an Administrator or an Editor (roles higher than Author) can't read a note only for Authors.
+
+Here all the cases:
+
+`[private role="editor-only"]Text for Editors only[/private]`
+
+`[private role="author-only"]Text for Authors only[/private]`
+
+`[private role="contributor-only"]Text for Contributors only[/private]`
+
+`[private role="subscriber-only"]Text for Subscribers only[/private]`
+
 
 WordPress roles in descending order:
 
