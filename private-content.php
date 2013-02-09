@@ -70,20 +70,34 @@
 
 /**
  * Add the new capabilities to WordPress standard roles.
- * Note that the "Administrator" role doesn't need any custom capability.
+ * Note that the Administrator role doesn't need any custom capabilities.
  */
-function ubn_add_capabilities() {
+function ubn_private_add_cap() {
 	global $wp_roles;
 	$wp_roles->add_cap( 'editor',      'read_ubn_editor_notes'      );
 	$wp_roles->add_cap( 'author',      'read_ubn_author_notes'      );
 	$wp_roles->add_cap( 'contributor', 'read_ubn_contributor_notes' );
 	$wp_roles->add_cap( 'subscriber',  'read_ubn_subscriber_notes'  );
 }
-register_activation_hook( __FILE__, 'ubn_add_capabilities' );
+register_activation_hook( __FILE__, 'ubn_private_add_cap' );
 
 
 /*
- * Create the shortcode "private"
+ * Check if Editor role has 'read_ubn_editor_notes' capabilities.
+ * This check is useful only when upgrading this plugin from version below 2.0.
+ * This function will be removed in future.
+ */
+
+function ubn_private_check_capability_exists() {
+	$editor_role = get_role( 'editor' );
+	if ( ! isset( $editor_role->capabilities['read_ubn_editor_notes'] ) ) {
+		ubn_private_add_cap();
+	}
+}
+add_action( 'init', 'ubn_private_check_capability_exists' );
+
+/*
+ * Create the shortcode 'private'.
  *
  * @usage [private role="role" align="align"]Text to show[/private]
  */
@@ -170,7 +184,7 @@ function ubn_private_content( $atts, $content = null ) {
 	}
 
 	if( isset( $text ) )
-		// The "do_shortcode" function is necessary to let WordPress execute another nested shortcode.
+		// The do_shortcode function is necessary to let WordPress execute another nested shortcode.
 		return do_shortcode( $text );
 }
 add_shortcode( 'private', 'ubn_private_content' );
