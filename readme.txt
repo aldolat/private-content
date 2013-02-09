@@ -97,6 +97,10 @@ A third class is added, in case you make a note only for a specific role, for ex
 
 == Upgrade Notice ==
 
+= 2.0 =
+
+In order to use this version in all new changes, you have to deactivate and uninstall this plugin. Then, you can install it again. This is necessary to let the plugin create the new capabilities.
+
 = 1.0 =
 
 No upgrade notice.
