@@ -5,12 +5,12 @@
  * Plugin URI: http://www.aldolat.it/wordpress/wordpress-plugins/private-content/
  * Author: Aldo Latino
  * Author URI: http://www.aldolat.it/
- * Version: 1.2
+ * Version: 2.0
  * License: GPLv3 or later
  * Text Domain: private
  * Domain Path: /languages/
  *
- * Copyright (C) 2009, 2012  Aldo Latino  (email : aldolat@gmail.com)
+ * Copyright (C) 2009, 2013  Aldo Latino  (email : aldolat@gmail.com)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  * @package PrivateContent
- * @version 1.2
+ * @version 2.0
  * @author Aldo Latino <aldolat@gmail.com>, Jeff Starr
  * @copyright Copyright (c) 2009-2012, Aldo Latino
  * @link http://www.aldolat.it/wordpress/wordpress-plugins/private-content/
@@ -46,11 +46,18 @@
  * [private role="administrator"]Text for administrators[/private]
  * [private role="editor" align="center"]Text for editors[/private]
  * [private role="author"]Text for authors[/private]
+ * [private role="author-only"]Text for authors only[/private]
  * [private role="contributor" align="right"]Text for contributors[/private]
  * [private role="subscriber" align="justify"]Text for subscribers[/private]
+ * [private role="subscriber-only" align="justify"]Text for subscribers only[/private]
  *
  * Please, note that an administrator can read an editor private content or a subscriber private content, and so on.
  * Same thing for editor, author, contributor, and subscriber: a higher role can read a lower role content.
+ *
+ * If you want to show a note only to a certain role, you have to use a <role>-only option.
+ * For example:
+ * [private role="author-only"]Text for authors only[/private]
+ * In this way, Administrators and Editors (roles higher than Editors) can't read this note.
  *
  * WordPress Roles in descending order:
  * Administrator,

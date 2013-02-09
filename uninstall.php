@@ -2,7 +2,7 @@
 /**
  * Private content uninstallation
  *
- * @since 1.2
+ * @since 2.0
  */
 
 
