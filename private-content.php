@@ -2,14 +2,16 @@
 /*
  * Plugin Name: Private content
  * Description:  Display private post content only to users of a specific role
- * Plugin URI: http://www.aldolat.it/wordpress/wordpress-plugins/private-content/
+ * Plugin URI: http://dev.aldolat.it/projects/private-content/
  * Author: Aldo Latino
  * Author URI: http://www.aldolat.it/
  * Version: 2.0
  * License: GPLv3 or later
  * Text Domain: private
  * Domain Path: /languages/
- *
+ */
+
+/*
  * Copyright (C) 2009, 2013  Aldo Latino  (email : aldolat@gmail.com)
  *
  * This program is free software: you can redistribute it and/or modify
@@ -103,87 +105,87 @@ add_action( 'init', 'ubn_private_check_capability_exists' );
  */
 function ubn_private_content( $atts, $content = null ) {
 	extract( shortcode_atts( array(
-		'role'  => 'administrator', // The default role if none has been provided
-		'align' => ''
-	), $atts ) );
+				'role'  => 'administrator', // The default role if none has been provided
+				'align' => ''
+			), $atts ) );
 
-	if( $align != '' ) {
-		switch( $align ) {
-			case 'left' :
-				$align_style = ' style="text-align: left;"';
+	if ( $align != '' ) {
+		switch ( $align ) {
+		case 'left' :
+			$align_style = ' style="text-align: left;"';
 			break;
 
-			case 'center' :
-				$align_style = ' style="text-align: center;"';
+		case 'center' :
+			$align_style = ' style="text-align: center;"';
 			break;
 
-			case 'right' :
-				$align_style = ' style="text-align: right;"';
+		case 'right' :
+			$align_style = ' style="text-align: right;"';
 			break;
 
-			case 'justify' :
-				$align_style = ' style="text-align: justify;"';
+		case 'justify' :
+			$align_style = ' style="text-align: justify;"';
 			break;
 
-			default :
-				$align_style = '';
+		default :
+			$align_style = '';
 		}
 	} else {
 		$align_style = '';
 	}
 
-	switch( $role ) {
+	switch ( $role ) {
 
-		case 'administrator' :
-			if( current_user_can( 'create_users' ) )
-				$text = '<p class="private administrator-content"' . $align_style . '>' . $content . '</p>';
-		break;
-
-		case 'editor' :
-			if( current_user_can( 'edit_others_posts' ) )
-				$text = '<p class="private editor-content"' . $align_style . '>' . $content . '</p>';
-		break;
-
-		case 'editor-only' :
-			if( current_user_can( 'read_ubn_editor_notes' ) )
-				$text = '<p class="private editor-content editor-only"' . $align_style . '>' . $content . '</p>';
-		break;
-
-		case 'author' :
-			if( current_user_can( 'publish_posts' ) )
-				$text = '<p class="private author-content"' . $align_style . '>' . $content . '</p>';
-		break;
-
-		case 'author-only' :
-			if( current_user_can( 'read_ubn_author_notes' ) )
-				$text = '<p class="private author-content author-only"' . $align_style . '>' . $content . '</p>';
-		break;
-
-		case 'contributor' :
-			if( current_user_can( 'edit_posts' ) )
-				$text = '<p class="private contributor-content"' . $align_style . '>' . $content . '</p>';
-		break;
-
-		case 'contributor-only' :
-			if( current_user_can( 'read_ubn_contributor_notes' ) )
-				$text = '<p class="private contributor-content contributor-only"' . $align_style . '>' . $content . '</p>';
-		break;
-
-		case 'subscriber' :
-			if( current_user_can( 'read' ) )
-				$text = '<p class="private subscriber-content"' . $align_style . '>' . $content . '</p>';
-		break;
-
-		case 'subscriber-only' :
-			if( current_user_can( 'read_ubn_subscriber_notes' ) )
-				$text = '<p class="private subscriber-content subscriber-only"' . $align_style . '>' . $content . '</p>';
-		break;
-
-		default :
+	case 'administrator' :
+		if ( current_user_can( 'create_users' ) )
 			$text = '<p class="private administrator-content"' . $align_style . '>' . $content . '</p>';
+		break;
+
+	case 'editor' :
+		if ( current_user_can( 'edit_others_posts' ) )
+			$text = '<p class="private editor-content"' . $align_style . '>' . $content . '</p>';
+		break;
+
+	case 'editor-only' :
+		if ( current_user_can( 'read_ubn_editor_notes' ) )
+			$text = '<p class="private editor-content editor-only"' . $align_style . '>' . $content . '</p>';
+		break;
+
+	case 'author' :
+		if ( current_user_can( 'publish_posts' ) )
+			$text = '<p class="private author-content"' . $align_style . '>' . $content . '</p>';
+		break;
+
+	case 'author-only' :
+		if ( current_user_can( 'read_ubn_author_notes' ) )
+			$text = '<p class="private author-content author-only"' . $align_style . '>' . $content . '</p>';
+		break;
+
+	case 'contributor' :
+		if ( current_user_can( 'edit_posts' ) )
+			$text = '<p class="private contributor-content"' . $align_style . '>' . $content . '</p>';
+		break;
+
+	case 'contributor-only' :
+		if ( current_user_can( 'read_ubn_contributor_notes' ) )
+			$text = '<p class="private contributor-content contributor-only"' . $align_style . '>' . $content . '</p>';
+		break;
+
+	case 'subscriber' :
+		if ( current_user_can( 'read' ) )
+			$text = '<p class="private subscriber-content"' . $align_style . '>' . $content . '</p>';
+		break;
+
+	case 'subscriber-only' :
+		if ( current_user_can( 'read_ubn_subscriber_notes' ) )
+			$text = '<p class="private subscriber-content subscriber-only"' . $align_style . '>' . $content . '</p>';
+		break;
+
+	default :
+		$text = '<p class="private administrator-content"' . $align_style . '>' . $content . '</p>';
 	}
 
-	if( isset( $text ) )
+	if ( isset( $text ) )
 		// The do_shortcode function is necessary to let WordPress execute another nested shortcode.
 		return do_shortcode( $text );
 }

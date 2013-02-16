@@ -1,6 +1,6 @@
 # Private Content #
 **Contributors:** aldolat, specialk  
-**Donate link:** http://www.aldolat.it/wordpress/wordpress-plugins/private-content/  
+**Donate link:** http://dev.aldolat.it/projects/private-content/  
 **Tags:** content, private  
 **Requires at least:** 3.0  
 **Tested up to:** 3.5.1  
@@ -17,23 +17,23 @@ This plugin provides a shortcode to display a portion of a post's content only t
 Usage:
 
 Display this text only to Administrators:<br />
-`[private role="administrator"]Text for administrators[/private]`
+`[private role="administrator"]Text for Administrators[/private]`
 
 Display this text only to Administrators and Editors:<br />
-`[private role="editor"]Text for editors[/private]`
+`[private role="editor"]Text for Editors[/private]`
 
 Display this text only to Administrators, Editors, and Authors:<br />
-`[private role="author"]Text for authors[/private]`
+`[private role="author"]Text for Authors[/private]`
 
 Display this text only to Administrators, Editors, Authors, and Contributors:<br />
-`[private role="contributor"]Text for contributor[/private]`
+`[private role="contributor"]Text for Contributor[/private]`
 
 Display this text only to Administrators, Editors, Authors, Contributors, and Subscribers:<br />
-`[private role="subscriber"]Text for subscribers[/private]`
+`[private role="subscriber"]Text for Subscribers[/private]`
 
 Please, note that an Administrator can read an Editor private content or a Subscriber private content, and so on. Same thing for Editor, Author, Contributor, and Subscriber: a higher role can read a lower role content.
 
-If you want to show a note only to a certain role, you have to use a `<role>-only` option.<br />
+If you want to show a note only to a certain role, you have to use a `<role>-only` option.
 In this way, for example, an Administrator or an Editor (roles higher than Author) can't read a note only for Authors.
 
 Here all the cases:
@@ -45,6 +45,7 @@ Here all the cases:
 `[private role="contributor-only"]Text for Contributors only[/private]`
 
 `[private role="subscriber-only"]Text for Subscribers only[/private]`
+
 
 WordPress roles in descending order:
 
@@ -82,10 +83,10 @@ A third class is added, in case you make a note only for a specific role, for ex
 ## Screenshots ##
 
 ### 1. At the center of the screen, the shortcode is used in the WordPress editor. The text inside the shortcode will be displayed only to Authors and above roles. ###
-![1. At the center of the screen, the shortcode is used in the WordPress editor. The text inside the shortcode will be displayed only to Authors and above roles.](http://s-plugins.wordpress.org/private-content/assets/screenshot-1.png)
+![1. At the center of the screen, the shortcode is used in the WordPress editor. The text inside the shortcode will be displayed only to Authors and above roles.](http://s.wordpress.org/extend/plugins/private-content/screenshot-1.png)
 
 ### 2. The shortcode in action. On the left, the text revealed to Administrators only; on the right, the page as seen by lower roles (Editors, Authors, etc., or simply readers). ###
-![2. The shortcode in action. On the left, the text revealed to Administrators only; on the right, the page as seen by lower roles (Editors, Authors, etc., or simply readers).](http://s-plugins.wordpress.org/private-content/assets/screenshot-2.png)
+![2. The shortcode in action. On the left, the text revealed to Administrators only; on the right, the page as seen by lower roles (Editors, Authors, etc., or simply readers).](http://s.wordpress.org/extend/plugins/private-content/screenshot-2.png)
 
 
 ## Changelog ##

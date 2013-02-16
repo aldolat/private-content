@@ -1,6 +1,6 @@
 === Private Content ===
 Contributors: aldolat, specialk
-Donate link: http://www.aldolat.it/wordpress/wordpress-plugins/private-content/
+Donate link: http://dev.aldolat.it/projects/private-content/
 Tags: content, private
 Requires at least: 3.0
 Tested up to: 3.5.1
