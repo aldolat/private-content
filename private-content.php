@@ -5,7 +5,7 @@
  * Plugin URI: http://dev.aldolat.it/projects/private-content/
  * Author: Aldo Latino
  * Author URI: http://www.aldolat.it/
- * Version: 2.0
+ * Version: 2.1
  * License: GPLv3 or later
  * Text Domain: private
  * Domain Path: /languages/
@@ -28,7 +28,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  * @package PrivateContent
- * @version 2.0
+ * @version 2.1
  * @author Aldo Latino <aldolat@gmail.com>, Jeff Starr
  * @copyright Copyright (c) 2009-2012, Aldo Latino
  * @link http://www.aldolat.it/wordpress/wordpress-plugins/private-content/
@@ -179,6 +179,11 @@ function ubn_private_content( $atts, $content = null ) {
 	case 'subscriber-only' :
 		if ( current_user_can( 'read_ubn_subscriber_notes' ) )
 			$text = '<p class="private subscriber-content subscriber-only"' . $align_style . '>' . $content . '</p>';
+		break;
+
+	case 'visitor-only' :
+		if ( ! is_user_logged_in() )
+			$text = '<p class="private visitor-content visitor-only"' . $align_style . '>' . $content . '</p>';
 		break;
 
 	default :

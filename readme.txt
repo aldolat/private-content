@@ -4,7 +4,7 @@ Donate link: http://dev.aldolat.it/projects/private-content/
 Tags: content, private
 Requires at least: 3.0
 Tested up to: 3.5.1
-Stable tag: 2.0
+Stable tag: 2.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -46,6 +46,8 @@ Here all the cases:
 
 `[private role="subscriber-only"]Text for Subscribers only[/private]`
 
+`[private role="visitor-only"]Text for Visitors only[/private]`
+
 
 WordPress roles in descending order:
 
@@ -86,6 +88,10 @@ A third class is added, in case you make a note only for a specific role, for ex
 2. The shortcode in action. On the left, the text revealed to Administrators only; on the right, the page as seen by lower roles (Editors, Authors, etc., or simply readers).
 
 == Changelog ==
+
+= 2.1 =
+
+* NEW: added the possibility to show a note only to Visitors (thanks to Jacki for the tip).
 
 = 2.0 =
 
