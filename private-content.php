@@ -118,6 +118,32 @@ function ubn_private_content( $atts, $content = null ) {
 
 	extract( shortcode_atts( $defaults, $atts ) );
 
+	// The 'align' option
+	if ( $align != '' ) {
+		switch ( $align ) {
+		case 'left' :
+			$align_style = ' style="text-align: left;"';
+			break;
+
+		case 'center' :
+			$align_style = ' style="text-align: center;"';
+			break;
+
+		case 'right' :
+			$align_style = ' style="text-align: right;"';
+			break;
+
+		case 'justify' :
+			$align_style = ' style="text-align: justify;"';
+			break;
+
+		default :
+			$align_style = '';
+		}
+	} else {
+		$align_style = '';
+	}
+
 	// The 'role' option
 	switch ( $role ) {
 
@@ -174,34 +200,6 @@ function ubn_private_content( $atts, $content = null ) {
 	default :
 		$text = '<p class="private administrator-content"' . $align_style . '>' . $content . '</p>';
 	}
-
-
-	// The 'align' option
-	if ( $align != '' ) {
-		switch ( $align ) {
-		case 'left' :
-			$align_style = ' style="text-align: left;"';
-			break;
-
-		case 'center' :
-			$align_style = ' style="text-align: center;"';
-			break;
-
-		case 'right' :
-			$align_style = ' style="text-align: right;"';
-			break;
-
-		case 'justify' :
-			$align_style = ' style="text-align: justify;"';
-			break;
-
-		default :
-			$align_style = '';
-		}
-	} else {
-		$align_style = '';
-	}
-
 
 	if ( isset( $text ) )
 		// The do_shortcode function is necessary to let WordPress execute another nested shortcode.
