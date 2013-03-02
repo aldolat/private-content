@@ -75,11 +75,14 @@
  * Note that the Administrator role doesn't need any custom capabilities.
  */
 function ubn_private_add_cap() {
+
 	global $wp_roles;
+
 	$wp_roles->add_cap( 'editor',      'read_ubn_editor_notes'      );
 	$wp_roles->add_cap( 'author',      'read_ubn_author_notes'      );
 	$wp_roles->add_cap( 'contributor', 'read_ubn_contributor_notes' );
 	$wp_roles->add_cap( 'subscriber',  'read_ubn_subscriber_notes'  );
+
 }
 register_activation_hook( __FILE__, 'ubn_private_add_cap' );
 
@@ -90,10 +93,13 @@ register_activation_hook( __FILE__, 'ubn_private_add_cap' );
  * This function will be removed in future.
  */
 function ubn_private_check_capability_exists() {
+
 	$editor_role = get_role( 'editor' );
+
 	if ( ! isset( $editor_role->capabilities['read_ubn_editor_notes'] ) ) {
 		ubn_private_add_cap();
 	}
+
 }
 add_action( 'init', 'ubn_private_check_capability_exists' );
 
@@ -104,11 +110,13 @@ add_action( 'init', 'ubn_private_check_capability_exists' );
  * @usage [private role="role" align="align"]Text to show[/private]
  */
 function ubn_private_content( $atts, $content = null ) {
-	extract( shortcode_atts( array(
-				'role'  => 'administrator', // The default role if none has been provided
-				'align' => ''
-			), $atts ) );
 
+	$defaults = array(
+		'role'  => 'administrator', // The default role if none has been provided
+		'align' => '',
+	);
+
+	extract( shortcode_atts( $defaults, $atts ) );
 
 	// The 'role' option
 	switch ( $role ) {
