@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<!-- saved from url=(0019)file:///tmp/65.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="utf-8"><style>html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+
+body{
+  color:#444;
+  font-family:Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman',
+              "Hiragino Sans GB", "STXihei", "微软雅黑", serif;
+  font-size:12px;
+  line-height:1.5em;
+  background:#fefefe;
+  width: 45em;
+  margin: 10px auto;
+  padding: 1em;
+  outline: 1300px solid #FAFAFA;
+}
+
+a{ color: #0645ad; text-decoration:none;}
+a:visited{ color: #0b0080; }
+a:hover{ color: #06e; }
+a:active{ color:#faa700; }
+a:focus{ outline: thin dotted; }
+a:hover, a:active{ outline: 0; }
+
+span.backtick {
+  border:1px solid #EAEAEA;
+  border-radius:3px;
+  background:#F8F8F8;
+  padding:0 3px 0 3px;
+}
+
+::-moz-selection{background:rgba(255,255,0,0.3);color:#000}
+::selection{background:rgba(255,255,0,0.3);color:#000}
+
+a::-moz-selection{background:rgba(255,255,0,0.3);color:#0645ad}
+a::selection{background:rgba(255,255,0,0.3);color:#0645ad}
+
+p{
+margin:1em 0;
+}
+
+img{
+max-width:100%;
+}
+
+h1,h2,h3,h4,h5,h6{
+font-weight:normal;
+color:#111;
+line-height:1em;
+}
+h4,h5,h6{ font-weight: bold; }
+h1{ font-size:2.5em; }
+h2{ font-size:2em; border-bottom:1px solid silver; padding-bottom: 5px; }
+h3{ font-size:1.5em; }
+h4{ font-size:1.2em; }
+h5{ font-size:1em; }
+h6{ font-size:0.9em; }
+
+blockquote{
+color:#666666;
+margin:0;
+padding-left: 3em;
+border-left: 0.5em #EEE solid;
+}
+hr { display: block; height: 2px; border: 0; border-top: 1px solid #aaa;border-bottom: 1px solid #eee; margin: 1em 0; padding: 0; }
+
+
+pre , code, kbd, samp { 
+  color: #000; 
+  font-family: monospace; 
+  font-size: 0.88em; 
+  border-radius:3px;
+  background-color: #F8F8F8;
+  border: 1px solid #CCC; 
+}
+pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; padding: 5px 12px;}
+pre code { border: 0px !important; padding: 0;}
+code { padding: 0 3px 0 3px; }
+
+b, strong { font-weight: bold; }
+
+dfn { font-style: italic; }
+
+ins { background: #ff9; color: #000; text-decoration: none; }
+
+mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+
+ul, ol { margin: 1em 0; padding: 0 0 0 2em; }
+li p:last-child { margin:0 }
+dd { margin: 0 0 0 2em; }
+
+img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+
+table { border-collapse: collapse; border-spacing: 0; }
+td { vertical-align: top; }
+
+@media only screen and (min-width: 480px) {
+body{font-size:14px;}
+}
+
+@media only screen and (min-width: 768px) {
+body{font-size:16px;}
+}
+
+@media print {
+  * { background: transparent !important; color: black !important; filter:none !important; -ms-filter: none !important; }
+  body{font-size:12pt; max-width:100%; outline:none;}
+  a, a:visited { text-decoration: underline; }
+  hr { height: 1px; border:0; border-bottom:1px solid black; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
+  pre, blockquote { border: 1px solid #999; padding-right: 1em; page-break-inside: avoid; }
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  @page :left { margin: 15mm 20mm 15mm 10mm; }
+  @page :right { margin: 15mm 10mm 15mm 20mm; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3 { page-break-after: avoid; }
+}
+</style></head><body><h1 id="private-content">Private Content</h1>
+
+<p><strong>Contributors:</strong> aldolat, specialk <br>
+<strong>Donate link:</strong> http://dev.aldolat.it/projects/private-content/ <br>
+<strong>Tags:</strong> content, private <br>
+<strong>Requires at least:</strong> 3.0 <br>
+<strong>Tested up to:</strong> 3.5.1 <br>
+<strong>Stable tag:</strong> 2.1 <br>
+<strong>License:</strong> GPLv3 or later <br>
+<strong>License URI:</strong> http://www.gnu.org/licenses/gpl-3.0.html  </p>
+
+<p>Display a portion of a post content only to users of a specific role.</p>
+
+<h2 id="description">Description</h2>
+
+<p>This plugin provides a shortcode to display a portion of a post content only to users of a specific role. For example, you can show the hidden text to Editors or to Authors or to any other WordPress role.</p>
+
+<p>Please, note that an Administrator can read an Editor private content or a Subscriber private content, and so on. Same thing for Editor, Author, Contributor, and Subscriber: a higher role can read a lower role content.</p>
+
+<p>Also you can show the hidden text <strong>only</strong> to a certain role. For example, you can mark a text as visible only to Contributors and hide it to higher roles, such as Administrators or Editors and so on.</p>
+
+<p>Usage:</p>
+
+<p>Display this text only to Administrators:<br>
+<code>[private role="administrator"]Text for Administrators[/private]</code></p>
+
+<p>Display this text only to Administrators and Editors:<br>
+<code>[private role="editor"]Text for Editors[/private]</code></p>
+
+<p>Display this text only to Administrators, Editors, and Authors:<br>
+<code>[private role="author"]Text for Authors[/private]</code></p>
+
+<p>Display this text only to Administrators, Editors, Authors, and Contributors:<br>
+<code>[private role="contributor"]Text for Contributor[/private]</code></p>
+
+<p>Display this text only to Administrators, Editors, Authors, Contributors, and Subscribers:<br>
+<code>[private role="subscriber"]Text for Subscribers[/private]</code></p>
+
+<p>If you want to show a note only to a certain role, you have to use a <code>&lt;role&gt;-only</code> option.
+In this way, for example, an Administrator or an Editor (roles higher than Author) cannot read a note only for Authors.</p>
+
+<p>These are all the cases:</p>
+
+<p><code>[private role="editor-only"]Text for Editors only[/private]</code></p>
+
+<p><code>[private role="author-only"]Text for Authors only[/private]</code></p>
+
+<p><code>[private role="contributor-only"]Text for Contributors only[/private]</code></p>
+
+<p><code>[private role="subscriber-only"]Text for Subscribers only[/private]</code></p>
+
+<p><code>[private role="visitor-only"]Text for Visitors only[/private]</code></p>
+
+<p>WordPress roles in descending order:</p>
+
+<ul>
+<li><p>Administrator</p></li>
+<li><p>Editor</p></li>
+<li><p>Author</p></li>
+<li><p>Contributor</p></li>
+<li><p>Subscriber</p></li>
+</ul>
+
+<h2 id="installation">Installation</h2>
+
+<p>This section describes how to install the plugin and get it working.</p>
+
+<ol>
+<li>Upload  the <code>private-content</code> directory to the <code>/wp-content/plugins/</code> directory</li>
+<li>Activate the plugin through the Plugins menu in WordPress</li>
+<li>Now the shortcode is available and ready to use.</li>
+</ol>
+
+<h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
+
+<h3 id="the-hidden-text-is-similar-to-the-public-text-is-it-possible-to-stylize-it-in-a-different-look">The hidden text is similar to the public text. Is it possible to stylize it in a different look?</h3>
+
+<p>Yes, you have to edit the CSS file of your current theme.
+The shortcode generates a &lt;p&gt; HTML tag with two classes:</p>
+
+<ul>
+<li><p>"private" to stylize all private contents</p></li>
+<li><p>"[role]-content" to stylize the content for that specific [role].</p></li>
+</ul>
+
+<p>A third class is added, in case you make a note only for a specific role, for example "contributor-only".</p>
+
+<h2 id="screenshots">Screenshots</h2>
+
+<h3 id="1-at-the-center-of-the-screen-the-shortcode-is-used-in-the-wordpress-editor-the-text-inside-the-shortcode-will-be-displayed-only-to-authors-and-above-roles">1. At the center of the screen, the shortcode is used in the WordPress editor. The text inside the shortcode will be displayed only to Authors and above roles.</h3>
+
+<p><img src="./index_files/screenshot-1.png" alt="1. At the center of the screen, the shortcode is used in the WordPress editor. The text inside the shortcode will be displayed only to Authors and above roles."></p>
+
+<h3 id="2-the-shortcode-in-action-on-the-left-the-text-revealed-to-administrators-only-on-the-right-the-page-as-seen-by-lower-roles-editors-authors-etc-or-simply-readers">2. The shortcode in action. On the left, the text revealed to Administrators only; on the right, the page as seen by lower roles (Editors, Authors, etc., or simply readers).</h3>
+
+<p><img src="./index_files/screenshot-2.png" alt="2. The shortcode in action. On the left, the text revealed to Administrators only; on the right, the page as seen by lower roles (Editors, Authors, etc., or simply readers)."></p>
+
+<h2 id="changelog">Changelog</h2>
+
+<h3 id="21">2.1</h3>
+
+<ul>
+<li>NEW: added the possibility to show a note only to Visitors (thanks to Jacki for the tip).</li>
+</ul>
+
+<h3 id="20">2.0</h3>
+
+<ul>
+<li>NEW: now you can show a note only to user of a specific role, hiding that note to higher roles.</li>
+<li>Added uninstall.php to delete the new custom capabilities.</li>
+</ul>
+
+<h3 id="12">1.2</h3>
+
+<ul>
+<li>Now the inline style appears only if necessary.</li>
+</ul>
+
+<h3 id="11">1.1</h3>
+
+<ul>
+<li>Upon request, added the possibility to align the text left, right, centered and justified.</li>
+</ul>
+
+<h3 id="10">1.0</h3>
+
+<ul>
+<li>First release of the plugin.</li>
+</ul>
+
+<h2 id="upgrade-notice">Upgrade Notice</h2>
+
+<h3 id="20-2">2.0</h3>
+
+<p>Upgrade in order to use the new role-only feature.</p>
+
+<h3 id="10-2">1.0</h3>
+
+<p>No upgrade notice.</p>
+
+<h2 id="credits">Credits</h2>
+
+<p>Many thanks to:</p>
+
+<ul>
+<li><p><a href="http://www.wprecipes.com/add-private-notes-to-your-wordpress-blog-posts">Jean Baptiste Jung</a> for the idea behind this plugin;</p></li>
+<li><p><a href="http://digwp.com/2010/05/private-content-posts-shortcode">Jeff Starr</a> for the initial code.</p></li>
+</ul>
+</body></html>

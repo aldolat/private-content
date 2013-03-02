@@ -8,11 +8,15 @@
 **License:** GPLv3 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-3.0.html  
 
-Display private post content only to users of a specific role
+Display a portion of a post content only to users of a specific role.
 
 ## Description ##
 
-This plugin provides a shortcode to display a portion of a post's content only to users of a specific role.
+This plugin provides a shortcode to display a portion of a post content only to users of a specific role. For example, you can show the hidden text to Editors or to Authors or to any other WordPress role.
+
+Please, note that an Administrator can read an Editor private content or a Subscriber private content, and so on. Same thing for Editor, Author, Contributor, and Subscriber: a higher role can read a lower role content.
+
+Also you can show the hidden text **only** to a certain role. For example, you can mark a text as visible only to Contributors and hide it to higher roles, such as Administrators or Editors and so on.
 
 Usage:
 
@@ -31,12 +35,11 @@ Display this text only to Administrators, Editors, Authors, and Contributors:<br
 Display this text only to Administrators, Editors, Authors, Contributors, and Subscribers:<br />
 `[private role="subscriber"]Text for Subscribers[/private]`
 
-Please, note that an Administrator can read an Editor private content or a Subscriber private content, and so on. Same thing for Editor, Author, Contributor, and Subscriber: a higher role can read a lower role content.
 
 If you want to show a note only to a certain role, you have to use a `<role>-only` option.
-In this way, for example, an Administrator or an Editor (roles higher than Author) can't read a note only for Authors.
+In this way, for example, an Administrator or an Editor (roles higher than Author) cannot read a note only for Authors.
 
-Here all the cases:
+These are all the cases:
 
 `[private role="editor-only"]Text for Editors only[/private]`
 
