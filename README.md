@@ -85,13 +85,13 @@ If you need to show the entire post only to certain readers (i.e. reader who pay
 ### The hidden text is similar to the public text. Is it possible to stylize it in a different look? ###
 
 Yes, you have to edit the CSS file of your current theme.
-The shortcode generates a &lt;p&gt; HTML tag with at most three classes in this order:
+The shortcode generates a <code>&lt;p&gt;</code> HTML tag with at most three classes in this order:
 
-* "private" to stylize all private contents
+* <code>private</code> to stylize all private contents
 
-* "[role]-content" to stylize the content for that specific [role].
+* <code>[role]-content</code> to stylize the content for that specific [role].
 
-* "[role]-content-only" to stylize the content for that specific [role] only.
+* <code>[role]-content-only</code> to stylize the content for that specific [role] only.
 
 ## Screenshots ##
 
