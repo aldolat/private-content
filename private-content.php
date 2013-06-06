@@ -52,6 +52,7 @@
  * [private role="contributor" align="right"]Text for contributors[/private]
  * [private role="subscriber" align="justify"]Text for subscribers[/private]
  * [private role="subscriber-only" align="justify"]Text for subscribers only[/private]
+ * [private role="visitor-only"]Text for visitors only[/private]
  *
  * Please, note that an administrator can read an editor private content or a subscriber private content, and so on.
  * Same thing for editor, author, contributor, and subscriber: a higher role can read a lower role content.

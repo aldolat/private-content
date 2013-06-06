@@ -74,6 +74,14 @@ This section describes how to install the plugin and get it working.
 
 ## Frequently Asked Questions ##
 
+### Is there a way to display an alternate text to readers that haven't the rights to read the hidden text? ###
+
+This plugin is not intended to be used in such way, but only in order to display a portion of a post to certain readers. Also, the hidden text must remain hidden, without the presence of an alternate text that could reveal the presence of the hidden text.
+
+In other words, this plugin was created only to show a small piece of text (i.e. a couple of lines) as a note to the post for particular readers.
+
+If you need to show the entire post only to certain readers (i.e. reader who pay to read a post), you can use a plugin like [Members](http://wordpress.org/extend/plugins/members/).
+
 ### The hidden text is similar to the public text. Is it possible to stylize it in a different look? ###
 
 Yes, you have to edit the CSS file of your current theme.
