@@ -5,7 +5,7 @@
  * Plugin URI: http://dev.aldolat.it/projects/private-content/
  * Author: Aldo Latino
  * Author URI: http://www.aldolat.it/
- * Version: 2.1
+ * Version: 2.2
  * License: GPLv3 or later
  * Text Domain: private
  * Domain Path: /languages/
@@ -61,6 +61,9 @@
  * For example:
  * [private role="author-only"]Text for authors only[/private]
  * In this way, Administrators and Editors (roles higher than Editors) can't read this note.
+ *
+ * If you want to show an alternate text in case the user can't read, you can use `alt` option:
+ * [private role="author" alt="You have not rights to read this."]Text for authors only[/private]
  *
  * WordPress Roles in descending order:
  * Administrator,

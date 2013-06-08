@@ -4,7 +4,7 @@
 **Tags:** content, private  
 **Requires at least:** 3.0  
 **Tested up to:** 3.6  
-**Stable tag:** 2.1  
+**Stable tag:** 2.2  
 **License:** GPLv3 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-3.0.html  
 
@@ -50,6 +50,10 @@ These are all the cases:
 `[private role="subscriber-only"]Text for Subscribers only[/private]`
 
 `[private role="visitor-only"]Text for Visitors only[/private]`
+
+
+If you want to show an alternate text in case the reader can't read, you can use:
+`[private role="author" alt="You have not rights to read this."]Text for authors only[/private]`
 
 
 WordPress roles in descending order:
@@ -103,6 +107,10 @@ The shortcode generates a `<p>` HTML tag with at most three classes in this orde
 
 
 ## Changelog ##
+
+### 2.2 ###
+
+* NEW: now the plugin can show an alternate text if the reader hasn't the capability to read the text.
 
 ### 2.1 ###
 
