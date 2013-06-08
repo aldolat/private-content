@@ -18,7 +18,7 @@ Please, note that an Administrator can read an Editor private content or a Subsc
 
 Also you can show the hidden text **only** to a certain role. For example, you can mark a text as visible only to Contributors and hide it to higher roles, such as Administrators or Editors and so on.
 
-Usage:
+= Usage =
 
 Display this text only to Administrators:<br />
 `[private role="administrator"]Text for Administrators[/private]`
@@ -35,6 +35,7 @@ Display this text only to Administrators, Editors, Authors, and Contributors:<br
 Display this text only to Administrators, Editors, Authors, Contributors, and Subscribers:<br />
 `[private role="subscriber"]Text for Subscribers[/private]`
 
+= Notes only for specific roles =
 
 If you want to show a note only to a certain role, you have to use a `<role>-only` option.
 In this way, for example, an Administrator or an Editor (roles higher than Author) cannot read a note only for Authors.
@@ -51,10 +52,12 @@ These are all the cases:
 
 `[private role="visitor-only"]Text for Visitors only[/private]`
 
+= Alternate text for non-targeted users =
 
 If you want to show an alternate text in case the reader can't read, you can use:
 `[private role="author" alt="You have not rights to read this."]Text for authors only[/private]`
 
+= Standard WordPress user roles =
 
 WordPress roles in descending order:
 
