@@ -35,7 +35,7 @@ Display this text only to Administrators, Editors, Authors, and Contributors:<br
 Display this text only to Administrators, Editors, Authors, Contributors, and Subscribers:<br />
 `[private role="subscriber"]Text for Subscribers[/private]`
 
-= Notes only for specific roles =
+= Text only for specific roles =
 
 If you want to show a note only to a certain role, you have to use a `<role>-only` option.
 In this way, for example, an Administrator or an Editor (roles higher than Author) cannot read a note only for Authors.
@@ -83,11 +83,11 @@ This section describes how to install the plugin and get it working.
 
 = Is there a way to display an alternate text to readers that haven't the rights to read the hidden text? =
 
-This plugin is not intended to be used in such way, but only in order to display a portion of a post to certain readers. Also, the hidden text must remain hidden, without the presence of an alternate text that could reveal the presence of the hidden text.
+This plugin is not intended to be used in such way, but only in order to display a portion of a post to certain readers. Also, the hidden text must remain hidden, without the presence of an alternate text that could reveal the presence of the hidden text. Anyway, as of version 2.2, the plugin can display an alternate text, if it's necessary: you can use the `alt` option to do that.
 
-In other words, this plugin was created only to show a small piece of text (i.e. a couple of lines) as a note to the post for particular readers.
+Also, this plugin was created only to show a small piece of text (i.e. a couple of lines) as a note to the post for particular readers.
 
-If you need to show the entire post only to certain readers (i.e. reader who pay to read a post), you can use a plugin like [Members](http://wordpress.org/extend/plugins/members/).
+If you need to show the entire post only to certain readers (i.e. readers who pay to read a post), you can use a plugin like [Members](http://wordpress.org/extend/plugins/members/).
 
 = The hidden text is similar to the public text. Is it possible to stylize it in a different look? =
 
