@@ -5,7 +5,7 @@
  * Plugin URI: http://dev.aldolat.it/projects/private-content/
  * Author: Aldo Latino
  * Author URI: http://www.aldolat.it/
- * Version: 2.2
+ * Version: 2.3
  * License: GPLv3 or later
  * Text Domain: private
  * Domain Path: /languages/
@@ -111,7 +111,7 @@ add_action( 'init', 'ubn_private_check_capability_exists' );
 /*
  * Create the shortcode 'private'.
  *
- * @usage [private role="role" align="align"]Text to show[/private]
+ * @usage [private role="role" align="align" alt="The alternate text"]Text to show[/private]
  */
 function ubn_private_content( $atts, $content = null ) {
 
@@ -157,7 +157,7 @@ function ubn_private_content( $atts, $content = null ) {
 			$text = '<p class="private administrator-content"' . $align_style . '>' . $content . '</p>';
 		} else {
 			if ( $alt ) {
-				$text = '<p class="private administrator-content alt-text">' . $alt . '</p>';
+				$text = '<p class="private administrator-content alt-text"' . $align_style . '>' . $alt . '</p>';
 			}
 		}
 		break;
@@ -167,7 +167,7 @@ function ubn_private_content( $atts, $content = null ) {
 			$text = '<p class="private editor-content"' . $align_style . '>' . $content . '</p>';
 		} else {
 			if ( $alt ) {
-				$text = '<p class="private editor-content alt-text">' . $alt . '</p>';
+				$text = '<p class="private editor-content alt-text"' . $align_style . '>' . $alt . '</p>';
 			}
 		}
 		break;
@@ -177,7 +177,7 @@ function ubn_private_content( $atts, $content = null ) {
 			$text = '<p class="private editor-content editor-only"' . $align_style . '>' . $content . '</p>';
 		} else {
 			if ( $alt ) {
-				$text = '<p class="private editor-content alt-text">' . $alt . '</p>';
+				$text = '<p class="private editor-content editor-only alt-text"' . $align_style . '>' . $alt . '</p>';
 			}
 		}
 		break;
@@ -187,7 +187,7 @@ function ubn_private_content( $atts, $content = null ) {
 			$text = '<p class="private author-content"' . $align_style . '>' . $content . '</p>';
 		} else {
 			if ( $alt ) {
-				$text = '<p class="private author-content alt-text">' . $alt . '</p>';
+				$text = '<p class="private author-content alt-text"' . $align_style . '>' . $alt . '</p>';
 			}
 		}
 		break;
@@ -197,7 +197,7 @@ function ubn_private_content( $atts, $content = null ) {
 			$text = '<p class="private author-content author-only"' . $align_style . '>' . $content . '</p>';
 		} else {
 			if ( $alt ) {
-				$text = '<p class="private author-content alt-text">' . $alt . '</p>';
+				$text = '<p class="private author-content author-only alt-text"' . $align_style . '>' . $alt . '</p>';
 			}
 		}
 		break;
@@ -207,7 +207,7 @@ function ubn_private_content( $atts, $content = null ) {
 			$text = '<p class="private contributor-content"' . $align_style . '>' . $content . '</p>';
 		} else {
 			if ( $alt ) {
-				$text = '<p class="private contributor-content alt-text">' . $alt . '</p>';
+				$text = '<p class="private contributor-content alt-text"' . $align_style . '>' . $alt . '</p>';
 			}
 		}
 		break;
@@ -217,7 +217,7 @@ function ubn_private_content( $atts, $content = null ) {
 			$text = '<p class="private contributor-content contributor-only"' . $align_style . '>' . $content . '</p>';
 		} else {
 			if ( $alt ) {
-				$text = '<p class="private contributor-content alt-text">' . $alt . '</p>';
+				$text = '<p class="private contributor-content contributor-only alt-text"' . $align_style . '>' . $alt . '</p>';
 			}
 		}
 		break;
@@ -227,7 +227,7 @@ function ubn_private_content( $atts, $content = null ) {
 			$text = '<p class="private subscriber-content"' . $align_style . '>' . $content . '</p>';
 		} else {
 			if ( $alt ) {
-				$text = '<p class="private subscriber-content alt-text">' . $alt . '</p>';
+				$text = '<p class="private subscriber-content alt-text"' . $align_style . '>' . $alt . '</p>';
 			}
 		}
 		break;
@@ -237,7 +237,7 @@ function ubn_private_content( $atts, $content = null ) {
 			$text = '<p class="private subscriber-content subscriber-only"' . $align_style . '>' . $content . '</p>';
 		} else {
 			if ( $alt ) {
-				$text = '<p class="private subscriber-content alt-text">' . $alt . '</p>';
+				$text = '<p class="private subscriber-content subscriber-only alt-text"' . $align_style . '>' . $alt . '</p>';
 			}
 		}
 		break;
@@ -247,7 +247,7 @@ function ubn_private_content( $atts, $content = null ) {
 			$text = '<p class="private visitor-content visitor-only"' . $align_style . '>' . $content . '</p>';
 		} else {
 			if ( $alt ) {
-				$text = '<p class="private visitor-content alt-text">' . $alt . '</p>';
+				$text = '<p class="private visitor-content visitor-only alt-text"' . $align_style . '>' . $alt . '</p>';
 			}
 		}
 		break;
