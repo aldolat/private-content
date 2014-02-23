@@ -4,7 +4,7 @@ Donate link: http://dev.aldolat.it/projects/private-content/
 Tags: content, private
 Requires at least: 3.0
 Tested up to: 3.8
-Stable tag: 2.3
+Stable tag: 2.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -106,6 +106,10 @@ The shortcode generates a `<p>` HTML tag with at most three classes in this orde
 2. The shortcode in action. On the left, the text revealed to Administrators only; on the right, the page as seen by lower roles (Editors, Authors, etc., or simply readers).
 
 == Changelog ==
+
+= 2.4 =
+
+* NEW: now it's possible to use a `div` container instead of `p`, thanks to a pull request of Matt.
 
 = 2.3 =
 

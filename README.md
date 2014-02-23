@@ -4,7 +4,7 @@
 **Tags:** content, private  
 **Requires at least:** 3.0  
 **Tested up to:** 3.8  
-**Stable tag:** 2.3  
+**Stable tag:** 2.4  
 **License:** GPLv3 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-3.0.html  
 
@@ -28,7 +28,9 @@ Display this text only to Administrators and Editors:<br />
 
 Display this text only to Administrators, Editors, and Authors:<br />
 `[private role="author"]Text for Authors[/private]`
+= 2.4 =
 
+* NEW: now it's possible to use a `div` container instead of `p`.
 Display this text only to Administrators, Editors, Authors, and Contributors:<br />
 `[private role="contributor"]Text for Contributor[/private]`
 
@@ -103,13 +105,17 @@ The shortcode generates a `<p>` HTML tag with at most three classes in this orde
 ## Screenshots ##
 
 ### 1. At the center of the screen, the shortcode is used in the WordPress editor. The text inside the shortcode will be displayed only to Authors and above roles. ###
-![1. At the center of the screen, the shortcode is used in the WordPress editor. The text inside the shortcode will be displayed only to Authors and above roles.](http://s.wordpress.org/extend/plugins/private-content/screenshot-1.png)
+![1. At the center of the screen, the shortcode is used in the WordPress editor. The text inside the shortcode will be displayed only to Authors and above roles.](http://s-plugins.wordpress.org/private-content/assets/screenshot-1.png)
 
 ### 2. The shortcode in action. On the left, the text revealed to Administrators only; on the right, the page as seen by lower roles (Editors, Authors, etc., or simply readers). ###
-![2. The shortcode in action. On the left, the text revealed to Administrators only; on the right, the page as seen by lower roles (Editors, Authors, etc., or simply readers).](http://s.wordpress.org/extend/plugins/private-content/screenshot-2.png)
+![2. The shortcode in action. On the left, the text revealed to Administrators only; on the right, the page as seen by lower roles (Editors, Authors, etc., or simply readers).](http://s-plugins.wordpress.org/private-content/assets/screenshot-2.png)
 
 
 ## Changelog ##
+
+### 2.4 ###
+
+* NEW: now it's possible to use a `div` container instead of `p`, thanks to a pull request of Matt.
 
 ### 2.3 ###
 
