@@ -28,9 +28,7 @@ Display this text only to Administrators and Editors:<br />
 
 Display this text only to Administrators, Editors, and Authors:<br />
 `[private role="author"]Text for Authors[/private]`
-= 2.4 =
 
-* NEW: now it's possible to use a `div` container instead of `p`.
 Display this text only to Administrators, Editors, Authors, and Contributors:<br />
 `[private role="contributor"]Text for Contributor[/private]`
 
@@ -59,19 +57,25 @@ These are all the cases:
 If you want to show an alternate text in case the reader can't read, you can use:
 `[private role="author" alt="You have not rights to read this."]Text for authors only[/private]`
 
+### Container for the text ###
+
+Starting from version 2.4, the user can choose the container element for the text:
+* `p` is the default value;
+* `div` is the other option. This element lets you use HTML elements like lists, headings, and more.
+
+Usage:
+
+`[private container="div"]This is the text[/private]`
+
 ### Standard WordPress user roles ###
 
 WordPress roles in descending order:
 
- * Administrator
-
- * Editor
-
- * Author
-
- * Contributor
-
- * Subscriber
+* Administrator
+* Editor
+* Author
+* Contributor
+* Subscriber
 
 ## Installation ##
 
@@ -97,18 +101,16 @@ Yes, you have to edit the CSS file of your current theme.
 The shortcode generates a `<p>` HTML tag with at most three classes in this order:
 
 * `private` to stylize all private contents
-
 * `[role]-content` to stylize the content for that specific [role].
-
 * `[role]-content-only` to stylize the content for that specific [role] only.
 
 ## Screenshots ##
 
 ### 1. At the center of the screen, the shortcode is used in the WordPress editor. The text inside the shortcode will be displayed only to Authors and above roles. ###
-![1. At the center of the screen, the shortcode is used in the WordPress editor. The text inside the shortcode will be displayed only to Authors and above roles.](http://s-plugins.wordpress.org/private-content/assets/screenshot-1.png)
+![1. At the center of the screen, the shortcode is used in the WordPress editor. The text inside the shortcode will be displayed only to Authors and above roles.](http://s.wordpress.org/extend/plugins/private-content/screenshot-1.png)
 
 ### 2. The shortcode in action. On the left, the text revealed to Administrators only; on the right, the page as seen by lower roles (Editors, Authors, etc., or simply readers). ###
-![2. The shortcode in action. On the left, the text revealed to Administrators only; on the right, the page as seen by lower roles (Editors, Authors, etc., or simply readers).](http://s-plugins.wordpress.org/private-content/assets/screenshot-2.png)
+![2. The shortcode in action. On the left, the text revealed to Administrators only; on the right, the page as seen by lower roles (Editors, Authors, etc., or simply readers).](http://s.wordpress.org/extend/plugins/private-content/screenshot-2.png)
 
 
 ## Changelog ##
@@ -162,5 +164,4 @@ No upgrade notice.
 Many thanks to:
 
 * [Jean Baptiste Jung](http://www.wprecipes.com/add-private-notes-to-your-wordpress-blog-posts) for the idea behind this plugin;
-
 * [Jeff Starr](http://digwp.com/2010/05/private-content-posts-shortcode) for the initial code.
