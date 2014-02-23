@@ -154,106 +154,106 @@ function ubn_private_content( $atts, $content = null ) {
 
 	case 'administrator' :
 		if ( current_user_can( 'create_users' ) ) {
-			$text = '<p class="private administrator-content"' . $align_style . '>' . $content . '</p>';
+			$text = '<div class="private administrator-content"' . $align_style . '>' . $content . '</div>';
 		} else {
 			if ( $alt ) {
-				$text = '<p class="private administrator-content alt-text"' . $align_style . '>' . $alt . '</p>';
+				$text = '<div class="private administrator-content alt-text"' . $align_style . '>' . $alt . '</div>';
 			}
 		}
 		break;
 
 	case 'editor' :
 		if ( current_user_can( 'edit_others_posts' ) ) {
-			$text = '<p class="private editor-content"' . $align_style . '>' . $content . '</p>';
+			$text = '<div class="private editor-content"' . $align_style . '>' . $content . '</div>';
 		} else {
 			if ( $alt ) {
-				$text = '<p class="private editor-content alt-text"' . $align_style . '>' . $alt . '</p>';
+				$text = '<div class="private editor-content alt-text"' . $align_style . '>' . $alt . '</div>';
 			}
 		}
 		break;
 
 	case 'editor-only' :
 		if ( current_user_can( 'read_ubn_editor_notes' ) ) {
-			$text = '<p class="private editor-content editor-only"' . $align_style . '>' . $content . '</p>';
+			$text = '<div class="private editor-content editor-only"' . $align_style . '>' . $content . '</div>';
 		} else {
 			if ( $alt ) {
-				$text = '<p class="private editor-content editor-only alt-text"' . $align_style . '>' . $alt . '</p>';
+				$text = '<div class="private editor-content editor-only alt-text"' . $align_style . '>' . $alt . '</div>';
 			}
 		}
 		break;
 
 	case 'author' :
 		if ( current_user_can( 'publish_posts' ) ) {
-			$text = '<p class="private author-content"' . $align_style . '>' . $content . '</p>';
+			$text = '<div class="private author-content"' . $align_style . '>' . $content . '</div>';
 		} else {
 			if ( $alt ) {
-				$text = '<p class="private author-content alt-text"' . $align_style . '>' . $alt . '</p>';
+				$text = '<div class="private author-content alt-text"' . $align_style . '>' . $alt . '</div>';
 			}
 		}
 		break;
 
 	case 'author-only' :
 		if ( current_user_can( 'read_ubn_author_notes' ) ) {
-			$text = '<p class="private author-content author-only"' . $align_style . '>' . $content . '</p>';
+			$text = '<div class="private author-content author-only"' . $align_style . '>' . $content . '</div>';
 		} else {
 			if ( $alt ) {
-				$text = '<p class="private author-content author-only alt-text"' . $align_style . '>' . $alt . '</p>';
+				$text = '<div class="private author-content author-only alt-text"' . $align_style . '>' . $alt . '</div>';
 			}
 		}
 		break;
 
 	case 'contributor' :
 		if ( current_user_can( 'edit_posts' ) ) {
-			$text = '<p class="private contributor-content"' . $align_style . '>' . $content . '</p>';
+			$text = '<div class="private contributor-content"' . $align_style . '>' . $content . '</div>';
 		} else {
 			if ( $alt ) {
-				$text = '<p class="private contributor-content alt-text"' . $align_style . '>' . $alt . '</p>';
+				$text = '<div class="private contributor-content alt-text"' . $align_style . '>' . $alt . '</div>';
 			}
 		}
 		break;
 
 	case 'contributor-only' :
 		if ( current_user_can( 'read_ubn_contributor_notes' ) ) {
-			$text = '<p class="private contributor-content contributor-only"' . $align_style . '>' . $content . '</p>';
+			$text = '<div class="private contributor-content contributor-only"' . $align_style . '>' . $content . '</div>';
 		} else {
 			if ( $alt ) {
-				$text = '<p class="private contributor-content contributor-only alt-text"' . $align_style . '>' . $alt . '</p>';
+				$text = '<div class="private contributor-content contributor-only alt-text"' . $align_style . '>' . $alt . '</div>';
 			}
 		}
 		break;
 
 	case 'subscriber' :
 		if ( current_user_can( 'read' ) ) {
-			$text = '<p class="private subscriber-content"' . $align_style . '>' . $content . '</p>';
+			$text = '<div class="private subscriber-content"' . $align_style . '>' . $content . '</div>';
 		} else {
 			if ( $alt ) {
-				$text = '<p class="private subscriber-content alt-text"' . $align_style . '>' . $alt . '</p>';
+				$text = '<div class="private subscriber-content alt-text"' . $align_style . '>' . $alt . '</div>';
 			}
 		}
 		break;
 
 	case 'subscriber-only' :
 		if ( current_user_can( 'read_ubn_subscriber_notes' ) ) {
-			$text = '<p class="private subscriber-content subscriber-only"' . $align_style . '>' . $content . '</p>';
+			$text = '<div class="private subscriber-content subscriber-only"' . $align_style . '>' . $content . '</div>';
 		} else {
 			if ( $alt ) {
-				$text = '<p class="private subscriber-content subscriber-only alt-text"' . $align_style . '>' . $alt . '</p>';
+				$text = '<div class="private subscriber-content subscriber-only alt-text"' . $align_style . '>' . $alt . '</div>';
 			}
 		}
 		break;
 
 	case 'visitor-only' :
 		if ( ! is_user_logged_in() ) {
-			$text = '<p class="private visitor-content visitor-only"' . $align_style . '>' . $content . '</p>';
+			$text = '<div class="private visitor-content visitor-only"' . $align_style . '>' . $content . '</div>';
 		} else {
 			if ( $alt ) {
-				$text = '<p class="private visitor-content visitor-only alt-text"' . $align_style . '>' . $alt . '</p>';
+				$text = '<div class="private visitor-content visitor-only alt-text"' . $align_style . '>' . $alt . '</div>';
 			}
 		}
 		break;
 
 	default :
-		$text = '<p class="private administrator-content"' . $align_style . '>' . $content . '</p>';
+		$text = '<div class="private administrator-content"' . $align_style . '>' . $content . '</div>';
 	}
 
 	if ( isset( $text ) )
