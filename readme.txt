@@ -60,6 +60,7 @@ If you want to show an alternate text in case the reader can't read, you can use
 = Container for the text =
 
 Starting from version 2.4, the user can choose the container element for the text:
+
 * `p` is the default value;
 * `div` is the other option. This element lets you use HTML elements like lists, headings, and more.
 
