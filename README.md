@@ -112,10 +112,10 @@ Yes. To map the capabilities to the custom role, use a plugin like [Members](htt
 ## Screenshots ##
 
 ### 1. At the center of the screen, the shortcode is used in the WordPress editor. The text inside the shortcode will be displayed only to Authors and above roles. ###
-![1. At the center of the screen, the shortcode is used in the WordPress editor. The text inside the shortcode will be displayed only to Authors and above roles.](http://ps.w.org/private-content/assets/screenshot-1.png)
+![1. At the center of the screen, the shortcode is used in the WordPress editor. The text inside the shortcode will be displayed only to Authors and above roles.](https://ps.w.org/private-content/assets/screenshot-1.png)
 
 ### 2. The shortcode in action. On the left, the text revealed to Administrators only; on the right, the page as seen by lower roles (Editors, Authors, etc., or simply readers). ###
-![2. The shortcode in action. On the left, the text revealed to Administrators only; on the right, the page as seen by lower roles (Editors, Authors, etc., or simply readers).](http://ps.w.org/private-content/assets/screenshot-2.png)
+![2. The shortcode in action. On the left, the text revealed to Administrators only; on the right, the page as seen by lower roles (Editors, Authors, etc., or simply readers).](https://ps.w.org/private-content/assets/screenshot-2.png)
 
 
 ## Changelog ##
