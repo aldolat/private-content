@@ -3,7 +3,7 @@ Contributors: aldolat, specialk
 Donate link: http://dev.aldolat.it/projects/private-content/
 Tags: content, private
 Requires at least: 3.0
-Tested up to: 3.9
+Tested up to: 4.0
 Stable tag: 2.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -104,6 +104,10 @@ The shortcode generates a `<p>` HTML tag with at most three classes in this orde
 * `private` to stylize all private contents
 * `[role]-content` to stylize the content for that specific [role].
 * `[role]-content-only` to stylize the content for that specific [role] only.
+
+= Does this plugin work with custom roles? =
+
+Yes. To map the capabilities to the custom role, use a plugin like [Members](https://wordpress.org/plugins/members) or [Capability Manager Enhanced](https://wordpress.org/plugins/capability-manager-enhanced).
 
 == Screenshots ==
 
