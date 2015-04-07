@@ -162,6 +162,11 @@ function ubn_private_content( $atts, $content = null ) {
 			$container_close = '</div>';
 			break;
 
+		case 'span':
+			$container_open  = '<span';
+			$container_close = '</span>';
+			break;
+
 		default:
 			$container_open  = '<p';
 			$container_close = '</p>';

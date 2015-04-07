@@ -1,12 +1,12 @@
 # Private Content #
-**Contributors:** aldolat, specialk  
-**Donate link:** http://dev.aldolat.it/projects/private-content/  
-**Tags:** content, private  
-**Requires at least:** 3.0  
-**Tested up to:** 4.1  
-**Stable tag:** 2.4  
-**License:** GPLv3 or later  
-**License URI:** http://www.gnu.org/licenses/gpl-3.0.html  
+**Contributors:** aldolat, specialk
+**Donate link:** http://dev.aldolat.it/projects/private-content/
+**Tags:** content, private
+**Requires at least:** 3.0
+**Tested up to:** 4.1
+**Stable tag:** 2.4
+**License:** GPLv3 or later
+**License URI:** http://www.gnu.org/licenses/gpl-3.0.html
 
 Display a portion of a post content only to users of a specific role.
 
@@ -62,11 +62,13 @@ If you want to show an alternate text in case the reader can't read, you can use
 Starting from version 2.4, the user can choose the container element for the text:
 
 * `p` is the default value;
-* `div` is the other option. This element lets you use HTML elements like lists, headings, and more.
+* `div` is another option. This element lets you use HTML elements like lists, headings, and more.
+* `span` is the final option. This element allows you to add private content inline.
 
 Usage:
 
 `[private container="div"]This is the text[/private]`
+`I met with a friend[private container="span"] (Jenny, from ninth grade)[/private] for lunch.`
 
 ### Standard WordPress user roles ###
 
