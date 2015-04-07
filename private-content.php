@@ -5,14 +5,14 @@
  * Plugin URI: http://dev.aldolat.it/projects/private-content/
  * Author: Aldo Latino
  * Author URI: http://www.aldolat.it/
- * Version: 2.4
+ * Version: 2.5
  * License: GPLv3 or later
  * Text Domain: private
  * Domain Path: /languages/
  */
 
 /*
- * Copyright (C) 2009, 2013  Aldo Latino  (email : aldolat@gmail.com)
+ * Copyright (C) 2009, 2015  Aldo Latino  (email : aldolat@gmail.com)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -91,7 +91,7 @@ function ubn_private_add_cap() {
 register_activation_hook( __FILE__, 'ubn_private_add_cap' );
 
 
-/*
+/**
  * Check if Editor role has 'read_ubn_editor_notes' capabilities.
  * This check is useful only when upgrading this plugin from version below 2.0.
  * This function will be removed in future.
@@ -108,10 +108,10 @@ function ubn_private_check_capability_exists() {
 add_action( 'init', 'ubn_private_check_capability_exists' );
 
 
-/*
+/**
  * Create the shortcode 'private'.
  *
- * @usage [private role="role" align="align" alt="The alternate text" container="div"]Text to show[/private]
+ * @example [private role="role" align="align" alt="The alternate text" container="div"]Text to show[/private]
  */
 function ubn_private_content( $atts, $content = null ) {
 
@@ -152,22 +152,22 @@ function ubn_private_content( $atts, $content = null ) {
 
 	// The 'container' option
 	switch ( $container ) {
-		case 'p':
+		case 'p' :
 			$container_open  = '<p';
 			$container_close = '</p>';
 			break;
 
-		case 'div':
+		case 'div' :
 			$container_open  = '<div';
 			$container_close = '</div>';
 			break;
 
-		case 'span':
+		case 'span' :
 			$container_open  = '<span';
 			$container_close = '</span>';
 			break;
 
-		default:
+		default :
 			$container_open  = '<p';
 			$container_close = '</p>';
 			break;
@@ -280,7 +280,7 @@ function ubn_private_content( $atts, $content = null ) {
 		$text = $container_open . ' class="private administrator-content"' . $align_style . '>' . $content . $container_close;
 	}
 
-	if ( isset( $text ) )
+	if ( isset( $text ) && ! is_feed() )
 		// The do_shortcode function is necessary to let WordPress execute another nested shortcode.
 		return do_shortcode( $text );
 }

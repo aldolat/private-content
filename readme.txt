@@ -1,10 +1,10 @@
 === Private Content ===
-Contributors: aldolat, specialk
+Contributors: aldolat, specialk, thewanderingbrit
 Donate link: http://dev.aldolat.it/projects/private-content/
 Tags: content, private
 Requires at least: 3.0
-Tested up to: 4.1
-Stable tag: 2.4
+Tested up to: 4.2
+Stable tag: 2.5
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -118,6 +118,11 @@ Yes. To map the capabilities to the custom role, use a plugin like [Members](htt
 
 == Changelog ==
 
+= 2.5 =
+
+* NEW: Added ability to use "span" as a container.
+* FIX: Removed shortcode execution in feed.
+
 = 2.4 =
 
 * NEW: now it's possible to use a `div` container instead of `p`, thanks to a pull request of Matt.
@@ -157,6 +162,10 @@ Yes. To map the capabilities to the custom role, use a plugin like [Members](htt
 = 2.0 =
 
 Upgrade in order to use the new role-only feature.
+
+= 2.5 =
+
+Removed shortcode execution in feed.
 
 = 1.0 =
 
