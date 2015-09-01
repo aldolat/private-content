@@ -176,108 +176,108 @@ function ubn_private_content( $atts, $content = null ) {
 	// The 'role' option
 	switch ( $role ) {
 
-	case 'administrator' :
-		if ( current_user_can( 'create_users' ) ) {
+		case 'administrator' :
+			if ( current_user_can( 'create_users' ) ) {
+				$text = $container_open . ' class="private administrator-content"' . $align_style . '>' . $content . $container_close;
+			} else {
+				if ( $alt ) {
+					$text = $container_open . ' class="private administrator-content alt-text"' . $align_style . '>' . $alt . $container_close;
+				}
+			}
+			break;
+
+		case 'editor' :
+			if ( current_user_can( 'edit_others_posts' ) ) {
+				$text = $container_open . ' class="private editor-content"' . $align_style . '>' . $content . $container_close;
+			} else {
+				if ( $alt ) {
+					$text = $container_open . ' class="private editor-content alt-text"' . $align_style . '>' . $alt . $container_close;
+				}
+			}
+			break;
+
+		case 'editor-only' :
+			if ( current_user_can( 'read_ubn_editor_notes' ) ) {
+				$text = $container_open . ' class="private editor-content editor-only"' . $align_style . '>' . $content . $container_close;
+			} else {
+				if ( $alt ) {
+					$text = $container_open . ' class="private editor-content editor-only alt-text"' . $align_style . '>' . $alt . $container_close;
+				}
+			}
+			break;
+
+		case 'author' :
+			if ( current_user_can( 'publish_posts' ) ) {
+				$text = $container_open . ' class="private author-content"' . $align_style . '>' . $content . $container_close;
+			} else {
+				if ( $alt ) {
+					$text = $container_open . ' class="private author-content alt-text"' . $align_style . '>' . $alt . $container_close;
+				}
+			}
+			break;
+
+		case 'author-only' :
+			if ( current_user_can( 'read_ubn_author_notes' ) ) {
+				$text = $container_open . ' class="private author-content author-only"' . $align_style . '>' . $content . $container_close;
+			} else {
+				if ( $alt ) {
+					$text = $container_open . ' class="private author-content author-only alt-text"' . $align_style . '>' . $alt . $container_close;
+				}
+			}
+			break;
+
+		case 'contributor' :
+			if ( current_user_can( 'edit_posts' ) ) {
+				$text = $container_open . ' class="private contributor-content"' . $align_style . '>' . $content . $container_close;
+			} else {
+				if ( $alt ) {
+					$text = $container_open . ' class="private contributor-content alt-text"' . $align_style . '>' . $alt . $container_close;
+				}
+			}
+			break;
+
+		case 'contributor-only' :
+			if ( current_user_can( 'read_ubn_contributor_notes' ) ) {
+				$text = $container_open . ' class="private contributor-content contributor-only"' . $align_style . '>' . $content . $container_close;
+			} else {
+				if ( $alt ) {
+					$text = $container_open . ' class="private contributor-content contributor-only alt-text"' . $align_style . '>' . $alt . $container_close;
+				}
+			}
+			break;
+
+		case 'subscriber' :
+			if ( current_user_can( 'read' ) ) {
+				$text = $container_open . ' class="private subscriber-content"' . $align_style . '>' . $content . $container_close;
+			} else {
+				if ( $alt ) {
+					$text = $container_open . ' class="private subscriber-content alt-text"' . $align_style . '>' . $alt . $container_close;
+				}
+			}
+			break;
+
+		case 'subscriber-only' :
+			if ( current_user_can( 'read_ubn_subscriber_notes' ) ) {
+				$text = $container_open . ' class="private subscriber-content subscriber-only"' . $align_style . '>' . $content . $container_close;
+			} else {
+				if ( $alt ) {
+					$text = $container_open . ' class="private subscriber-content subscriber-only alt-text"' . $align_style . '>' . $alt . $container_close;
+				}
+			}
+			break;
+
+		case 'visitor-only' :
+			if ( ! is_user_logged_in() ) {
+				$text = $container_open . ' class="private visitor-content visitor-only"' . $align_style . '>' . $content . $container_close;
+			} else {
+				if ( $alt ) {
+					$text = $container_open . ' class="private visitor-content visitor-only alt-text"' . $align_style . '>' . $alt . $container_close;
+				}
+			}
+			break;
+
+		default :
 			$text = $container_open . ' class="private administrator-content"' . $align_style . '>' . $content . $container_close;
-		} else {
-			if ( $alt ) {
-				$text = $container_open . ' class="private administrator-content alt-text"' . $align_style . '>' . $alt . $container_close;
-			}
-		}
-		break;
-
-	case 'editor' :
-		if ( current_user_can( 'edit_others_posts' ) ) {
-			$text = $container_open . ' class="private editor-content"' . $align_style . '>' . $content . $container_close;
-		} else {
-			if ( $alt ) {
-				$text = $container_open . ' class="private editor-content alt-text"' . $align_style . '>' . $alt . $container_close;
-			}
-		}
-		break;
-
-	case 'editor-only' :
-		if ( current_user_can( 'read_ubn_editor_notes' ) ) {
-			$text = $container_open . ' class="private editor-content editor-only"' . $align_style . '>' . $content . $container_close;
-		} else {
-			if ( $alt ) {
-				$text = $container_open . ' class="private editor-content editor-only alt-text"' . $align_style . '>' . $alt . $container_close;
-			}
-		}
-		break;
-
-	case 'author' :
-		if ( current_user_can( 'publish_posts' ) ) {
-			$text = $container_open . ' class="private author-content"' . $align_style . '>' . $content . $container_close;
-		} else {
-			if ( $alt ) {
-				$text = $container_open . ' class="private author-content alt-text"' . $align_style . '>' . $alt . $container_close;
-			}
-		}
-		break;
-
-	case 'author-only' :
-		if ( current_user_can( 'read_ubn_author_notes' ) ) {
-			$text = $container_open . ' class="private author-content author-only"' . $align_style . '>' . $content . $container_close;
-		} else {
-			if ( $alt ) {
-				$text = $container_open . ' class="private author-content author-only alt-text"' . $align_style . '>' . $alt . $container_close;
-			}
-		}
-		break;
-
-	case 'contributor' :
-		if ( current_user_can( 'edit_posts' ) ) {
-			$text = $container_open . ' class="private contributor-content"' . $align_style . '>' . $content . $container_close;
-		} else {
-			if ( $alt ) {
-				$text = $container_open . ' class="private contributor-content alt-text"' . $align_style . '>' . $alt . $container_close;
-			}
-		}
-		break;
-
-	case 'contributor-only' :
-		if ( current_user_can( 'read_ubn_contributor_notes' ) ) {
-			$text = $container_open . ' class="private contributor-content contributor-only"' . $align_style . '>' . $content . $container_close;
-		} else {
-			if ( $alt ) {
-				$text = $container_open . ' class="private contributor-content contributor-only alt-text"' . $align_style . '>' . $alt . $container_close;
-			}
-		}
-		break;
-
-	case 'subscriber' :
-		if ( current_user_can( 'read' ) ) {
-			$text = $container_open . ' class="private subscriber-content"' . $align_style . '>' . $content . $container_close;
-		} else {
-			if ( $alt ) {
-				$text = $container_open . ' class="private subscriber-content alt-text"' . $align_style . '>' . $alt . $container_close;
-			}
-		}
-		break;
-
-	case 'subscriber-only' :
-		if ( current_user_can( 'read_ubn_subscriber_notes' ) ) {
-			$text = $container_open . ' class="private subscriber-content subscriber-only"' . $align_style . '>' . $content . $container_close;
-		} else {
-			if ( $alt ) {
-				$text = $container_open . ' class="private subscriber-content subscriber-only alt-text"' . $align_style . '>' . $alt . $container_close;
-			}
-		}
-		break;
-
-	case 'visitor-only' :
-		if ( ! is_user_logged_in() ) {
-			$text = $container_open . ' class="private visitor-content visitor-only"' . $align_style . '>' . $content . $container_close;
-		} else {
-			if ( $alt ) {
-				$text = $container_open . ' class="private visitor-content visitor-only alt-text"' . $align_style . '>' . $alt . $container_close;
-			}
-		}
-		break;
-
-	default :
-		$text = $container_open . ' class="private administrator-content"' . $align_style . '>' . $content . $container_close;
 	}
 
 	if ( isset( $text ) && ! is_feed() )
