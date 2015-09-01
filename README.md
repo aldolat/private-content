@@ -66,6 +66,7 @@ Change `login-name` with the correct login name of the target user.
 
 If you want to show an alternate text in case the reader can't read, you can use:
 `[private role="author" alt="You have not rights to read this."]Text for authors only[/private]`
+Please, take note that the alternate text, if defined, is always publicly displayed.
 
 ### Container for the text ###
 

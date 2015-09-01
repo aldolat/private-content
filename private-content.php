@@ -59,6 +59,7 @@
  *
  * If you want to show an alternate text in case the user can't read, you can use `alt` option:
  * [private role="author" alt="You have not rights to read this."]Text for authors only[/private]
+ * Please, take note that the alternate text, if defined, is always publicly displayed.
  *
  * WordPress Roles in descending order:
  * Administrator,
@@ -272,11 +273,13 @@ function ubn_private_content( $atts, $content = null ) {
 			}
 			break;
 
-		case 'none':
-			if ( ! empty( $recipient ) ) {
-				$current_user = wp_get_current_user();
-				if ( username_exists( $recipient ) && $current_user->user_login == $recipient ) {
-					$text = $container_open . ' class="private user-only ' . esc_attr( $recipient ) . '-only"' . $align_style . '>' . $content . $container_close;
+		case 'none' :
+			$current_user = wp_get_current_user();
+			if ( $current_user->user_login == $recipient ) {
+				$text = $container_open . ' class="private user-content user-only ' . esc_attr( $recipient ) . '-only"' . $align_style . '>' . $content . $container_close;
+			} else {
+				if ( $alt ) {
+					$text = $container_open . ' class="private user-content user-only alt-text"' . $align_style . '>' . $alt . $container_close;
 				}
 			}
 			break;
