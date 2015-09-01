@@ -5,7 +5,7 @@
  * Plugin URI: http://dev.aldolat.it/projects/private-content/
  * Author: Aldo Latino
  * Author URI: http://www.aldolat.it/
- * Version: 3.0
+ * Version: 2.6
  * License: GPLv3 or later
  * Text Domain: private
  * Domain Path: /languages/
@@ -293,7 +293,9 @@ function ubn_private_content( $atts, $content = null ) {
 		return do_shortcode( $text );
 	}
 }
-add_shortcode( 'private', 'ubn_private_content' );
+if ( ! shortcode_exists( 'private' ) ) {
+	add_shortcode( 'private', 'ubn_private_content' );
+}
 
 
 /***********************************************************************

@@ -4,7 +4,7 @@ Donate link: http://dev.aldolat.it/projects/private-content/
 Tags: content, private
 Requires at least: 3.0
 Tested up to: 4.3
-Stable tag: 3.0
+Stable tag: 2.6
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -129,9 +129,9 @@ Yes. To map the capabilities to the custom role, use a plugin like [Members](htt
 
 == Changelog ==
 
-= 3.0 =
+= 2.6 =
 
-* NEW: Added option for a single recipient.
+* NEW: Added option for a single user.
 * FIX: now, if the role is not correctly entered, the shortcode does not display anything.
 
 = 2.5 =
