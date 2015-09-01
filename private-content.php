@@ -5,7 +5,7 @@
  * Plugin URI: http://dev.aldolat.it/projects/private-content/
  * Author: Aldo Latino
  * Author URI: http://www.aldolat.it/
- * Version: 2.5
+ * Version: 2.6
  * License: GPLv3 or later
  * Text Domain: private
  * Domain Path: /languages/
@@ -26,14 +26,9 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
- * @package PrivateContent
- * @version 2.1
- * @author Aldo Latino <aldolat@gmail.com>, Jeff Starr
- * @copyright Copyright (c) 2009-2012, Aldo Latino
- * @link http://www.aldolat.it/wordpress/wordpress-plugins/private-content/
- * @license http://www.gnu.org/licenses/gpl.html
- *
+ */
+
+ /*
  * Thanks to:
  * Jean Baptiste Jung ( http://www.wprecipes.com/add-private-notes-to-your-wordpress-blog-posts )
  * for the idea and
@@ -41,7 +36,7 @@
  * for the starting code.
 */
 
-/**
+/*
  * Shortcode to display private post content only to users of a specific role.
  *
  * @example
@@ -277,10 +272,10 @@ function ubn_private_content( $atts, $content = null ) {
 			break;
 
 		default :
-			$text = $container_open . ' class="private administrator-content"' . $align_style . '>' . $content . $container_close;
+			$text = '';
 	}
 
-	if ( isset( $text ) && ! is_feed() )
+	if ( isset( $text ) && '' != $text && ! is_feed() )
 		// The do_shortcode function is necessary to let WordPress execute another nested shortcode.
 		return do_shortcode( $text );
 }
