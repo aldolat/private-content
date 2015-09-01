@@ -4,11 +4,11 @@
 **Tags:** content, private  
 **Requires at least:** 3.0  
 **Tested up to:** 4.3  
-**Stable tag:** 2.6  
+**Stable tag:** 3.0  
 **License:** GPLv3 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-3.0.html  
 
-Display a portion of a post content only to users of a specific role.
+Display a portion of a post content only to users of a specific role or to a single user.
 
 ## Description ##
 
@@ -17,6 +17,8 @@ This plugin provides a shortcode to display a portion of a post content only to 
 Please, note that an Administrator can read an Editor private content or a Subscriber private content, and so on. Same thing for Editor, Author, Contributor, and Subscriber: a higher role can read a lower role content.
 
 Also you can show the hidden text **only** to a certain role. For example, you can mark a text as visible only to Contributors and hide it to higher roles, such as Administrators or Editors and so on.
+
+As from version 3.0 you can mark a text as visible only to a certain user, using his login name.
 
 ### Usage ###
 
@@ -51,6 +53,14 @@ These are all the cases:
 `[private role="subscriber-only"]Text for Subscribers only[/private]`
 
 `[private role="visitor-only"]Text for Visitors only[/private]`
+
+### Text only for a specific user ###
+
+In the case you want to show a text only to a specific user, assign `none` to `role` and a login name to `recipient`:
+
+`[private role="none" recipient="login-name"]Text for a specific user only[/private]`
+
+Change `login-name` with the correct login name of the target user.
 
 ### Alternate text for non-targeted users ###
 
@@ -122,8 +132,9 @@ Yes. To map the capabilities to the custom role, use a plugin like [Members](htt
 
 ## Changelog ##
 
-### 2.6 ###
+### 3.0 ###
 
+* NEW: Added option for a single recipient.
 * FIX: now, if the role is not correctly entered, the shortcode does not display anything.
 
 ### 2.5 ###

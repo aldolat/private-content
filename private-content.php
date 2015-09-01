@@ -1,11 +1,11 @@
 <?php
 /*
  * Plugin Name: Private content
- * Description:  Display private post content only to users of a specific role
+ * Description:  Display private post content only to users of a specific role or to a single user
  * Plugin URI: http://dev.aldolat.it/projects/private-content/
  * Author: Aldo Latino
  * Author URI: http://www.aldolat.it/
- * Version: 2.6
+ * Version: 3.0
  * License: GPLv3 or later
  * Text Domain: private
  * Domain Path: /languages/
@@ -112,6 +112,7 @@ function ubn_private_content( $atts, $content = null ) {
 
 	$defaults = array(
 		'role'      => 'administrator', // The default role if none has been provided
+		'recipient' => '',
 		'align'     => '',
 		'alt'       => '',
 		'container' => 'p',
@@ -271,11 +272,20 @@ function ubn_private_content( $atts, $content = null ) {
 			}
 			break;
 
+		case 'none':
+			if ( ! empty( $recipient ) ) {
+				$current_user = wp_get_current_user();
+				if ( username_exists( $recipient ) && $current_user->user_login == $recipient ) {
+					$text = $container_open . ' class="private user-only ' . esc_attr( $recipient ) . '-only"' . $align_style . '>' . $content . $container_close;
+				}
+			}
+			break;
+
 		default :
 			$text = '';
 	}
 
-	if ( isset( $text ) && '' != $text && ! is_feed() ) {
+	if ( isset( $text ) && ! empty( $text ) && ! is_feed() ) {
 		// The do_shortcode function is necessary to let WordPress execute another nested shortcode.
 		return do_shortcode( $text );
 	}
