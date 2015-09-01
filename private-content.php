@@ -275,9 +275,10 @@ function ubn_private_content( $atts, $content = null ) {
 			$text = '';
 	}
 
-	if ( isset( $text ) && '' != $text && ! is_feed() )
+	if ( isset( $text ) && '' != $text && ! is_feed() ) {
 		// The do_shortcode function is necessary to let WordPress execute another nested shortcode.
 		return do_shortcode( $text );
+	}
 }
 add_shortcode( 'private', 'ubn_private_content' );
 
