@@ -122,26 +122,26 @@ function ubn_private_content( $atts, $content = null ) {
 	extract( shortcode_atts( $defaults, $atts ) );
 
 	// The 'align' option
-	if ( $align != '' ) {
+	if ( ! empty( $align ) ) {
 		switch ( $align ) {
-		case 'left' :
-			$align_style = ' style="text-align: left;"';
-			break;
+			case 'left' :
+				$align_style = ' style="text-align: left;"';
+				break;
 
-		case 'center' :
-			$align_style = ' style="text-align: center;"';
-			break;
+			case 'center' :
+				$align_style = ' style="text-align: center;"';
+				break;
 
-		case 'right' :
-			$align_style = ' style="text-align: right;"';
-			break;
+			case 'right' :
+				$align_style = ' style="text-align: right;"';
+				break;
 
-		case 'justify' :
-			$align_style = ' style="text-align: justify;"';
-			break;
+			case 'justify' :
+				$align_style = ' style="text-align: justify;"';
+				break;
 
-		default :
-			$align_style = '';
+			default :
+				$align_style = '';
 		}
 	} else {
 		$align_style = '';
