@@ -79,6 +79,7 @@ Starting from version 2.4, the user can choose the container element for the tex
 Usage:
 
 `[private container="div"]This is the text[/private]`
+
 `I met with a friend[private container="span"] (Jenny, from ninth grade)[/private] for lunch.`
 
 = Standard WordPress user roles =
