@@ -4,7 +4,7 @@
 **Tags:** content, private  
 **Requires at least:** 3.0  
 **Tested up to:** 4.3  
-**Stable tag:** 2.6  
+**Stable tag:** 3.0  
 **License:** GPLv3 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-3.0.html  
 
@@ -73,7 +73,7 @@ Please, take note that the alternate text, if defined, is always publicly displa
 Starting from version 2.4, the user can choose the container element for the text:
 
 * `p` is the default value;
-* `div` is another option. This element lets you use HTML elements like lists, headings, and more.
+* `div` is another option. This element allows you use HTML elements like lists, headings, and more.
 * `span` is the final option. This element allows you to add private content inline.
 
 Usage:
@@ -133,10 +133,11 @@ Yes. To map the capabilities to the custom role, use a plugin like [Members](htt
 
 ## Changelog ##
 
-### 2.6 ###
+### 3.0 ###
 
 * NEW: Added option for a single user.
 * FIX: now, if the role is not correctly entered, the shortcode does not display anything.
+* Removed CSS class in the alternate text, in order to hide which type of users was the recipent of the text.
 
 ### 2.5 ###
 
