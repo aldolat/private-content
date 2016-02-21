@@ -5,14 +5,14 @@
  * Plugin URI: http://dev.aldolat.it/projects/private-content/
  * Author: Aldo Latino
  * Author URI: http://www.aldolat.it/
- * Version: 3.0
+ * Version: 4.0
  * License: GPLv3 or later
  * Text Domain: private
  * Domain Path: /languages/
  */
 
 /*
- * Copyright (C) 2009, 2015  Aldo Latino  (email : aldolat@gmail.com)
+ * Copyright (C) 2009, 2016  Aldo Latino  (email : aldolat@gmail.com)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -177,6 +177,7 @@ function ubn_private_content( $atts, $content = null ) {
 			if ( current_user_can( 'create_users' ) ) {
 				$text = $container_open . ' class="private administrator-content"' . $align_style . '>' . $content . $container_close;
 			} else {
+				$text = '';
 				if ( $alt ) {
 					$text = $container_open . ' class="private alt-text"' . $align_style . '>' . $alt . $container_close;
 				}
@@ -187,6 +188,7 @@ function ubn_private_content( $atts, $content = null ) {
 			if ( current_user_can( 'edit_others_posts' ) ) {
 				$text = $container_open . ' class="private editor-content"' . $align_style . '>' . $content . $container_close;
 			} else {
+				$text = '';
 				if ( $alt ) {
 					$text = $container_open . ' class="private alt-text"' . $align_style . '>' . $alt . $container_close;
 				}
@@ -197,6 +199,7 @@ function ubn_private_content( $atts, $content = null ) {
 			if ( current_user_can( 'read_ubn_editor_notes' ) ) {
 				$text = $container_open . ' class="private editor-content editor-only"' . $align_style . '>' . $content . $container_close;
 			} else {
+				$text = '';
 				if ( $alt ) {
 					$text = $container_open . ' class="private alt-text"' . $align_style . '>' . $alt . $container_close;
 				}
@@ -207,6 +210,7 @@ function ubn_private_content( $atts, $content = null ) {
 			if ( current_user_can( 'publish_posts' ) ) {
 				$text = $container_open . ' class="private author-content"' . $align_style . '>' . $content . $container_close;
 			} else {
+				$text = '';
 				if ( $alt ) {
 					$text = $container_open . ' class="private alt-text"' . $align_style . '>' . $alt . $container_close;
 				}
@@ -217,6 +221,7 @@ function ubn_private_content( $atts, $content = null ) {
 			if ( current_user_can( 'read_ubn_author_notes' ) ) {
 				$text = $container_open . ' class="private author-content author-only"' . $align_style . '>' . $content . $container_close;
 			} else {
+				$text = '';
 				if ( $alt ) {
 					$text = $container_open . ' class="private alt-text"' . $align_style . '>' . $alt . $container_close;
 				}
@@ -227,6 +232,7 @@ function ubn_private_content( $atts, $content = null ) {
 			if ( current_user_can( 'edit_posts' ) ) {
 				$text = $container_open . ' class="private contributor-content"' . $align_style . '>' . $content . $container_close;
 			} else {
+				$text = '';
 				if ( $alt ) {
 					$text = $container_open . ' class="private alt-text"' . $align_style . '>' . $alt . $container_close;
 				}
@@ -237,6 +243,7 @@ function ubn_private_content( $atts, $content = null ) {
 			if ( current_user_can( 'read_ubn_contributor_notes' ) ) {
 				$text = $container_open . ' class="private contributor-content contributor-only"' . $align_style . '>' . $content . $container_close;
 			} else {
+				$text = '';
 				if ( $alt ) {
 					$text = $container_open . ' class="private alt-text"' . $align_style . '>' . $alt . $container_close;
 				}
@@ -247,6 +254,7 @@ function ubn_private_content( $atts, $content = null ) {
 			if ( current_user_can( 'read' ) ) {
 				$text = $container_open . ' class="private subscriber-content"' . $align_style . '>' . $content . $container_close;
 			} else {
+				$text = '';
 				if ( $alt ) {
 					$text = $container_open . ' class="private alt-text"' . $align_style . '>' . $alt . $container_close;
 				}
@@ -257,6 +265,7 @@ function ubn_private_content( $atts, $content = null ) {
 			if ( current_user_can( 'read_ubn_subscriber_notes' ) ) {
 				$text = $container_open . ' class="private subscriber-content subscriber-only"' . $align_style . '>' . $content . $container_close;
 			} else {
+				$text = '';
 				if ( $alt ) {
 					$text = $container_open . ' class="private alt-text"' . $align_style . '>' . $alt . $container_close;
 				}
@@ -267,6 +276,7 @@ function ubn_private_content( $atts, $content = null ) {
 			if ( ! is_user_logged_in() ) {
 				$text = $container_open . ' class="private visitor-content visitor-only"' . $align_style . '>' . $content . $container_close;
 			} else {
+				$text = '';
 				if ( $alt ) {
 					$text = $container_open . ' class="private alt-text"' . $align_style . '>' . $alt . $container_close;
 				}
@@ -274,10 +284,12 @@ function ubn_private_content( $atts, $content = null ) {
 			break;
 
 		case 'none' :
+			$all_recipients = array_map( 'trim', explode( ',', $recipient ) );
 			$current_user = wp_get_current_user();
-			if ( $current_user->user_login == $recipient ) {
-				$text = $container_open . ' class="private user-content user-only ' . esc_attr( $recipient ) . '-only"' . $align_style . '>' . $content . $container_close;
+			if ( in_array( $current_user->user_login, $all_recipients ) ) {
+				$text = $container_open . ' class="private user-content user-only ' . esc_attr( $current_user->user_login ) . '-only"' . $align_style . '>' . $content . $container_close;
 			} else {
+				$text = '';
 				if ( $alt ) {
 					$text = $container_open . ' class="private alt-text"' . $align_style . '>' . $alt . $container_close;
 				}

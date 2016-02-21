@@ -4,7 +4,7 @@ Donate link: http://dev.aldolat.it/projects/private-content/
 Tags: content, private
 Requires at least: 3.0
 Tested up to: 4.3
-Stable tag: 3.0
+Stable tag: 4.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -19,6 +19,8 @@ Please, note that an Administrator can read an Editor private content or a Subsc
 Also you can show the hidden text **only** to a certain role. For example, you can mark a text as visible only to Contributors and hide it to higher roles, such as Administrators or Editors and so on.
 
 As from version 3.0 you can mark a text as visible only to a certain user, using his login name.
+
+As from version 4.0 you can mark a text as visible onyl to multiple users, using their login names comma separated.
 
 = Usage =
 
@@ -61,6 +63,12 @@ In the case you want to show a text only to a specific user, assign `none` to `r
 `[private role="none" recipient="login-name"]Text for a specific user only[/private]`
 
 Change `login-name` with the correct login name of the target user.
+
+You can use a comma separated list of usernames to target certain users:
+
+`[private role="none" recipient="login-name1, login-name2, login-name3"]Text for specific users only[/private]`
+
+Change `login-name1`, `login-name2`, and `login-name3` with the correct login names of the target users.
 
 = Alternate text for non-targeted users =
 
@@ -129,6 +137,10 @@ Yes. To map the capabilities to the custom role, use a plugin like [Members](htt
 2. The shortcode in action. On the left, the text revealed to Administrators only; on the right, the page as seen by lower roles (Editors, Authors, etc., or simply readers).
 
 == Changelog ==
+
+= 4.0 =
+
+* NEW: Added support for multiple recipents.
 
 = 3.0 =
 
