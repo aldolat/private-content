@@ -5,7 +5,7 @@
  * Plugin URI: http://dev.aldolat.it/projects/private-content/
  * Author: Aldo Latino
  * Author URI: http://www.aldolat.it/
- * Version: 4.0
+ * Version: 4.1
  * License: GPLv3 or later
  * Text Domain: private
  * Domain Path: /languages/
@@ -120,6 +120,32 @@ function ubn_private_content( $atts, $content = null ) {
 	);
 
 	extract( shortcode_atts( $defaults, $atts ) );
+
+	/**
+	 * Allow the usage of some HTML tags in the shortcode "alt" parameter.
+	 *
+	 * By itself, WordPress allows the usage of some basic HTML tags,
+	 * such as <b>, <em>, <strong>, but not <a>.
+	 * @see https://codex.wordpress.org/Shortcode_API#HTML
+	 *
+	 * @since 4.1
+	 */
+	// Decode any HTML entity into its applicable character, so that `wp_kses` can operate.
+	// The encoding is performed by the WordPress visual editor.
+	$alt = html_entity_decode( $alt );
+	// Define the allowed HTML tags for `wp_kses`.
+	$allowed_html = array(
+		'a'      => array(
+			'href'  => array(),
+			'title' => array(),
+		),
+		'em'     => array(),
+		'i'      => array(),
+		'strong' => array(),
+		'b'      => array(),
+	);
+	// Remove all HTML tags, except `a`, `em`, `strong, `b`.
+	$alt = wp_kses( $alt, $allowed_html );
 
 	// The 'align' option
 	if ( ! empty( $align ) ) {

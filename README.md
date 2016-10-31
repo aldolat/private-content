@@ -3,8 +3,8 @@
 **Donate link:** http://dev.aldolat.it/projects/private-content/  
 **Tags:** content, private  
 **Requires at least:** 3.0  
-**Tested up to:** 4.6  
-**Stable tag:** 4.0  
+**Tested up to:** 4.3  
+**Stable tag:** 4.1  
 **License:** GPLv3 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-3.0.html  
 
@@ -76,6 +76,12 @@ If you want to show an alternate text in case the reader can't read, you can use
 `[private role="author" alt="You have not rights to read this."]Text for authors only[/private]`
 Please, take note that the alternate text, if defined, is always publicly displayed.
 
+The alternate text can contain some HTML tags. The list is:
+
+* `b` or `strong` for bold text;
+* `em` or `i` for italic text;
+* `a` for links, with `href` and `title` included. For `href` and `title` do not use double quote, but single quote.
+
 ### Container for the text ###
 
 Starting from version 2.4, the user can choose the container element for the text:
@@ -141,6 +147,10 @@ Yes. To map the capabilities to the custom role, use a plugin like [Members](htt
 
 
 ## Changelog ##
+
+### 4.1 ###
+
+* NEW: added support for links in alternate text.
 
 ### 4.0 ###
 
