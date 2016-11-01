@@ -18,9 +18,9 @@ Please, note that an Administrator can read an Editor private content or a Subsc
 
 Also you can show the hidden text **only** to a certain role. For example, you can mark a text as visible only to Contributors and hide it to higher roles, such as Administrators or Editors and so on.
 
-As from version 3.0 you can mark a text as visible only to a certain user, using his login name.
+As of version 3.0 you can mark a text as visible only to a certain user, using his login name.
 
-As from version 4.0 you can mark a text as visible onyl to multiple users, using their login names comma separated.
+As of version 4.0 you can mark a text as visible to multiple users, using their login names comma separated.
 
 = Usage =
 
