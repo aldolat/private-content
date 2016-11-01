@@ -5,7 +5,7 @@
  * Plugin URI: http://dev.aldolat.it/projects/private-content/
  * Author: Aldo Latino
  * Author URI: http://www.aldolat.it/
- * Version: 4.1
+ * Version: 4.2-dev
  * License: GPLv3 or later
  * Text Domain: private
  * Domain Path: /languages/
@@ -135,16 +135,16 @@ function ubn_private_content( $atts, $content = null ) {
 	$alt = html_entity_decode( $alt );
 	// Define the allowed HTML tags for `wp_kses`.
 	$allowed_html = array(
-		'a'      => array(
-			'href'  => array(),
-			'title' => array(),
-		),
 		'em'     => array(),
 		'i'      => array(),
 		'strong' => array(),
 		'b'      => array(),
+		'a'      => array(
+			'href'  => array(),
+			'title' => array(),
+		),
 	);
-	// Remove all HTML tags, except `a`, `em`, `strong, `b`.
+	// Remove all HTML tags, except `em`, `i`, `strong, `b`, `a`.
 	$alt = wp_kses( $alt, $allowed_html );
 
 	// The 'align' option
