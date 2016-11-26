@@ -28,13 +28,13 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
- /*
+/*
  * Thanks to:
  * Jean Baptiste Jung ( http://www.wprecipes.com/add-private-notes-to-your-wordpress-blog-posts )
  * for the idea and
  * Jeff Starr ( http://digwp.com/2010/05/private-content-posts-shortcode )
  * for the starting code.
-*/
+ */
 
 /*
  * Shortcode to display private post content only to users of a specific role.
