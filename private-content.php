@@ -5,7 +5,7 @@
  * Plugin URI: http://dev.aldolat.it/projects/private-content/
  * Author: Aldo Latino
  * Author URI: http://www.aldolat.it/
- * Version: 4.1.1
+ * Version: 4.2
  * License: GPLv3 or later
  * Text Domain: private-content
  * Domain Path: /languages/
@@ -72,11 +72,44 @@
  /**
   * Prevent direct access to this file.
   *
-  * @since 4.1.1
+  * @since 4.2
   */
  if ( ! defined( 'WPINC' ) ) {
  	exit( 'No script kiddies please!' );
  }
+
+
+ /**
+  * Launch Private Content.
+  *
+  * @since 4.2
+  */
+ add_action( 'plugins_loaded', 'ubn_private_setup' );
+
+
+ /**
+  * Setup Private Content.
+  *
+  * @since 4.2
+  */
+ function ubn_private_setup() {
+ 	/*
+ 	 * Make plugin available for i18n.
+ 	 * Translations must be archived in the /languages/ directory.
+ 	 * The name of each translation file must be, for example:
+ 	 *
+ 	 * ITALIAN:
+ 	 * private-content-it_IT.po
+ 	 * private-content-it_IT.mo
+ 	 *
+ 	 * GERMAN:
+ 	 * private-content-de_DE.po
+ 	 * private-content-de_DE.po
+ 	 *
+ 	 * and so on.
+ 	 */
+ 	load_plugin_textdomain( 'private-content', false, dirname( plugin_basename( __FILE__ ) ) . '/languages');
+}
 
 
 /**
