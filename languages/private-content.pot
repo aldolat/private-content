@@ -1,0 +1,35 @@
+# Copyright (C) 2016 Private content
+# This file is distributed under the same license as the Private content package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Private content 4.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/private-content\n"
+"POT-Creation-Date: 2016-12-12 18:53:55+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#. Plugin Name of the plugin/theme
+msgid "Private content"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://dev.aldolat.it/projects/private-content/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Display private post content only to users of a specific role or to a single "
+"user"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Aldo Latino"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.aldolat.it/"
+msgstr ""
