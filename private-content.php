@@ -7,7 +7,7 @@
  * Author URI: http://www.aldolat.it/
  * Version: 4.1
  * License: GPLv3 or later
- * Text Domain: private
+ * Text Domain: private-content
  * Domain Path: /languages/
  */
 
