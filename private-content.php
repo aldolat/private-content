@@ -72,7 +72,7 @@
  /**
   * Prevent direct access to this file.
   *
-  * @since 2.0
+  * @since 4.1.1
   */
  if ( ! defined( 'WPINC' ) ) {
  	exit( 'No script kiddies please!' );
