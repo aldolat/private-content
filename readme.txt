@@ -4,7 +4,7 @@ Donate link: http://dev.aldolat.it/projects/private-content/
 Tags: content, private
 Requires at least: 3.0
 Tested up to: 4.7
-Stable tag: 4.1
+Stable tag: 4.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -143,6 +143,12 @@ Yes. To map the capabilities to the custom role, use a plugin like [Members](htt
 2. The shortcode in action. On the left, the text revealed to Administrators only; on the right, the page as seen by lower roles (Editors, Authors, etc., or simply readers).
 
 == Changelog ==
+
+= 4.2 =
+
+* Improved security.
+* Changed text domain declaration.
+* Added translation files.
 
 = 4.1 =
 
