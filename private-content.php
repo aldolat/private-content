@@ -5,7 +5,7 @@
  * Plugin URI: http://dev.aldolat.it/projects/private-content/
  * Author: Aldo Latino
  * Author URI: http://www.aldolat.it/
- * Version: 4.2
+ * Version: 4.3
  * License: GPLv3 or later
  * Text Domain: private-content
  * Domain Path: /languages/
@@ -152,7 +152,6 @@ add_action( 'init', 'ubn_private_check_capability_exists' );
  * @example [private role="role" align="align" alt="The alternate text" container="div"]Text to show[/private]
  */
 function ubn_private_content( $atts, $content = null ) {
-
 	$defaults = array(
 		'role'      => 'administrator', // The default role if none has been provided
 		'recipient' => '',
@@ -160,10 +159,19 @@ function ubn_private_content( $atts, $content = null ) {
 		'alt'       => '',
 		'container' => 'p',
 	);
-
 	extract( shortcode_atts( $defaults, $atts ) );
 
-	/**
+    /*
+     * Input sanitization.
+     * @since 4.3
+     */
+    $role      = wp_strip_all_tags( $role );
+    $recipient = wp_strip_all_tags( $recipient );
+    $align     = wp_strip_all_tags( $align );
+    // $alt is processed below.
+    $container = wp_strip_all_tags( $container );
+
+	/*
 	 * Allow the usage of some HTML tags in the shortcode "alt" parameter.
 	 *
 	 * By itself, WordPress allows the usage of some basic HTML tags,
