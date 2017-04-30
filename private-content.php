@@ -1,7 +1,7 @@
 <?php
 /*
  * Plugin Name: Private content
- * Description:  Display private post content only to users of a specific role or to a single user.
+ * Description:  Display a portion of a post content only to users of a specific role or to a single or multiple users.
  * Plugin URI: http://dev.aldolat.it/projects/private-content/
  * Author: Aldo Latino
  * Author URI: http://www.aldolat.it/

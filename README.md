@@ -8,7 +8,7 @@
 **License:** GPLv3 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-3.0.html  
 
-Display a portion of a post content only to users of a specific role or to a single user.
+Display a portion of a post content only to users of a specific role or to a single or multiple users.
 
 ## Description ##
 
