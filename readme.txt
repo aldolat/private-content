@@ -22,6 +22,8 @@ As of version 3.0 you can mark a text as visible only to a certain user, using h
 
 As of version 4.0 you can mark a text as visible to multiple users, using their login names comma separated.
 
+As of version 4.3 you can use either the usual `private` shortcode or the extra `ubn_private`, in case the first is already in use.
+
 = Usage =
 
 Display this text to Administrators:
@@ -167,7 +169,7 @@ Yes. To map the capabilities to the custom role, use a plugin like [Members](htt
 
 = 4.3 =
 
-* Added an extra shortcode, in case `private` is already in use.
+* Added `ubn_private` as an extra shortcode, in case `private` is already in use.
 * Improved security.
 
 = 4.2 =
