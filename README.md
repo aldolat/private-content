@@ -24,35 +24,50 @@ As of version 4.0 you can mark a text as visible to multiple users, using their 
 
 ### Usage ###
 
-Display this text only to Administrators:<br />
+Display this text to Administrators:
+
 `[private role="administrator"]Text for Administrators[/private]`
 
-Display this text only to Administrators and Editors:<br />
+Display this text to Administrators and Editors:
+
 `[private role="editor"]Text for Editors[/private]`
 
-Display this text only to Administrators, Editors, and Authors:<br />
+Display this text to Administrators, Editors, and Authors:
+
 `[private role="author"]Text for Authors[/private]`
 
-Display this text only to Administrators, Editors, Authors, and Contributors:<br />
+Display this text to Administrators, Editors, Authors, and Contributors:
+
 `[private role="contributor"]Text for Contributor[/private]`
 
-Display this text only to Administrators, Editors, Authors, Contributors, and Subscribers:<br />
+Display this text to Administrators, Editors, Authors, Contributors, and Subscribers:
+
 `[private role="subscriber"]Text for Subscribers[/private]`
 
 ### Text only for specific roles ###
 
 If you want to show a note only to a certain role, you have to use a `<role>-only` option.
-In this way, for example, an Administrator or an Editor (roles higher than Author) cannot read a note only for Authors.
+In this way, for example, an Administrator or an Editor (roles higher than Author) cannot read a note for Authors only.
 
 These are all the cases:
 
+Display this text to Editors only:
+
 `[private role="editor-only"]Text for Editors only[/private]`
+
+Display this text to Authors only:
 
 `[private role="author-only"]Text for Authors only[/private]`
 
+Display this text to Contributors only:
+
 `[private role="contributor-only"]Text for Contributors only[/private]`
 
+Display this text to Subscribers only:
+
 `[private role="subscriber-only"]Text for Subscribers only[/private]`
+
+Display this text to Visitors only:
 
 `[private role="visitor-only"]Text for Visitors only[/private]`
 
@@ -73,7 +88,9 @@ Change `login-name1`, `login-name2`, and `login-name3` with the correct login na
 ### Alternate text for non-targeted users ###
 
 If you want to show an alternate text in case the reader can't read, you can use:
+
 `[private role="author" alt="You have not rights to read this."]Text for authors only[/private]`
+
 Please, take note that the alternate text, if defined, is always publicly displayed.
 
 The alternate text can contain some HTML tags. The list is:
@@ -92,7 +109,11 @@ Starting from version 2.4, the user can choose the container element for the tex
 
 Usage:
 
+Wrap the note inside a DIV:
+
 `[private container="div"]This is the text[/private]`
+
+Wrap the note inside a SPAN:
 
 `I met with a friend[private container="span"] (Jenny, from ninth grade)[/private] for lunch.`
 
