@@ -3,7 +3,7 @@ Contributors: aldolat, specialk, thewanderingbrit
 Donate link: http://dev.aldolat.it/projects/private-content/
 Tags: content, private
 Requires at least: 3.0
-Tested up to: 4.7
+Tested up to: 4.8
 Stable tag: 4.3
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -167,6 +167,7 @@ Yes. To map the capabilities to the custom role, use a plugin like [Members](htt
 
 = 4.3 =
 
+* Added an extra shortcode, in case `private` is already in use.
 * Improved security.
 
 = 4.2 =
