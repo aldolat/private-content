@@ -1,6 +1,6 @@
 # Private Content #
 **Contributors:** aldolat, specialk, thewanderingbrit  
-**Donate link:** http://dev.aldolat.it/projects/private-content/  
+**Donate link:** https://dev.aldolat.it/projects/private-content/  
 **Tags:** content, private  
 **Requires at least:** 3.0  
 **Tested up to:** 4.8  
@@ -145,7 +145,7 @@ This plugin is not intended to be used in such way, but only in order to display
 
 Also, this plugin was created only to show a small piece of text (i.e. a couple of lines) as a note to the post for particular readers.
 
-If you need to show the entire post only to certain readers (i.e. readers who pay to read a post), you can use a plugin like [Members](http://wordpress.org/extend/plugins/members/).
+If you need to show the entire post only to certain readers (i.e. readers who pay to read a post), you can use a plugin like [Members](https://wordpress.org/plugins/members/).
 
 ### The hidden text is similar to the public text. Is it possible to stylize it in a different look? ###
 
@@ -158,7 +158,7 @@ The shortcode generates a `<p>` HTML tag with at most three classes in this orde
 
 ### Does this plugin work with custom roles? ###
 
-Yes. To map the capabilities to the custom role, use a plugin like [Members](https://wordpress.org/plugins/members) or [Capability Manager Enhanced](https://wordpress.org/plugins/capability-manager-enhanced).
+Yes. To map the capabilities to the custom role, use a plugin like [Members](https://wordpress.org/plugins/members/) or [Capability Manager Enhanced](https://wordpress.org/plugins/capability-manager-enhanced).
 
 ## Screenshots ##
 
