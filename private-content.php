@@ -416,6 +416,11 @@ function ubn_private_content( $atts, $content = null ) {
 if ( ! shortcode_exists( 'private' ) ) {
 	add_shortcode( 'private', 'ubn_private_content' );
 }
+/**
+ * An extra shortcode in case the old is used elsewhere.
+ *
+ * @since 4.3
+ */
 if ( ! shortcode_exists( 'ubn_private' ) ) {
 	add_shortcode( 'ubn_private', 'ubn_private_content' );
 }
