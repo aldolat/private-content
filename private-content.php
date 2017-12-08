@@ -69,65 +69,58 @@
  * Subscriber.
  */
 
- /**
-  * Prevent direct access to this file.
-  *
-  * @since 4.2
-  */
- if ( ! defined( 'WPINC' ) ) {
- 	exit( 'No script kiddies please!' );
- }
-
-
- /**
-  * Launch Private Content.
-  *
-  * @since 4.2
-  */
- add_action( 'plugins_loaded', 'ubn_private_setup' );
-
-
- /**
-  * Setup Private Content.
-  *
-  * @since 4.2
-  */
- function ubn_private_setup() {
- 	/*
- 	 * Make plugin available for i18n.
- 	 * Translations must be archived in the /languages/ directory.
- 	 * The name of each translation file must be, for example:
- 	 *
- 	 * ITALIAN:
- 	 * private-content-it_IT.po
- 	 * private-content-it_IT.mo
- 	 *
- 	 * GERMAN:
- 	 * private-content-de_DE.po
- 	 * private-content-de_DE.po
- 	 *
- 	 * and so on.
- 	 */
- 	load_plugin_textdomain( 'private-content', false, dirname( plugin_basename( __FILE__ ) ) . '/languages');
+/**
+ * Prevent direct access to this file.
+ *
+ * @since 4.2
+ */
+if ( ! defined( 'WPINC' ) ) {
+	exit( 'No script kiddies please!' );
 }
 
+/**
+ * Launch Private Content.
+ *
+ * @since 4.2
+ */
+add_action( 'plugins_loaded', 'ubn_private_setup' );
+
+/**
+ * Setup Private Content.
+ *
+ * @since 4.2
+ */
+function ubn_private_setup() {
+	/*
+	 * Make plugin available for i18n.
+	 * Translations must be archived in the /languages/ directory.
+	 * The name of each translation file must be, for example:
+	 *
+	 * ITALIAN:
+	 * private-content-it_IT.po
+	 * private-content-it_IT.mo
+	 *
+	 * GERMAN:
+	 * private-content-de_DE.po
+	 * private-content-de_DE.po
+	 *
+	 * and so on.
+	 */
+	load_plugin_textdomain( 'private-content', false, dirname( plugin_basename( __FILE__ ) ) . '/languages');
+}
 
 /**
  * Add the new capabilities to WordPress standard roles.
  * Note that the Administrator role doesn't need any custom capabilities.
  */
 function ubn_private_add_cap() {
-
 	global $wp_roles;
-
 	$wp_roles->add_cap( 'editor',      'read_ubn_editor_notes'      );
 	$wp_roles->add_cap( 'author',      'read_ubn_author_notes'      );
 	$wp_roles->add_cap( 'contributor', 'read_ubn_contributor_notes' );
 	$wp_roles->add_cap( 'subscriber',  'read_ubn_subscriber_notes'  );
-
 }
 register_activation_hook( __FILE__, 'ubn_private_add_cap' );
-
 
 /**
  * Check if Editor role has 'read_ubn_editor_notes' capabilities.
@@ -135,16 +128,13 @@ register_activation_hook( __FILE__, 'ubn_private_add_cap' );
  * This function will be removed in future.
  */
 function ubn_private_check_capability_exists() {
-
 	$editor_role = get_role( 'editor' );
 
 	if ( ! isset( $editor_role->capabilities['read_ubn_editor_notes'] ) ) {
 		ubn_private_add_cap();
 	}
-
 }
 add_action( 'init', 'ubn_private_check_capability_exists' );
-
 
 /**
  * Create the shortcode 'private'.
@@ -155,34 +145,34 @@ function ubn_private_content( $atts, $content = null ) {
     /**
      * The default parameters.
      *
-     * @param string $role The intended role to view the note.
-     * It can be:
-     *      "administrator",
-     *      "editor",
-     *      "editor-only",
-     *      "author",
-     *      "author-only",
-     *      "contributor",
-     *      "contributor-only",
-     *      "subscriber",
-     *      "subscriber-only",
-     *      "visitor-only",
-     *      "none". When using "none", you must specify a recipients list in $recipient.
+     * @param string $role      The intended role to view the note.
+     *                          It can be:
+     *                          "administrator",
+     *                          "editor",
+     *                          "editor-only",
+     *                          "author",
+     *                          "author-only",
+     *                          "contributor",
+     *                          "contributor-only",
+     *                          "subscriber",
+     *                          "subscriber-only",
+     *                          "visitor-only",
+     *                          "none". When using "none", you must specify a recipients list in $recipient.
      * @param string $recipient The target role to view the note.
-     * It is used when $role = "none".
+     *                          It is used when $role = "none".
      *
-     * @param string $align The alignment of text.
-     * It can be:
-     *      "left"
-     *      "center"
-     *      "right"
-     *      "justify"
-     * @param string $alt The alternate text to be displayed when the viewer is not the target user.
+     * @param string $align     The alignment of text.
+     *                          It can be:
+     *                          "left"
+     *                          "center"
+     *                          "right"
+     *                          "justify"
+     * @param string $alt       The alternate text to be displayed when the viewer is not the target user.
      * @param string $container The container for the note.
-     * It can be:
-     *      "p"
-     *      "div"
-     *      "span"
+     *                          It can be:
+     *                          "p"
+     *                          "div"
+     *                          "span"
      */
 	$defaults = array(
 		'role'      => 'administrator', // The default role if none has been provided
