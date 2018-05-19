@@ -3,7 +3,7 @@ Contributors: aldolat, specialk, thewanderingbrit
 Donate link: https://dev.aldolat.it/projects/private-content/
 Tags: content, private
 Requires at least: 3.0
-Tested up to: 4.8
+Tested up to: 4.9
 Stable tag: 4.3
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -129,6 +129,19 @@ WordPress roles in descending order:
 * Contributor
 * Subscriber
 
+= Capabilities created by Private Content plugin =
+
+These are the capabilities created by this plugin:
+
+* `read_ubn_editor_notes`
+* `read_ubn_author_notes`
+* `read_ubn_contributor_notes`
+* `read_ubn_subscriber_notes`
+
+= Privacy Policy =
+
+This plugin does not collect any user data.
+
 == Installation ==
 
 This section describes how to install the plugin and get it working.
@@ -158,78 +171,37 @@ The shortcode generates a `<p>` HTML tag with at most three classes in this orde
 
 = Does this plugin work with custom roles? =
 
-Yes. To map the capabilities to the custom role, use a plugin like [Members](https://wordpress.org/plugins/members/) or [Capability Manager Enhanced](https://wordpress.org/plugins/capability-manager-enhanced).
+Yes, with a little extra work. In short, you have to map one of the capabilities created by Private Content to your custom role, using a plugin like [User Role Editor](https://wordpress.org/plugins/user-role-editor/) or [Members](https://wordpress.org/plugins/members/) or [Capability Manager Enhanced](https://wordpress.org/plugins/capability-manager-enhanced).
+
+In detail, the plugin works **only** with the standard WordPress roles:
+
+* Administrator
+* Editor
+* Author
+* Contributor
+* Subscriber
+
+So you cannot use your custom role directly in the shortcode. But you can assign one of the capabilities, created by this plugin, to your custom role. The capabilities created by this plugin are the following:
+
+* `read_ubn_editor_notes`
+* `read_ubn_author_notes`
+* `read_ubn_contributor_notes`
+* `read_ubn_subscriber_notes`
+
+In order to do this, use one of the plugins mentioned before.
+
+For example, if you have the Wholesale Customer role, you can make that Wholesale Customer can read the notes dedicated to other standard WordPress roles, such as Contributor for example. In other words, Wholesale Customer can read notes that have been written for Contributor. They will share the same notes.
+
+After having made that, use a shortcode like this:
+
+`[private role="contributor-only"]Text for Contributors only[/private]`
+
+Once a "Wholesale Customer" has been logged in, he will read the notes dedicated to `contributors-only`. Please note that we are using `role="contributor-only"`, not simply `role="contributor"`.
 
 == Screenshots ==
 
 1. At the center of the screen, the shortcode is used in the WordPress editor. The text inside the shortcode will be displayed only to Authors and above roles.
 2. The shortcode in action. On the left, the text revealed to Administrators only; on the right, the page as seen by lower roles (Editors, Authors, etc., or simply readers).
-
-== Changelog ==
-
-= 4.3 =
-
-* Added `ubn_private` as an extra shortcode, in case `private` is already in use.
-* Improved security.
-
-= 4.2 =
-
-* Improved security.
-* Changed text domain declaration.
-* Added translation files.
-
-= 4.1 =
-
-* NEW: added support for links in alternate text.
-
-= 4.0 =
-
-* NEW: Added support for multiple recipents.
-
-= 3.0 =
-
-* NEW: Added option for a single user.
-* FIX: now, if the role is not correctly entered, the shortcode does not display anything.
-* Removed CSS class in the alternate text, in order to hide which type of users was the recipent of the text.
-
-= 2.5 =
-
-* NEW: Added ability to use "span" as a container.
-* FIX: Removed shortcode execution in feed.
-
-= 2.4 =
-
-* NEW: now it's possible to use a `div` container instead of `p`, thanks to a pull request of Matt.
-
-= 2.3 =
-
-* FIX: Added styling option for the alternate text.
-* Added style to role-only alternate text.
-
-= 2.2 =
-
-* NEW: now the plugin can show an alternate text if the reader hasn't the capability to read the text.
-
-= 2.1 =
-
-* NEW: added the possibility to show a note only to Visitors (thanks to Jacki for the tip).
-
-= 2.0 =
-
-* NEW: now you can show a note only to user of a specific role, hiding that note to higher roles.
-* Added uninstall.php to delete the new custom capabilities.
-
-= 1.2 =
-
-* Now the inline style appears only if necessary.
-
-= 1.1 =
-
-* Upon request, added the possibility to align the text left, right, centered and justified.
-
-= 1.0 =
-
-* First release of the plugin.
 
 == Upgrade Notice ==
 

@@ -3,7 +3,7 @@
 **Donate link:** https://dev.aldolat.it/projects/private-content/  
 **Tags:** content, private  
 **Requires at least:** 3.0  
-**Tested up to:** 4.8  
+**Tested up to:** 4.9  
 **Stable tag:** 4.3  
 **License:** GPLv3 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-3.0.html  
@@ -129,6 +129,19 @@ WordPress roles in descending order:
 * Contributor
 * Subscriber
 
+### Capabilities created by Private Content plugin ###
+
+These are the capabilities created by this plugin:
+
+* `read_ubn_editor_notes`
+* `read_ubn_author_notes`
+* `read_ubn_contributor_notes`
+* `read_ubn_subscriber_notes`
+
+### Privacy Policy ###
+
+This plugin does not collect any user data.
+
 ## Installation ##
 
 This section describes how to install the plugin and get it working.
@@ -158,7 +171,32 @@ The shortcode generates a `<p>` HTML tag with at most three classes in this orde
 
 ### Does this plugin work with custom roles? ###
 
-Yes. To map the capabilities to the custom role, use a plugin like [Members](https://wordpress.org/plugins/members/) or [Capability Manager Enhanced](https://wordpress.org/plugins/capability-manager-enhanced).
+Yes, with a little extra work. In short, you have to map one of the capabilities created by Private Content to your custom role, using a plugin like [User Role Editor](https://wordpress.org/plugins/user-role-editor/) or [Members](https://wordpress.org/plugins/members/) or [Capability Manager Enhanced](https://wordpress.org/plugins/capability-manager-enhanced).
+
+In detail, the plugin works **only** with the standard WordPress roles:
+
+* Administrator
+* Editor
+* Author
+* Contributor
+* Subscriber
+
+So you cannot use your custom role directly in the shortcode. But you can assign one of the capabilities, created by this plugin, to your custom role. The capabilities created by this plugin are the following:
+
+* `read_ubn_editor_notes`
+* `read_ubn_author_notes`
+* `read_ubn_contributor_notes`
+* `read_ubn_subscriber_notes`
+
+In order to do this, use one of the plugins mentioned before.
+
+For example, if you have the Wholesale Customer role, you can make that Wholesale Customer can read the notes dedicated to other standard WordPress roles, such as Contributor for example. In other words, Wholesale Customer can read notes that have been written for Contributor. They will share the same notes.
+
+After having made that, use a shortcode like this:
+
+`[private role="contributor-only"]Text for Contributors only[/private]`
+
+Once a "Wholesale Customer" has been logged in, he will read the notes dedicated to `contributors-only`. Please note that we are using `role="contributor-only"`, not simply `role="contributor"`.
 
 ## Screenshots ##
 
