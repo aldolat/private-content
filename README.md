@@ -138,6 +138,10 @@ These are the capabilities created by this plugin:
 * `read_ubn_contributor_notes`
 * `read_ubn_subscriber_notes`
 
+### Privacy Policy ###
+
+This plugin does not collect any user data.
+
 ## Installation ##
 
 This section describes how to install the plugin and get it working.
