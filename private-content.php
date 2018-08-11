@@ -179,13 +179,17 @@ function ubn_private_content( $atts, $content = null ) {
 	 *                          "div"
 	 *                          "span"
 	 */
-	$defaults  = array(
+
+	$defaults = array(
 		'role'      => 'administrator', // The default role if none has been provided.
 		'recipient' => '',
 		'align'     => '',
 		'alt'       => '',
 		'container' => 'p',
 	);
+
+	$atts = shortcode_atts( $defaults, $atts );
+
 	$role      = $atts['role'];
 	$recipient = $atts['recipient'];
 	$align     = $atts['align'];
