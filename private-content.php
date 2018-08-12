@@ -142,44 +142,42 @@ add_action( 'init', 'ubn_private_check_capability_exists' );
 /**
  * Create the shortcode 'private'.
  *
- * @param array $atts    The array containing the user defined parameters.
+ * @param array $atts {
+ *    The array containing the user defined parameters.
+ *
+ *    @type string $role      The intended role to view the note.
+ *                            It can be:
+ *                            "administrator",
+ *                            "editor",
+ *                            "editor-only",
+ *                            "author",
+ *                            "author-only",
+ *                            "contributor",
+ *                            "contributor-only",
+ *                            "subscriber",
+ *                            "subscriber-only",
+ *                            "visitor-only",
+ *                            "none". When using "none", you must specify a recipients list in $recipient.
+ *    @type string $recipient The target role to view the note.
+ *                            It is used when $role = "none".
+ *
+ *    @type string $align     The alignment of text.
+ *                            It can be:
+ *                            "left"
+ *                            "center"
+ *                            "right"
+ *                            "justify"
+ *    @type string $alt       The alternate text to be displayed when the viewer is not the target user.
+ *    @type string $container The container for the note.
+ *                            It can be:
+ *                            "p"
+ *                            "div"
+ *                            "span"
+ * }
  * @param null  $content The content is defined inside the two square brackets.
  * @example [private role="editor" align="center" alt="Please, login to view this note." container="div"]All Editors - Meeting on Slack every day at 9am![/private]
  */
 function ubn_private_content( $atts, $content = null ) {
-	/**
-	 * The default parameters.
-	 *
-	 * @param string $role      The intended role to view the note.
-	 *                          It can be:
-	 *                          "administrator",
-	 *                          "editor",
-	 *                          "editor-only",
-	 *                          "author",
-	 *                          "author-only",
-	 *                          "contributor",
-	 *                          "contributor-only",
-	 *                          "subscriber",
-	 *                          "subscriber-only",
-	 *                          "visitor-only",
-	 *                          "none". When using "none", you must specify a recipients list in $recipient.
-	 * @param string $recipient The target role to view the note.
-	 *                          It is used when $role = "none".
-	 *
-	 * @param string $align     The alignment of text.
-	 *                          It can be:
-	 *                          "left"
-	 *                          "center"
-	 *                          "right"
-	 *                          "justify"
-	 * @param string $alt       The alternate text to be displayed when the viewer is not the target user.
-	 * @param string $container The container for the note.
-	 *                          It can be:
-	 *                          "p"
-	 *                          "div"
-	 *                          "span"
-	 */
-
 	$defaults = array(
 		'role'      => 'administrator', // The default role if none has been provided.
 		'recipient' => '',
