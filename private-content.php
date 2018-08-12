@@ -276,7 +276,6 @@ function ubn_private_content( $atts, $content = null ) {
 		default:
 			$container_open  = '<p';
 			$container_close = '</p>';
-			break;
 	}
 
 	// The 'role' option.
