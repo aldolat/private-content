@@ -1,3 +1,8 @@
+[![version][version-badge]][CHANGELOG]
+[![requires][requires-badge]][README]
+[![tested][tested-badge]][README]
+[![license][license-badge]][LICENSE]
+
 # Private Content #
 **Contributors:** aldolat, specialk, thewanderingbrit  
 **Donate link:** https://dev.aldolat.it/projects/private-content/  
@@ -206,73 +211,6 @@ Once a "Wholesale Customer" has been logged in, he will read the notes dedicated
 ### 2. The shortcode in action. On the left, the text revealed to Administrators only; on the right, the page as seen by lower roles (Editors, Authors, etc., or simply readers). ###
 ![2. The shortcode in action. On the left, the text revealed to Administrators only; on the right, the page as seen by lower roles (Editors, Authors, etc., or simply readers).](http://ps.w.org/private-content/assets/screenshot-2.png)
 
-
-## Changelog ##
-
-### 4.3 ###
-
-* Added `ubn_private` as an extra shortcode, in case `private` is already in use.
-* Improved security.
-
-### 4.2 ###
-
-* Improved security.
-* Changed text domain declaration.
-* Added translation files.
-
-### 4.1 ###
-
-* NEW: added support for links in alternate text.
-
-### 4.0 ###
-
-* NEW: Added support for multiple recipents.
-
-### 3.0 ###
-
-* NEW: Added option for a single user.
-* FIX: now, if the role is not correctly entered, the shortcode does not display anything.
-* Removed CSS class in the alternate text, in order to hide which type of users was the recipent of the text.
-
-### 2.5 ###
-
-* NEW: Added ability to use "span" as a container.
-* FIX: Removed shortcode execution in feed.
-
-### 2.4 ###
-
-* NEW: now it's possible to use a `div` container instead of `p`, thanks to a pull request of Matt.
-
-### 2.3 ###
-
-* FIX: Added styling option for the alternate text.
-* Added style to role-only alternate text.
-
-### 2.2 ###
-
-* NEW: now the plugin can show an alternate text if the reader hasn't the capability to read the text.
-
-### 2.1 ###
-
-* NEW: added the possibility to show a note only to Visitors (thanks to Jacki for the tip).
-
-### 2.0 ###
-
-* NEW: now you can show a note only to user of a specific role, hiding that note to higher roles.
-* Added uninstall.php to delete the new custom capabilities.
-
-### 1.2 ###
-
-* Now the inline style appears only if necessary.
-
-### 1.1 ###
-
-* Upon request, added the possibility to align the text left, right, centered and justified.
-
-### 1.0 ###
-
-* First release of the plugin.
-
 ## Upgrade Notice ##
 
 ### 2.0 ###
@@ -293,3 +231,11 @@ Many thanks to:
 
 * [Jean Baptiste Jung](http://www.wprecipes.com/add-private-notes-to-your-wordpress-blog-posts) for the idea behind this plugin;
 * [Jeff Starr](http://digwp.com/2010/05/private-content-posts-shortcode) for the initial code.
+
+[CHANGELOG]: ./CHANGELOG.md
+[LICENSE]: ./gpl-3.0.txt
+[README]: ./README.md
+[version-badge]: https://img.shields.io/badge/version-4.3-blue.svg
+[requires-badge]: https://img.shields.io/badge/requires__WP-3.0.0-green.svg
+[tested-badge]: https://img.shields.io/badge/tested__WP-4.9.0-green.svg
+[license-badge]: https://img.shields.io/badge/license-GPLv3-ff69b4.svg
