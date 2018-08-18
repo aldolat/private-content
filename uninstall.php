@@ -2,8 +2,7 @@
 /**
  * Private content uninstallation
  *
- * @package WordPress
- * @subpackage Private Content
+ * @package PrivateContent
  * @since 2.0
  */
 

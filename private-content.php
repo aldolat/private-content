@@ -10,8 +10,7 @@
  * Text Domain: private-content
  * Domain Path: /languages/
  *
- * @package WordPress
- * @subpackage Private Content
+ * @package PrivateContent
  */
 
 /*
