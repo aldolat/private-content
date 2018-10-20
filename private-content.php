@@ -5,7 +5,7 @@
  * Plugin URI: http://dev.aldolat.it/projects/private-content/
  * Author: Aldo Latino
  * Author URI: http://www.aldolat.it/
- * Version: 4.3
+ * Version: 4.4
  * License: GPLv3 or later
  * Text Domain: private-content
  * Domain Path: /languages/
