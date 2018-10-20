@@ -6,10 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [4.3.1] - 2018-10-20
 ### Changed
 * Checked code against PHPCS.
 
-## [4.3] - 2017-04-30
+## [4.3] - 2018-05-19
 ### Added
 * Added `ubn_private` as an extra shortcode, in case `private` is already in use.
 ### Security
@@ -81,6 +83,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * First release of the plugin.
 
 [Unreleased]: https://github.com/aldolat/private-content/commits/develop
+[4.3]: https://github.com/aldolat/private-content/compare/4.3...4.3.1
 [4.3]: https://github.com/aldolat/private-content/compare/4.2...4.3
 [4.2]: https://github.com/aldolat/private-content/compare/4.1...4.2
 [4.1]: https://github.com/aldolat/private-content/compare/4.0...4.1
