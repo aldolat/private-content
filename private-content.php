@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * Plugin Name: Private content
  * Description:  Display a portion of a post content only to users of a specific role or to a single or multiple users.
  * Plugin URI: http://dev.aldolat.it/projects/private-content/
@@ -9,10 +9,12 @@
  * License: GPLv3 or later
  * Text Domain: private-content
  * Domain Path: /languages/
+ *
+ * @package PrivateContent
  */
 
 /*
- * Copyright (C) 2009, 2017  Aldo Latino  (email : aldolat@gmail.com)
+ * Copyright (C) 2009, 2018  Aldo Latino  (email : aldolat@gmail.com)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -106,7 +108,7 @@ function ubn_private_setup() {
 	 *
 	 * and so on.
 	 */
-	load_plugin_textdomain( 'private-content', false, dirname( plugin_basename( __FILE__ ) ) . '/languages');
+	load_plugin_textdomain( 'private-content', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 }
 
 /**
@@ -115,10 +117,10 @@ function ubn_private_setup() {
  */
 function ubn_private_add_cap() {
 	global $wp_roles;
-	$wp_roles->add_cap( 'editor',      'read_ubn_editor_notes'      );
-	$wp_roles->add_cap( 'author',      'read_ubn_author_notes'      );
+	$wp_roles->add_cap( 'editor', 'read_ubn_editor_notes' );
+	$wp_roles->add_cap( 'author', 'read_ubn_author_notes' );
 	$wp_roles->add_cap( 'contributor', 'read_ubn_contributor_notes' );
-	$wp_roles->add_cap( 'subscriber',  'read_ubn_subscriber_notes'  );
+	$wp_roles->add_cap( 'subscriber', 'read_ubn_subscriber_notes' );
 }
 register_activation_hook( __FILE__, 'ubn_private_add_cap' );
 
@@ -139,59 +141,67 @@ add_action( 'init', 'ubn_private_check_capability_exists' );
 /**
  * Create the shortcode 'private'.
  *
+ * @param array $atts {
+ *    The array containing the user defined parameters.
+ *
+ *    @type string $role      The intended role to view the note.
+ *                            It can be:
+ *                            "administrator",
+ *                            "editor",
+ *                            "editor-only",
+ *                            "author",
+ *                            "author-only",
+ *                            "contributor",
+ *                            "contributor-only",
+ *                            "subscriber",
+ *                            "subscriber-only",
+ *                            "visitor-only",
+ *                            "none". When using "none", you must specify a recipients list in $recipient.
+ *    @type string $recipient The target role to view the note.
+ *                            It is used when $role = "none".
+ *
+ *    @type string $align     The alignment of text.
+ *                            It can be:
+ *                            "left"
+ *                            "center"
+ *                            "right"
+ *                            "justify"
+ *    @type string $alt       The alternate text to be displayed when the viewer is not the target user.
+ *    @type string $container The container for the note.
+ *                            It can be:
+ *                            "p"
+ *                            "div"
+ *                            "span"
+ * }
+ * @param null  $content The content is defined inside the two square brackets.
  * @example [private role="editor" align="center" alt="Please, login to view this note." container="div"]All Editors - Meeting on Slack every day at 9am![/private]
  */
 function ubn_private_content( $atts, $content = null ) {
-    /**
-     * The default parameters.
-     *
-     * @param string $role      The intended role to view the note.
-     *                          It can be:
-     *                          "administrator",
-     *                          "editor",
-     *                          "editor-only",
-     *                          "author",
-     *                          "author-only",
-     *                          "contributor",
-     *                          "contributor-only",
-     *                          "subscriber",
-     *                          "subscriber-only",
-     *                          "visitor-only",
-     *                          "none". When using "none", you must specify a recipients list in $recipient.
-     * @param string $recipient The target role to view the note.
-     *                          It is used when $role = "none".
-     *
-     * @param string $align     The alignment of text.
-     *                          It can be:
-     *                          "left"
-     *                          "center"
-     *                          "right"
-     *                          "justify"
-     * @param string $alt       The alternate text to be displayed when the viewer is not the target user.
-     * @param string $container The container for the note.
-     *                          It can be:
-     *                          "p"
-     *                          "div"
-     *                          "span"
-     */
 	$defaults = array(
-		'role'      => 'administrator', // The default role if none has been provided
+		'role'      => 'administrator', // The default role if none has been provided.
 		'recipient' => '',
 		'align'     => '',
 		'alt'       => '',
 		'container' => 'p',
 	);
-	extract( shortcode_atts( $defaults, $atts ) );
 
-    /*
-     * Input sanitization.
-     * @since 4.3
-     */
-    $role      = wp_strip_all_tags( $role );
-    $recipient = wp_strip_all_tags( $recipient );
-    $align     = wp_strip_all_tags( $align );
-    // $alt is processed below.
-    $container = wp_strip_all_tags( $container );
+	$atts = shortcode_atts( $defaults, $atts );
+
+	$role      = $atts['role'];
+	$recipient = $atts['recipient'];
+	$align     = $atts['align'];
+	$alt       = $atts['alt'];
+	$container = $atts['container'];
+
+	/*
+	 * Input sanitization.
+	 * @since 4.3
+	 */
+	$role      = wp_strip_all_tags( $role );
+	$recipient = wp_strip_all_tags( $recipient );
+	$align     = wp_strip_all_tags( $align );
+	// $alt is processed below.
+	$container = wp_strip_all_tags( $container );
 
 	/*
 	 * Allow the usage of some HTML tags in the shortcode "alt" parameter.
@@ -219,59 +229,58 @@ function ubn_private_content( $atts, $content = null ) {
 	// Remove all HTML tags, except `em`, `i`, `strong, `b`, `a`.
 	$alt = wp_kses( $alt, $allowed_html );
 
-	// The 'align' option
+	// The 'align' option.
 	if ( ! empty( $align ) ) {
 		switch ( $align ) {
-			case 'left' :
+			case 'left':
 				$align_style = ' style="text-align: left;"';
 				break;
 
-			case 'center' :
+			case 'center':
 				$align_style = ' style="text-align: center;"';
 				break;
 
-			case 'right' :
+			case 'right':
 				$align_style = ' style="text-align: right;"';
 				break;
 
-			case 'justify' :
+			case 'justify':
 				$align_style = ' style="text-align: justify;"';
 				break;
 
-			default :
+			default:
 				$align_style = '';
 		}
 	} else {
 		$align_style = '';
 	}
 
-	// The 'container' option
+	// The 'container' option.
 	switch ( $container ) {
-		case 'p' :
+		case 'p':
 			$container_open  = '<p';
 			$container_close = '</p>';
 			break;
 
-		case 'div' :
+		case 'div':
 			$container_open  = '<div';
 			$container_close = '</div>';
 			break;
 
-		case 'span' :
+		case 'span':
 			$container_open  = '<span';
 			$container_close = '</span>';
 			break;
 
-		default :
+		default:
 			$container_open  = '<p';
 			$container_close = '</p>';
-			break;
 	}
 
-	// The 'role' option
+	// The 'role' option.
 	switch ( $role ) {
 
-		case 'administrator' :
+		case 'administrator':
 			if ( current_user_can( 'create_users' ) ) {
 				$text = $container_open . ' class="private administrator-content"' . $align_style . '>' . $content . $container_close;
 			} else {
@@ -282,7 +291,7 @@ function ubn_private_content( $atts, $content = null ) {
 			}
 			break;
 
-		case 'editor' :
+		case 'editor':
 			if ( current_user_can( 'edit_others_posts' ) ) {
 				$text = $container_open . ' class="private editor-content"' . $align_style . '>' . $content . $container_close;
 			} else {
@@ -293,7 +302,7 @@ function ubn_private_content( $atts, $content = null ) {
 			}
 			break;
 
-		case 'editor-only' :
+		case 'editor-only':
 			if ( current_user_can( 'read_ubn_editor_notes' ) ) {
 				$text = $container_open . ' class="private editor-content editor-only"' . $align_style . '>' . $content . $container_close;
 			} else {
@@ -304,7 +313,7 @@ function ubn_private_content( $atts, $content = null ) {
 			}
 			break;
 
-		case 'author' :
+		case 'author':
 			if ( current_user_can( 'publish_posts' ) ) {
 				$text = $container_open . ' class="private author-content"' . $align_style . '>' . $content . $container_close;
 			} else {
@@ -315,7 +324,7 @@ function ubn_private_content( $atts, $content = null ) {
 			}
 			break;
 
-		case 'author-only' :
+		case 'author-only':
 			if ( current_user_can( 'read_ubn_author_notes' ) ) {
 				$text = $container_open . ' class="private author-content author-only"' . $align_style . '>' . $content . $container_close;
 			} else {
@@ -326,7 +335,7 @@ function ubn_private_content( $atts, $content = null ) {
 			}
 			break;
 
-		case 'contributor' :
+		case 'contributor':
 			if ( current_user_can( 'edit_posts' ) ) {
 				$text = $container_open . ' class="private contributor-content"' . $align_style . '>' . $content . $container_close;
 			} else {
@@ -337,7 +346,7 @@ function ubn_private_content( $atts, $content = null ) {
 			}
 			break;
 
-		case 'contributor-only' :
+		case 'contributor-only':
 			if ( current_user_can( 'read_ubn_contributor_notes' ) ) {
 				$text = $container_open . ' class="private contributor-content contributor-only"' . $align_style . '>' . $content . $container_close;
 			} else {
@@ -348,7 +357,7 @@ function ubn_private_content( $atts, $content = null ) {
 			}
 			break;
 
-		case 'subscriber' :
+		case 'subscriber':
 			if ( current_user_can( 'read' ) ) {
 				$text = $container_open . ' class="private subscriber-content"' . $align_style . '>' . $content . $container_close;
 			} else {
@@ -359,7 +368,7 @@ function ubn_private_content( $atts, $content = null ) {
 			}
 			break;
 
-		case 'subscriber-only' :
+		case 'subscriber-only':
 			if ( current_user_can( 'read_ubn_subscriber_notes' ) ) {
 				$text = $container_open . ' class="private subscriber-content subscriber-only"' . $align_style . '>' . $content . $container_close;
 			} else {
@@ -370,7 +379,7 @@ function ubn_private_content( $atts, $content = null ) {
 			}
 			break;
 
-		case 'visitor-only' :
+		case 'visitor-only':
 			if ( ! is_user_logged_in() ) {
 				$text = $container_open . ' class="private visitor-content visitor-only"' . $align_style . '>' . $content . $container_close;
 			} else {
@@ -381,10 +390,10 @@ function ubn_private_content( $atts, $content = null ) {
 			}
 			break;
 
-		case 'none' :
+		case 'none':
 			$all_recipients = array_map( 'trim', explode( ',', $recipient ) );
-			$current_user = wp_get_current_user();
-			if ( in_array( $current_user->user_login, $all_recipients ) ) {
+			$current_user   = wp_get_current_user();
+			if ( in_array( $current_user->user_login, $all_recipients, true ) ) {
 				$text = $container_open . ' class="private user-content user-only ' . esc_attr( $current_user->user_login ) . '-only"' . $align_style . '>' . $content . $container_close;
 			} else {
 				$text = '';
@@ -394,7 +403,7 @@ function ubn_private_content( $atts, $content = null ) {
 			}
 			break;
 
-		default :
+		default:
 			$text = '';
 	}
 
@@ -415,7 +424,6 @@ if ( ! shortcode_exists( 'ubn_private' ) ) {
 	add_shortcode( 'ubn_private', 'ubn_private_content' );
 }
 
-
-/***********************************************************************
- *                            CODE IS POETRY
- **********************************************************************/
+/*
+ * CODE IS POETRY
+ */

@@ -1,5 +1,9 @@
 == Changelog ==
 
+= 4.4 =
+
+* Checked code against PHPCS.
+
 = 4.3 =
 
 * Added `ubn_private` as an extra shortcode, in case `private` is already in use.
