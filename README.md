@@ -78,7 +78,7 @@ Display this text to Visitors only:
 
 `[private role="visitor-only"]Text for Visitors only[/private]`
 
-### Text only for a specific user ###
+### Text only for a specific user or multiple users ###
 
 In the case you want to show a text only to a specific user, assign `none` to `role` and a login name to `recipient`:
 
@@ -91,6 +91,13 @@ You can use a comma separated list of usernames to target certain users:
 `[private role="none" recipient="login-name1, login-name2, login-name3"]Text for specific users only[/private]`
 
 Change `login-name1`, `login-name2`, and `login-name3` with the correct login names of the target users.
+
+### Text NOT for some users
+
+If you want to show a text to all users but not to some, activate the option `reverse`, so that users added in the `recipient` option will not read the note.
+For example.
+
+`[private role="none" recipient="alice,bob,charlie" reverse=1]We all read this message while Alice, Bob, and Charlie can't read it![/private]`
 
 ### Alternate text for non-targeted users ###
 
@@ -235,7 +242,7 @@ Many thanks to:
 [CHANGELOG]: ./CHANGELOG.md
 [LICENSE]: ./gpl-3.0.txt
 [README]: ./README.md
-[version-badge]: https://img.shields.io/badge/Version-4.4-blue.svg
+[version-badge]: https://img.shields.io/badge/Version-5-blue.svg
 [requires-badge]: https://img.shields.io/badge/Requires_WordPress-3.0.0-green.svg
 [tested-badge]: https://img.shields.io/badge/Tested_up_to_WordPress-5.0.0-green.svg
 [license-badge]: https://img.shields.io/badge/License-GPLv3-ff69b4.svg
