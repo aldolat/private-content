@@ -159,7 +159,8 @@ add_action( 'init', 'ubn_private_check_capability_exists' );
  *                            "none". When using "none", you must specify a recipients list in $recipient.
  *    @type string $recipient The target role to view the note.
  *                            It is used when $role = "none".
- *
+ *    @type bool   $reverse   Reverse the logic of recipient.
+ *                            If activated, users added in $recipient will not read the private note.
  *    @type string $align     The alignment of text.
  *                            It can be:
  *                            "left"
@@ -180,6 +181,7 @@ function ubn_private_content( $atts, $content = null ) {
 	$defaults = array(
 		'role'      => 'administrator', // The default role if none has been provided.
 		'recipient' => '',
+		'reverse'   => false,
 		'align'     => '',
 		'alt'       => '',
 		'container' => 'p',
@@ -189,6 +191,7 @@ function ubn_private_content( $atts, $content = null ) {
 
 	$role      = $atts['role'];
 	$recipient = $atts['recipient'];
+	$reverse   = $atts['reverse'];
 	$align     = $atts['align'];
 	$alt       = $atts['alt'];
 	$container = $atts['container'];
@@ -393,12 +396,25 @@ function ubn_private_content( $atts, $content = null ) {
 		case 'none':
 			$all_recipients = array_map( 'trim', explode( ',', $recipient ) );
 			$current_user   = wp_get_current_user();
-			if ( in_array( $current_user->user_login, $all_recipients, true ) ) {
-				$text = $container_open . ' class="private user-content user-only ' . esc_attr( $current_user->user_login ) . '-only"' . $align_style . '>' . $content . $container_close;
+			if ( $reverse ) {
+				// Reverse the logic of the function. Users added in recipient WILL NOT see the private note.
+				if ( in_array( $current_user->user_login, $all_recipients, true ) ) {
+					$text = '';
+					if ( $alt ) {
+						$text = $container_open . ' class="private alt-text"' . $align_style . '>' . $alt . $container_close;
+					}
+				} else {
+					$text = $container_open . ' class="private user-content user-only-reverse"' . $align_style . '>' . $content . $container_close;
+				}
 			} else {
-				$text = '';
-				if ( $alt ) {
-					$text = $container_open . ' class="private alt-text"' . $align_style . '>' . $alt . $container_close;
+				// The standard logic of the function. Users added in recipient WILL see the private note.
+				if ( in_array( $current_user->user_login, $all_recipients, true ) ) {
+					$text = $container_open . ' class="private user-content user-only ' . esc_attr( $current_user->user_login ) . '-only"' . $align_style . '>' . $content . $container_close;
+				} else {
+					$text = '';
+					if ( $alt ) {
+						$text = $container_open . ' class="private alt-text"' . $align_style . '>' . $alt . $container_close;
+					}
 				}
 			}
 			break;
