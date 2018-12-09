@@ -4,7 +4,7 @@ Donate link: https://dev.aldolat.it/projects/private-content/
 Tags: content, private
 Requires at least: 3.0
 Tested up to: 5.0
-Stable tag: 4.4
+Stable tag: 5.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -23,6 +23,8 @@ As of version 3.0 you can mark a text as visible only to a certain user, using h
 As of version 4.0 you can mark a text as visible to multiple users, using their login names comma separated.
 
 As of version 4.3 you can use either the usual `private` shortcode or the extra `ubn_private`, in case the first is already in use.
+
+As of version 5.0 you can use the new option `reverse` to change the logic of the `recipient` option. If `reverse` is activated, it will not allow users in recipient read the private note.
 
 = Usage =
 
@@ -73,7 +75,7 @@ Display this text to Visitors only:
 
 `[private role="visitor-only"]Text for Visitors only[/private]`
 
-= Text only for a specific user =
+= Text only for a specific user or multiple users =
 
 In the case you want to show a text only to a specific user, assign `none` to `role` and a login name to `recipient`:
 
@@ -86,6 +88,13 @@ You can use a comma separated list of usernames to target certain users:
 `[private role="none" recipient="login-name1, login-name2, login-name3"]Text for specific users only[/private]`
 
 Change `login-name1`, `login-name2`, and `login-name3` with the correct login names of the target users.
+
+= Text NOT for some users =
+
+If you want to show a text to all users but not to some, activate the option `reverse`, so that users added in the `recipient` option will not read the note.
+For example.
+
+`[private role="none" recipient="alice,bob,charlie" reverse=1]We all read this message while Alice, Bob, and Charlie can't read it![/private]`
 
 = Alternate text for non-targeted users =
 
