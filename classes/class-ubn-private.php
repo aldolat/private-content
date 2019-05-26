@@ -46,25 +46,21 @@
  */
 class UBN_Private {
 	/**
-	 * Plugin version
+	 * Plugin version.
 	 *
 	 * @var string $plugin_version
-	 * @access protected
+	 * @access private
 	 * @since 6.0.0
 	 */
-	protected $plugin_version;
+	private $plugin_version;
 
 	/**
-	 * Fires the initial actions for the plugin.
+	 * Fires the initial steps for the plugin.
 	 *
 	 * @since 6.0.0
 	 */
 	public function __construct() {
-		/**
-		 * Define the plugin version.
-		 *
-		 * @since 4.2
-		 */
+		// Define the plugin version.
 		$this->plugin_version = '6.0.0';
 	}
 
@@ -273,7 +269,6 @@ class UBN_Private {
 		$atts['role']      = wp_strip_all_tags( $atts['role'] );
 		$atts['recipient'] = wp_strip_all_tags( $atts['recipient'] );
 		$atts['align']     = wp_strip_all_tags( $atts['align'] );
-		// $atts['alt'] is processed below.
 		$atts['container'] = wp_strip_all_tags( $atts['container'] );
 
 		/*
@@ -341,7 +336,7 @@ class UBN_Private {
 				$align_style = '';
 		}
 
-		return $align_style;
+		return apply_filters( 'ubn_private_align_style', $align_style );
 	}
 
 	/**
@@ -382,7 +377,7 @@ class UBN_Private {
 				);
 		}
 
-		return $containers;
+		return apply_filters( 'ubn_private_containers', $containers );
 	}
 
 	/**
@@ -547,6 +542,11 @@ class UBN_Private {
 
 			default:
 				$text = '';
+		}
+
+		// Filter the $text variable if $text is not empty.
+		if ( '' !== $text ) {
+			$text = apply_filters( 'ubn_private_text', $text );
 		}
 
 		return $text;
