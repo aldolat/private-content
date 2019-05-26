@@ -49,9 +49,10 @@ class UBN_Private {
 	 * Plugin version
 	 *
 	 * @var string $plugin_version
+	 * @access protected
 	 * @since 6.0.0
 	 */
-	public $plugin_version;
+	protected $plugin_version;
 
 	/**
 	 * Fires the initial actions for the plugin.
@@ -65,6 +66,16 @@ class UBN_Private {
 		 * @since 4.2
 		 */
 		$this->plugin_version = '6.0.0';
+	}
+
+	/**
+	 * Return the plugin version.
+	 *
+	 * @return string $plugin_version The version of the plugin.
+	 * @since 6.0.0
+	 */
+	public function get_plugin_version() {
+		return $this->plugin_version;
 	}
 
 	/**
@@ -83,7 +94,7 @@ class UBN_Private {
 		/**
 		 * Make sure we have the right capabilities during plugin's lifetime.
 		 *
-		 * @since ??? (TODO)
+		 * @since 2.0.0
 		 */
 		add_action( 'init', array( $this, 'ubn_private_check_capability_exists' ) );
 
@@ -117,9 +128,10 @@ class UBN_Private {
 	 * Note that the Administrator role doesn't need any custom capabilities.
 	 *
 	 * @global object $wp_roles The WordPress roles.
+	 * @access protected
 	 * @since ??? (TODO)
 	 */
-	private function ubn_private_add_cap() {
+	protected function ubn_private_add_cap() {
 		global $wp_roles;
 		$wp_roles->add_cap( 'editor', 'read_ubn_editor_notes' );
 		$wp_roles->add_cap( 'author', 'read_ubn_author_notes' );
@@ -217,22 +229,52 @@ class UBN_Private {
 
 		$atts = shortcode_atts( $defaults, $atts );
 
-		$role      = $atts['role'];
-		$recipient = $atts['recipient'];
-		$reverse   = $atts['reverse'];
-		$align     = $atts['align'];
-		$alt       = $atts['alt'];
-		$container = $atts['container'];
+		// Sanitize the user input.
+		$atts = $this->sanitize( $atts );
 
-		/*
-		 * Input sanitization.
-		 * @since 4.3
-		 */
-		$role      = wp_strip_all_tags( $role );
-		$recipient = wp_strip_all_tags( $recipient );
-		$align     = wp_strip_all_tags( $align );
-		// $alt is processed below.
-		$container = wp_strip_all_tags( $container );
+		// Get the align for the text of the paragraph.
+		$align_style = $this->get_align( $atts['align'] );
+
+		// Get the container for the text.
+		$containers      = $this->get_container( $atts['container'] );
+		$container_open  = $containers['open'];
+		$container_close = $containers['close'];
+
+		// Get the text for the shortcode.
+		$args = array(
+			'role'            => $atts['role'],
+			'recipient'       => $atts['recipient'],
+			'reverse'         => $atts['reverse'],
+			'align_style'     => $align_style,
+			'alt'             => $atts['alt'],
+			'container_open'  => $container_open,
+			'container_close' => $container_close,
+			'content'         => $content,
+		);
+		$text = $this->get_text( $args );
+
+		// Return the shortcode.
+		if ( isset( $text ) && ! empty( $text ) && ! is_feed() ) {
+			// The do_shortcode function is necessary to let WordPress execute another nested shortcode.
+			return do_shortcode( $text );
+		}
+	}
+
+	/**
+	 * Sanitize user input before processing.
+	 *
+	 * @param array $atts The user input array.
+	 * @return array $atts The sanitized array.
+	 * @access protected
+	 * @since 4.3.0 As standalone function.
+	 * @since 6.0.0 As method in class.
+	 */
+	protected function sanitize( $atts ) {
+		$atts['role']      = wp_strip_all_tags( $atts['role'] );
+		$atts['recipient'] = wp_strip_all_tags( $atts['recipient'] );
+		$atts['align']     = wp_strip_all_tags( $atts['align'] );
+		// $atts['alt'] is processed below.
+		$atts['container'] = wp_strip_all_tags( $atts['container'] );
 
 		/*
 		 * Allow the usage of some HTML tags in the shortcode "alt" parameter.
@@ -245,7 +287,7 @@ class UBN_Private {
 		 */
 		// Decode any HTML entity into its applicable character, so that `wp_kses` can operate.
 		// The encoding is performed by the WordPress visual editor.
-		$alt = html_entity_decode( $alt );
+		$atts['alt'] = html_entity_decode( $atts['alt'] );
 		// Define the allowed HTML tags for `wp_kses`.
 		$allowed_html = array(
 			'em'     => array(),
@@ -258,190 +300,246 @@ class UBN_Private {
 			),
 		);
 		// Remove all HTML tags, except `em`, `i`, `strong, `b`, `a`.
-		$alt = wp_kses( $alt, $allowed_html );
+		$atts['alt'] = wp_kses( $atts['alt'], $allowed_html );
 
-		// The 'align' option.
-		if ( ! empty( $align ) ) {
-			switch ( $align ) {
-				case 'left':
-					$align_style = ' style="text-align: left;"';
-					break;
+		return $atts;
+	}
 
-				case 'center':
-					$align_style = ' style="text-align: center;"';
-					break;
+	/**
+	 * Return the CSS style for aligning the paragraph.
+	 *
+	 * @param string $align The user input for align.
+	 * @return string $align_style The CSS style for aligning the paragraph.
+	 * @access protected
+	 * @since 6.0.0
+	 */
+	protected function get_align( $align ) {
+		$align_style = '';
 
-				case 'right':
-					$align_style = ' style="text-align: right;"';
-					break;
-
-				case 'justify':
-					$align_style = ' style="text-align: justify;"';
-					break;
-
-				default:
-					$align_style = '';
-			}
-		} else {
-			$align_style = '';
+		if ( empty( $align ) ) {
+			return $align_style;
 		}
 
-		// The 'container' option.
-		switch ( $container ) {
-			case 'p':
-				$container_open  = '<p';
-				$container_close = '</p>';
+		switch ( $align ) {
+			case 'left':
+				$align_style = ' style="text-align: left;"';
 				break;
 
-			case 'div':
-				$container_open  = '<div';
-				$container_close = '</div>';
+			case 'center':
+				$align_style = ' style="text-align: center;"';
 				break;
 
-			case 'span':
-				$container_open  = '<span';
-				$container_close = '</span>';
+			case 'right':
+				$align_style = ' style="text-align: right;"';
+				break;
+
+			case 'justify':
+				$align_style = ' style="text-align: justify;"';
 				break;
 
 			default:
-				$container_open  = '<p';
-				$container_close = '</p>';
+				$align_style = '';
 		}
 
-		// The 'role' option.
-		switch ( $role ) {
+		return $align_style;
+	}
+
+	/**
+	 * Return the container for the paragraph.
+	 *
+	 * @param string $container The user input for the container.
+	 * @return array $containers The array for opening and closing the container.
+	 * @access protected
+	 * @since 6.0.0
+	 */
+	protected function get_container( $container ) {
+		switch ( $container ) {
+			case 'p':
+				$containers = array(
+					'open'  => '<p',
+					'close' => '</p>',
+				);
+				break;
+
+			case 'div':
+				$containers = array(
+					'open'  => '<div',
+					'close' => '</div>',
+				);
+				break;
+
+			case 'span':
+				$containers = array(
+					'open'  => '<span',
+					'close' => '</span>',
+				);
+				break;
+
+			default:
+				$containers = array(
+					'open'  => '<p',
+					'close' => '</p>',
+				);
+		}
+
+		return $containers;
+	}
+
+	/**
+	 * Return the processed text for the shortcode.
+	 *
+	 * @param array $args The array containing the input values.
+	 * @return string $text The processed text for the shortcode.
+	 * @access protected
+	 * @since 6.0.0
+	 */
+	protected function get_text( $args ) {
+		$defaults = array(
+			'role'            => 'administrator', // The default role if none has been provided.
+			'recipient'       => '',
+			'reverse'         => false,
+			'align_style'     => '',
+			'alt'             => '',
+			'container_open'  => '<p',
+			'container_close' => '</p>',
+			'content'         => null,
+		);
+
+		$args = wp_parse_args( $args, $defaults );
+
+		switch ( $args['role'] ) {
 
 			case 'administrator':
 				if ( current_user_can( 'create_users' ) ) {
-					$text = $container_open . ' class="private administrator-content"' . $align_style . '>' . $content . $container_close;
+					$text = $args['container_open'] . ' class="private administrator-content"' . $args['align_style'] . '>' . $args['content'] . $args['container_close'];
 				} else {
 					$text = '';
-					if ( $alt ) {
-						$text = $container_open . ' class="private alt-text"' . $align_style . '>' . $alt . $container_close;
+					if ( $args['alt'] ) {
+						$text = $args['container_open'] . ' class="private alt-text"' . $args['align_style'] . '>' . $args['alt'] . $args['container_close'];
 					}
 				}
 				break;
 
 			case 'editor':
 				if ( current_user_can( 'edit_others_posts' ) ) {
-					$text = $container_open . ' class="private editor-content"' . $align_style . '>' . $content . $container_close;
+					$text = $args['container_open'] . ' class="private editor-content"' . $args['align_style'] . '>' . $args['content'] . $args['container_close'];
 				} else {
 					$text = '';
-					if ( $alt ) {
-						$text = $container_open . ' class="private alt-text"' . $align_style . '>' . $alt . $container_close;
+					if ( $args['alt'] ) {
+						$text = $args['container_open'] . ' class="private alt-text"' . $args['align_style'] . '>' . $args['alt'] . $args['container_close'];
 					}
 				}
 				break;
 
 			case 'editor-only':
 				if ( current_user_can( 'read_ubn_editor_notes' ) ) {
-					$text = $container_open . ' class="private editor-content editor-only"' . $align_style . '>' . $content . $container_close;
+					$text = $args['container_open'] . ' class="private editor-content editor-only"' . $args['align_style'] . '>' . $args['content'] . $args['container_close'];
 				} else {
 					$text = '';
-					if ( $alt ) {
-						$text = $container_open . ' class="private alt-text"' . $align_style . '>' . $alt . $container_close;
+					if ( $args['alt'] ) {
+						$text = $args['container_open'] . ' class="private alt-text"' . $args['align_style'] . '>' . $args['alt'] . $args['container_close'];
 					}
 				}
 				break;
 
 			case 'author':
 				if ( current_user_can( 'publish_posts' ) ) {
-					$text = $container_open . ' class="private author-content"' . $align_style . '>' . $content . $container_close;
+					$text = $args['container_open'] . ' class="private author-content"' . $args['align_style'] . '>' . $args['content'] . $args['container_close'];
 				} else {
 					$text = '';
-					if ( $alt ) {
-						$text = $container_open . ' class="private alt-text"' . $align_style . '>' . $alt . $container_close;
+					if ( $args['alt'] ) {
+						$text = $args['container_open'] . ' class="private alt-text"' . $args['align_style'] . '>' . $args['alt'] . $args['container_close'];
 					}
 				}
 				break;
 
 			case 'author-only':
 				if ( current_user_can( 'read_ubn_author_notes' ) ) {
-					$text = $container_open . ' class="private author-content author-only"' . $align_style . '>' . $content . $container_close;
+					$text = $args['container_open'] . ' class="private author-content author-only"' . $args['align_style'] . '>' . $args['content'] . $args['container_close'];
 				} else {
 					$text = '';
-					if ( $alt ) {
-						$text = $container_open . ' class="private alt-text"' . $align_style . '>' . $alt . $container_close;
+					if ( $args['alt'] ) {
+						$text = $args['container_open'] . ' class="private alt-text"' . $args['align_style'] . '>' . $args['alt'] . $args['container_close'];
 					}
 				}
 				break;
 
 			case 'contributor':
 				if ( current_user_can( 'edit_posts' ) ) {
-					$text = $container_open . ' class="private contributor-content"' . $align_style . '>' . $content . $container_close;
+					$text = $args['container_open'] . ' class="private contributor-content"' . $args['align_style'] . '>' . $args['content'] . $args['container_close'];
 				} else {
 					$text = '';
-					if ( $alt ) {
-						$text = $container_open . ' class="private alt-text"' . $align_style . '>' . $alt . $container_close;
+					if ( $args['alt'] ) {
+						$text = $args['container_open'] . ' class="private alt-text"' . $args['align_style'] . '>' . $args['alt'] . $args['container_close'];
 					}
 				}
 				break;
 
 			case 'contributor-only':
 				if ( current_user_can( 'read_ubn_contributor_notes' ) ) {
-					$text = $container_open . ' class="private contributor-content contributor-only"' . $align_style . '>' . $content . $container_close;
+					$text = $args['container_open'] . ' class="private contributor-content contributor-only"' . $args['align_style'] . '>' . $args['content'] . $args['container_close'];
 				} else {
 					$text = '';
-					if ( $alt ) {
-						$text = $container_open . ' class="private alt-text"' . $align_style . '>' . $alt . $container_close;
+					if ( $args['alt'] ) {
+						$text = $args['container_open'] . ' class="private alt-text"' . $args['align_style'] . '>' . $args['alt'] . $args['container_close'];
 					}
 				}
 				break;
 
 			case 'subscriber':
 				if ( current_user_can( 'read' ) ) {
-					$text = $container_open . ' class="private subscriber-content"' . $align_style . '>' . $content . $container_close;
+					$text = $args['container_open'] . ' class="private subscriber-content"' . $args['align_style'] . '>' . $args['content'] . $args['container_close'];
 				} else {
 					$text = '';
-					if ( $alt ) {
-						$text = $container_open . ' class="private alt-text"' . $align_style . '>' . $alt . $container_close;
+					if ( $args['alt'] ) {
+						$text = $args['container_open'] . ' class="private alt-text"' . $args['align_style'] . '>' . $args['alt'] . $args['container_close'];
 					}
 				}
 				break;
 
 			case 'subscriber-only':
 				if ( current_user_can( 'read_ubn_subscriber_notes' ) ) {
-					$text = $container_open . ' class="private subscriber-content subscriber-only"' . $align_style . '>' . $content . $container_close;
+					$text = $args['container_open'] . ' class="private subscriber-content subscriber-only"' . $args['align_style'] . '>' . $args['content'] . $args['container_close'];
 				} else {
 					$text = '';
-					if ( $alt ) {
-						$text = $container_open . ' class="private alt-text"' . $align_style . '>' . $alt . $container_close;
+					if ( $args['alt'] ) {
+						$text = $args['container_open'] . ' class="private alt-text"' . $args['align_style'] . '>' . $args['alt'] . $args['container_close'];
 					}
 				}
 				break;
 
 			case 'visitor-only':
 				if ( ! is_user_logged_in() ) {
-					$text = $container_open . ' class="private visitor-content visitor-only"' . $align_style . '>' . $content . $container_close;
+					$text = $args['container_open'] . ' class="private visitor-content visitor-only"' . $args['align_style'] . '>' . $args['content'] . $args['container_close'];
 				} else {
 					$text = '';
-					if ( $alt ) {
-						$text = $container_open . ' class="private alt-text"' . $align_style . '>' . $alt . $container_close;
+					if ( $args['alt'] ) {
+						$text = $args['container_open'] . ' class="private alt-text"' . $args['align_style'] . '>' . $args['alt'] . $args['container_close'];
 					}
 				}
 				break;
 
 			case 'none':
-				$all_recipients = array_map( 'trim', explode( ',', $recipient ) );
+				$all_recipients = array_map( 'trim', explode( ',', $args['recipient'] ) );
 				$current_user   = wp_get_current_user();
-				if ( $reverse ) {
+				if ( $args['reverse'] ) {
 					// Reverse the logic of the function. Users added in recipient WILL NOT see the private note.
 					if ( in_array( $current_user->user_login, $all_recipients, true ) ) {
 						$text = '';
-						if ( $alt ) {
-							$text = $container_open . ' class="private alt-text"' . $align_style . '>' . $alt . $container_close;
+						if ( $args['alt'] ) {
+							$text = $args['container_open'] . ' class="private alt-text"' . $args['align_style'] . '>' . $args['alt'] . $args['container_close'];
 						}
 					} else {
-						$text = $container_open . ' class="private user-content user-only-reverse"' . $align_style . '>' . $content . $container_close;
+						$text = $args['container_open'] . ' class="private user-content user-only-reverse"' . $args['align_style'] . '>' . $args['content'] . $args['container_close'];
 					}
 				} else {
 					// The standard logic of the function. Users added in recipient WILL see the private note.
 					if ( in_array( $current_user->user_login, $all_recipients, true ) ) {
-						$text = $container_open . ' class="private user-content user-only ' . esc_attr( $current_user->user_login ) . '-only"' . $align_style . '>' . $content . $container_close;
+						$text = $args['container_open'] . ' class="private user-content user-only ' . esc_attr( $current_user->user_login ) . '-only"' . $args['align_style'] . '>' . $args['content'] . $args['container_close'];
 					} else {
 						$text = '';
-						if ( $alt ) {
-							$text = $container_open . ' class="private alt-text"' . $align_style . '>' . $alt . $container_close;
+						if ( $args['alt'] ) {
+							$text = $args['container_open'] . ' class="private alt-text"' . $args['align_style'] . '>' . $args['alt'] . $args['container_close'];
 						}
 					}
 				}
@@ -451,10 +549,6 @@ class UBN_Private {
 				$text = '';
 		}
 
-		if ( isset( $text ) && ! empty( $text ) && ! is_feed() ) {
-			// The do_shortcode function is necessary to let WordPress execute another nested shortcode.
-			return do_shortcode( $text );
-		}
+		return $text;
 	}
-
 }
