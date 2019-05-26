@@ -7,7 +7,7 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link    http://dev.aldolat.it/projects/private-content/
+ * @link    https://dev.aldolat.it/projects/private-content/
  * @since   1.0.0
  * @package PrivateContent
  * @license GPLv3 or later
@@ -15,9 +15,9 @@
  * @wordpress-plugin
  * Plugin Name: Private content
  * Description:  Display a portion of a post content only to users of a specific role or to a single or multiple users.
- * Plugin URI: http://dev.aldolat.it/projects/private-content/
+ * Plugin URI: https://dev.aldolat.it/projects/private-content/
  * Author: Aldo Latino
- * Author URI: http://www.aldolat.it/
+ * Author URI: https://www.aldolat.it/
  * Version: 6.0
  * License: GPLv3 or later
  * Text Domain: private-content
@@ -49,8 +49,6 @@
  * for the starting code.
  */
 
-
-
 /**
  * Prevent direct access to this file.
  *
@@ -63,14 +61,14 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Include the class.
  *
- * @since 6.0.0
+ * @since 5.1
  */
 require_once 'classes/class-ubn-private.php';
 
 /**
  * Instantiate the object and run the plugin.
  *
- * @since 6.0.0
+ * @since 5.1
  */
 function ubn_private_run() {
 	$ubn_private = new UBN_Private();

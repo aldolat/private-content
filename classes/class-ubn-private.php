@@ -2,7 +2,7 @@
 /**
  * The plugin core class.
  *
- * @since 6.0.0
+ * @since 5.1
  * @package PrivateContent
  */
 
@@ -42,7 +42,7 @@
 /**
  * UBN Private class.
  *
- * @since 6.0.0
+ * @since 5.1
  */
 class UBN_Private {
 	/**
@@ -50,25 +50,25 @@ class UBN_Private {
 	 *
 	 * @var string $plugin_version
 	 * @access private
-	 * @since 6.0.0
+	 * @since 5.1
 	 */
 	private $plugin_version;
 
 	/**
 	 * Fires the initial steps for the plugin.
 	 *
-	 * @since 6.0.0
+	 * @since 5.1
 	 */
 	public function __construct() {
 		// Define the plugin version.
-		$this->plugin_version = '6.0.0';
+		$this->plugin_version = '5.1';
 	}
 
 	/**
 	 * Return the plugin version.
 	 *
 	 * @return string $plugin_version The version of the plugin.
-	 * @since 6.0.0
+	 * @since 5.1
 	 */
 	public function get_plugin_version() {
 		return $this->plugin_version;
@@ -77,7 +77,7 @@ class UBN_Private {
 	/**
 	 * Run the plugin.
 	 *
-	 * @since 6.0.0
+	 * @since 5.1
 	 */
 	public function run() {
 		/**
@@ -125,7 +125,7 @@ class UBN_Private {
 	 *
 	 * @global object $wp_roles The WordPress roles.
 	 * @access protected
-	 * @since ??? (TODO)
+	 * @since 2.2
 	 */
 	protected function ubn_private_add_cap() {
 		global $wp_roles;
@@ -263,7 +263,7 @@ class UBN_Private {
 	 * @return array $atts The sanitized array.
 	 * @access protected
 	 * @since 4.3.0 As standalone function.
-	 * @since 6.0.0 As method in class.
+	 * @since 5.1 As method in class.
 	 */
 	protected function sanitize( $atts ) {
 		$atts['role']      = wp_strip_all_tags( $atts['role'] );
@@ -306,7 +306,7 @@ class UBN_Private {
 	 * @param string $align The user input for align.
 	 * @return string $align_style The CSS style for aligning the paragraph.
 	 * @access protected
-	 * @since 6.0.0
+	 * @since 5.1
 	 */
 	protected function get_align( $align ) {
 		$align_style = '';
@@ -345,7 +345,7 @@ class UBN_Private {
 	 * @param string $container The user input for the container.
 	 * @return array $containers The array for opening and closing the container.
 	 * @access protected
-	 * @since 6.0.0
+	 * @since 5.1
 	 */
 	protected function get_container( $container ) {
 		switch ( $container ) {
@@ -386,7 +386,7 @@ class UBN_Private {
 	 * @param array $args The array containing the input values.
 	 * @return string $text The processed text for the shortcode.
 	 * @access protected
-	 * @since 6.0.0
+	 * @since 5.1
 	 */
 	protected function get_text( $args ) {
 		$defaults = array(
