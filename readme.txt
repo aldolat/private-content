@@ -1,9 +1,9 @@
 === Private Content ===
 Contributors: aldolat, specialk, thewanderingbrit
 Donate link: https://dev.aldolat.it/projects/private-content/
-Tags: content, private
+Tags: content, private, shortcode
 Requires at least: 3.0
-Tested up to: 5.2.1
+Tested up to: 5.3
 Stable tag: 5.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html

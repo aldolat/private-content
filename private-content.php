@@ -18,14 +18,14 @@
  * Plugin URI: https://dev.aldolat.it/projects/private-content/
  * Author: Aldo Latino
  * Author URI: https://www.aldolat.it/
- * Version: 6.0
+ * Version: 5.1
  * License: GPLv3 or later
  * Text Domain: private-content
  * Domain Path: /languages/
  */
 
 /*
- * Copyright (C) 2009, 2018  Aldo Latino  (email : aldolat@gmail.com)
+ * Copyright (C) 2009, 2019  Aldo Latino  (email : aldolat@gmail.com)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -63,7 +63,7 @@ if ( ! defined( 'WPINC' ) ) {
  *
  * @since 5.1
  */
-require_once 'classes/class-ubn-private.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-ubn-private.php';
 
 /**
  * Instantiate the object and run the plugin.

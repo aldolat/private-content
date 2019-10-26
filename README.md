@@ -3,19 +3,20 @@
 [![tested][tested-badge]][README]
 [![license][license-badge]][LICENSE]
 
-# Private Content #
-**Contributors:** aldolat, specialk, thewanderingbrit  
-**Donate link:** https://dev.aldolat.it/projects/private-content/  
-**Tags:** content, private  
-**Requires at least:** 3.0  
-**Tested up to:** 5.2.1  
-**Stable tag:** 5.1  
-**License:** GPLv3 or later  
-**License URI:** https://www.gnu.org/licenses/gpl-3.0.html  
+# Private Content
+
+**Contributors:** aldolat, specialk, thewanderingbrit
+**Donate link:** <https://dev.aldolat.it/projects/private-content/>
+**Tags:** content, private
+**Requires at least:** 3.0
+**Tested up to:** 5.3
+**Stable tag:** 5.1
+**License:** GPLv3 or later
+**License URI:** <https://www.gnu.org/licenses/gpl-3.0.html>
 
 Display a portion of a post content only to users of a specific role or to a single or multiple users.
 
-## Description ##
+## Description
 
 This plugin provides a shortcode to display a portion of a post content only to users of a specific role. For example, you can show the hidden text to Editors or to Authors or to any other WordPress role.
 
@@ -29,7 +30,7 @@ As of version 4.0 you can mark a text as visible to multiple users, using their 
 
 As of version 4.3 you can use either the usual `private` shortcode or the extra `ubn_private`, in case the first is already in use.
 
-### Usage ###
+### Usage
 
 Display this text to Administrators:
 
@@ -51,7 +52,7 @@ Display this text to Administrators, Editors, Authors, Contributors, and Subscri
 
 `[private role="subscriber"]Text for Subscribers[/private]`
 
-### Text only for specific roles ###
+### Text only for specific roles
 
 If you want to show a note only to a certain role, you have to use a `<role>-only` option.
 In this way, for example, an Administrator or an Editor (roles higher than Author) cannot read a note for Authors only.
@@ -78,7 +79,7 @@ Display this text to Visitors only:
 
 `[private role="visitor-only"]Text for Visitors only[/private]`
 
-### Text only for a specific user or multiple users ###
+### Text only for a specific user or multiple users
 
 In the case you want to show a text only to a specific user, assign `none` to `role` and a login name to `recipient`:
 
@@ -99,7 +100,7 @@ For example.
 
 `[private role="none" recipient="alice,bob,charlie" reverse=1]We all read this message while Alice, Bob, and Charlie can't read it![/private]`
 
-### Alternate text for non-targeted users ###
+### Alternate text for non-targeted users
 
 If you want to show an alternate text in case the reader can't read, you can use:
 
@@ -113,7 +114,7 @@ The alternate text can contain some HTML tags. The list is:
 * `em` or `i` for italic text;
 * `a` for links, with `href` and `title` included. For `href` and `title` do not use double quote, but single quote.
 
-### Container for the text ###
+### Container for the text
 
 Starting from version 2.4, the user can choose the container element for the text:
 
@@ -131,7 +132,7 @@ Wrap the note inside a SPAN:
 
 `I met with a friend[private container="span"] (Jenny, from ninth grade)[/private] for lunch.`
 
-### Standard WordPress user roles ###
+### Standard WordPress user roles
 
 WordPress roles in descending order:
 
@@ -141,7 +142,7 @@ WordPress roles in descending order:
 * Contributor
 * Subscriber
 
-### Capabilities created by Private Content plugin ###
+### Capabilities created by Private Content plugin
 
 These are the capabilities created by this plugin:
 
@@ -150,11 +151,11 @@ These are the capabilities created by this plugin:
 * `read_ubn_contributor_notes`
 * `read_ubn_subscriber_notes`
 
-### Privacy Policy ###
+### Privacy Policy
 
 This plugin does not collect any user data.
 
-## Installation ##
+## Installation
 
 This section describes how to install the plugin and get it working.
 
@@ -162,9 +163,9 @@ This section describes how to install the plugin and get it working.
 1. Activate the plugin through the Plugins menu in WordPress
 1. Now the shortcode is available and ready to use.
 
-## Frequently Asked Questions ##
+## Frequently Asked Questions
 
-### Is there a way to display an alternate text to readers that haven't the rights to read the hidden text? ###
+### Is there a way to display an alternate text to readers that haven't the rights to read the hidden text?
 
 This plugin is not intended to be used in such way, but only in order to display a portion of a post to certain readers. Also, the hidden text must remain hidden, without the presence of an alternate text that could reveal the presence of the hidden text. Anyway, as of version 2.2, the plugin can display an alternate text, if it's necessary: you can use the `alt` option to do that.
 
@@ -172,7 +173,7 @@ Also, this plugin was created only to show a small piece of text (i.e. a couple 
 
 If you need to show the entire post only to certain readers (i.e. readers who pay to read a post), you can use a plugin like [Members](https://wordpress.org/plugins/members/).
 
-### The hidden text is similar to the public text. Is it possible to stylize it in a different look? ###
+### The hidden text is similar to the public text. Is it possible to stylize it in a different look?
 
 Yes, you have to edit the CSS file of your current theme.
 The shortcode generates a `<p>` HTML tag with at most three classes in this order:
@@ -181,7 +182,7 @@ The shortcode generates a `<p>` HTML tag with at most three classes in this orde
 * `[role]-content` to stylize the content for that specific [role].
 * `[role]-content-only` to stylize the content for that specific [role] only.
 
-### Does this plugin work with custom roles? ###
+### Does this plugin work with custom roles?
 
 Yes, with a little extra work. In short, you have to map one of the capabilities created by Private Content to your custom role, using a plugin like [User Role Editor](https://wordpress.org/plugins/user-role-editor/) or [Members](https://wordpress.org/plugins/members/) or [Capability Manager Enhanced](https://wordpress.org/plugins/capability-manager-enhanced).
 
@@ -210,29 +211,31 @@ After having made that, use a shortcode like this:
 
 Once a "Wholesale Customer" has been logged in, he will read the notes dedicated to `contributors-only`. Please note that we are using `role="contributor-only"`, not simply `role="contributor"`.
 
-## Screenshots ##
+## Screenshots
 
-### 1. At the center of the screen, the shortcode is used in the WordPress editor. The text inside the shortcode will be displayed only to Authors and above roles. ###
+### 1. At the center of the screen, the shortcode is used in the WordPress editor. The text inside the shortcode will be displayed only to Authors and above roles
+
 ![1. At the center of the screen, the shortcode is used in the WordPress editor. The text inside the shortcode will be displayed only to Authors and above roles.](http://ps.w.org/private-content/assets/screenshot-1.png)
 
-### 2. The shortcode in action. On the left, the text revealed to Administrators only; on the right, the page as seen by lower roles (Editors, Authors, etc., or simply readers). ###
+### 2. The shortcode in action. On the left, the text revealed to Administrators only; on the right, the page as seen by lower roles (Editors, Authors, etc., or simply readers)
+
 ![2. The shortcode in action. On the left, the text revealed to Administrators only; on the right, the page as seen by lower roles (Editors, Authors, etc., or simply readers).](http://ps.w.org/private-content/assets/screenshot-2.png)
 
-## Upgrade Notice ##
+## Upgrade Notice
 
-### 2.0 ###
+### 2.0
 
 Upgrade in order to use the new role-only feature.
 
-### 2.5 ###
+### 2.5
 
 Removed shortcode execution in feed.
 
-### 1.0 ###
+### 1.0
 
 No upgrade notice.
 
-## Credits ##
+## Credits
 
 Many thanks to:
 
@@ -242,7 +245,7 @@ Many thanks to:
 [CHANGELOG]: ./CHANGELOG.md
 [LICENSE]: ./gpl-3.0.txt
 [README]: ./README.md
-[version-badge]: https://img.shields.io/badge/Version-5.0-blue.svg
+[version-badge]: https://img.shields.io/badge/Version-5.1-blue.svg
 [requires-badge]: https://img.shields.io/badge/Requires_WordPress-3.0.0-green.svg
-[tested-badge]: https://img.shields.io/badge/Tested_up_to_WordPress-5.1.0-green.svg
+[tested-badge]: https://img.shields.io/badge/Tested_up_to_WordPress-5.3-green.svg
 [license-badge]: https://img.shields.io/badge/License-GPLv3-ff69b4.svg

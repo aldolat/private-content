@@ -57,6 +57,7 @@ class UBN_Private {
 	/**
 	 * Fires the initial steps for the plugin.
 	 *
+	 * @access public
 	 * @since 5.1
 	 */
 	public function __construct() {
@@ -67,6 +68,7 @@ class UBN_Private {
 	/**
 	 * Return the plugin version.
 	 *
+	 * @access public
 	 * @return string $plugin_version The version of the plugin.
 	 * @since 5.1
 	 */
@@ -77,6 +79,7 @@ class UBN_Private {
 	/**
 	 * Run the plugin.
 	 *
+	 * @access public
 	 * @since 5.1
 	 */
 	public function run() {
@@ -140,6 +143,7 @@ class UBN_Private {
 	 * This check is useful only when upgrading this plugin from version below 2.0.
 	 * This function will be removed in the future.
 	 *
+	 * @access public
 	 * @since 2.0.0
 	 */
 	public function ubn_private_check_capability_exists() {
@@ -153,6 +157,7 @@ class UBN_Private {
 	/**
 	 * Translate Private Content.
 	 *
+	 * @access public
 	 * @since 4.2
 	 */
 	public function ubn_private_translation() {
@@ -210,6 +215,8 @@ class UBN_Private {
 	 *                            "div"
 	 *                            "span"
 	 * }
+	 *
+	 * @access public
 	 * @param null  $content The content is defined inside the two square brackets.
 	 * @example [private role="editor" align="center" alt="Please, login to view this note." container="div"]All Editors - Meeting on Slack every day at 9am![/private]
 	 */
