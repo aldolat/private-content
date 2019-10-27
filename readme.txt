@@ -110,6 +110,8 @@ The alternate text can contain some HTML tags. The list is:
 * `em` or `i` for italic text;
 * `a` for links, with `href` and `title` included. For `href` and `title` do not use double quote, but single quote.
 
+For example:
+
 `[private role="subscriber" alt="<a href='https://www.example.com/subscribe' title='Subscribe now!'>Subscribe</a> to read this <strong>super powered</strong> text!"]Hidden text.[/private]`
 
 = Container for the text =
