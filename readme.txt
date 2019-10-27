@@ -96,7 +96,7 @@ For example.
 
 `[private role="none" recipient="alice,bob,charlie" reverse=1]We all read this message while Alice, Bob, and Charlie can't read it![/private]`
 
-= Alternate text for non-targeted users =
+= Alternate text for excluded users =
 
 If you want to show an alternate text in case the reader can't read, you can use:
 
@@ -109,6 +109,8 @@ The alternate text can contain some HTML tags. The list is:
 * `b` or `strong` for bold text;
 * `em` or `i` for italic text;
 * `a` for links, with `href` and `title` included. For `href` and `title` do not use double quote, but single quote.
+
+`[private role="subscriber" alt="<a href='https://www.example.com/subscribe' title='Subscribe now!'>Subscribe</a> to read this <strong>super powered</strong> text!"]Hidden text.[/private]`
 
 = Container for the text =
 
@@ -126,7 +128,7 @@ Wrap the note inside a DIV:
 
 Wrap the note inside a SPAN:
 
-`I met with a friend[private container="span"] (Jenny, from ninth grade)[/private] for lunch.`
+`This is my home I bought a year ago [private container="span"](the key is under the doormat)[/private].`
 
 = Standard WordPress user roles =
 
