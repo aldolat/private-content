@@ -1,5 +1,9 @@
 == Changelog ==
 
+= 5.1 =
+
+* Changed the coding paradigm to OOP.
+
 = 5.0 =
 
 * Added `reverse` option to change the logic of the `recipient` option.

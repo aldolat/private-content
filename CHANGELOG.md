@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [5.1] - 2019-10-27
+### Changed
+* Changed the coding paradigm to OOP.
+
 ## [5.0] - 2018-12-08
 ### Added
 * Added `reverse` option to change the logic of the `recipient` option.
@@ -87,6 +91,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * First release of the plugin.
 
 [Unreleased]: https://github.com/aldolat/private-content/commits/develop
+[5.1]: https://github.com/aldolat/private-content/compare/5.0...5.1
 [5.0]: https://github.com/aldolat/private-content/compare/4.4...5.0
 [4.3]: https://github.com/aldolat/private-content/compare/4.3...4.4
 [4.3]: https://github.com/aldolat/private-content/compare/4.2...4.3
