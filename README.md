@@ -1,9 +1,9 @@
+# Private Content
+
 [![version][version-badge]][CHANGELOG]
 [![requires][requires-badge]][README]
 [![tested][tested-badge]][README]
 [![license][license-badge]][LICENSE]
-
-# Private Content
 
 **Contributors:** aldolat, specialk, thewanderingbrit  
 **Donate link:** <https://dev.aldolat.it/projects/private-content/>  
@@ -15,6 +15,31 @@
 **License URI:** <https://www.gnu.org/licenses/gpl-3.0.html>  
 
 Display a portion of a post content only to users of a specific role or to a single or multiple users.
+
+* [Private Content](#private-content)
+  * [Description](#description)
+    * [Usage](#usage)
+    * [Text only for specific roles](#text-only-for-specific-roles)
+    * [Text only for a specific user or multiple users](#text-only-for-a-specific-user-or-multiple-users)
+    * [Text NOT for some users](#text-not-for-some-users)
+    * [Alternate text for excluded users](#alternate-text-for-excluded-users)
+    * [Container for the text](#container-for-the-text)
+    * [Standard WordPress user roles](#standard-wordpress-user-roles)
+    * [Capabilities created by Private Content plugin](#capabilities-created-by-private-content-plugin)
+    * [Privacy Policy](#privacy-policy)
+  * [Installation](#installation)
+  * [Frequently Asked Questions](#frequently-asked-questions)
+    * [Is there a way to display an alternate text to readers that haven't the rights to read the hidden text?](#is-there-a-way-to-display-an-alternate-text-to-readers-that-havent-the-rights-to-read-the-hidden-text)
+    * [The hidden text is similar to the public text. Is it possible to stylize it in a different look?](#the-hidden-text-is-similar-to-the-public-text-is-it-possible-to-stylize-it-in-a-different-look)
+    * [Does this plugin work with custom roles?](#does-this-plugin-work-with-custom-roles)
+  * [Screenshots](#screenshots)
+    * [1. At the center of the screen, the shortcode is used in the WordPress editor. The text inside the shortcode will be displayed only to Authors and above roles](#1-at-the-center-of-the-screen-the-shortcode-is-used-in-the-wordpress-editor-the-text-inside-the-shortcode-will-be-displayed-only-to-authors-and-above-roles)
+    * [2. The shortcode in action. On the left, the text revealed to Administrators only; on the right, the page as seen by lower roles (Editors, Authors, etc., or simply readers)](#2-the-shortcode-in-action-on-the-left-the-text-revealed-to-administrators-only-on-the-right-the-page-as-seen-by-lower-roles-editors-authors-etc-or-simply-readers)
+  * [Upgrade Notice](#upgrade-notice)
+    * [2.0](#20)
+    * [2.5](#25)
+    * [1.0](#10)
+  * [Credits](#credits)
 
 ## Description
 
@@ -96,7 +121,8 @@ Change `login-name1`, `login-name2`, and `login-name3` with the correct login na
 ### Text NOT for some users
 
 If you want to show a text to all users but not to some, activate the option `reverse`, so that users added in the `recipient` option will not read the note.
-For example.
+
+For example:
 
 `[private role="none" recipient="alice,bob,charlie" reverse=1]We all read this message while Alice, Bob, and Charlie can't read it![/private]`
 
@@ -213,7 +239,7 @@ After having made that, use a shortcode like this:
 
 `[private role="contributor-only"]Text for Contributors only[/private]`
 
-Once a "Wholesale Customer" has been logged in, he will read the notes dedicated to `contributors-only`. Please note that we are using `role="contributor-only"`, not simply `role="contributor"`.
+Once a "Wholesale Customer" has been logged in, he will read the notes dedicated to `contributor-only`. Please note that we are using `role="contributor-only"`, not simply `role="contributor"`.
 
 ## Screenshots
 

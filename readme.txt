@@ -24,7 +24,7 @@ As of version 4.0 you can mark a text as visible to multiple users, using their 
 
 As of version 4.3 you can use either the usual `private` shortcode or the extra `ubn_private`, in case the first is already in use.
 
-As of version 5.0 you can use the new option `reverse` to change the logic of the `recipient` option. If `reverse` is activated, it will not allow users in recipient read the private note.
+As of version 5.0 you can use the new option `reverse` to change the logic of the `recipient` option. If `reverse` is activated, it will not allow users in `recipient` read the private note.
 
 = Usage =
 
@@ -92,7 +92,8 @@ Change `login-name1`, `login-name2`, and `login-name3` with the correct login na
 = Text NOT for some users =
 
 If you want to show a text to all users but not to some, activate the option `reverse`, so that users added in the `recipient` option will not read the note.
-For example.
+
+For example:
 
 `[private role="none" recipient="alice,bob,charlie" reverse=1]We all read this message while Alice, Bob, and Charlie can't read it![/private]`
 
@@ -209,7 +210,7 @@ After having made that, use a shortcode like this:
 
 `[private role="contributor-only"]Text for Contributors only[/private]`
 
-Once a "Wholesale Customer" has been logged in, he will read the notes dedicated to `contributors-only`. Please note that we are using `role="contributor-only"`, not simply `role="contributor"`.
+Once a "Wholesale Customer" has been logged in, he will read the notes dedicated to `contributor-only`. Please note that we are using `role="contributor-only"`, not simply `role="contributor"`.
 
 == Screenshots ==
 
