@@ -10,7 +10,7 @@
 **Tags:** content, private, shortcode  
 **Requires at least:** 3.0  
 **Tested up to:** 5.3  
-**Stable tag:** 5.1  
+**Stable tag:** 6.0  
 **License:** GPLv3 or later  
 **License URI:** <https://www.gnu.org/licenses/gpl-3.0.html>  
 
@@ -54,6 +54,10 @@ As of version 3.0 you can mark a text as visible only to a certain user, using h
 As of version 4.0 you can mark a text as visible to multiple users, using their login names comma separated.
 
 As of version 4.3 you can use either the usual `private` shortcode or the extra `ubn_private`, in case the first is already in use.
+
+As of version 5.0 you can use the new option `reverse` to change the logic of the `recipient` option. If `reverse` is activated, it will not allow users in `recipient` read the private note.
+
+As of version 6.0 you can use custom roles.
 
 ### Usage
 
@@ -275,7 +279,7 @@ Many thanks to:
 [CHANGELOG]: ./CHANGELOG.md
 [LICENSE]: ./gpl-3.0.txt
 [README]: ./README.md
-[version-badge]: https://img.shields.io/badge/Version-5.1-blue.svg
+[version-badge]: https://img.shields.io/badge/Version-6.0-blue.svg
 [requires-badge]: https://img.shields.io/badge/Requires_WordPress-3.0.0-green.svg
 [tested-badge]: https://img.shields.io/badge/Tested_up_to_WordPress-5.3-green.svg
 [license-badge]: https://img.shields.io/badge/License-GPLv3-ff69b4.svg
