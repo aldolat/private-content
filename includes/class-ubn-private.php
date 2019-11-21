@@ -62,7 +62,7 @@ class UBN_Private {
 	 */
 	public function __construct() {
 		// Define the plugin version.
-		$this->plugin_version = '5.1';
+		$this->plugin_version = '6.0';
 	}
 
 	/**
@@ -222,12 +222,13 @@ class UBN_Private {
 	 */
 	public function ubn_private_content( $atts, $content = null ) {
 		$defaults = array(
-			'role'      => 'administrator', // The default role if none has been provided.
-			'recipient' => '',
-			'reverse'   => false,
-			'align'     => '',
-			'alt'       => '',
-			'container' => 'p',
+			'role'        => 'administrator',   // The default role if none has been provided.
+			'custom_role' => '',
+			'recipient'   => '',
+			'reverse'     => false,
+			'align'       => '',
+			'alt'         => '',
+			'container'   => 'p',
 		);
 
 		$atts = shortcode_atts( $defaults, $atts );
@@ -246,6 +247,7 @@ class UBN_Private {
 		// Get the text for the shortcode.
 		$args = array(
 			'role'            => $atts['role'],
+			'custom_role'     => $atts['custom_role'],
 			'recipient'       => $atts['recipient'],
 			'reverse'         => $atts['reverse'],
 			'align_style'     => $align_style,
@@ -273,10 +275,11 @@ class UBN_Private {
 	 * @since 5.1 As method in class.
 	 */
 	protected function sanitize( $atts ) {
-		$atts['role']      = wp_strip_all_tags( $atts['role'] );
-		$atts['recipient'] = wp_strip_all_tags( $atts['recipient'] );
-		$atts['align']     = wp_strip_all_tags( $atts['align'] );
-		$atts['container'] = wp_strip_all_tags( $atts['container'] );
+		$atts['role']        = wp_strip_all_tags( $atts['role'] );
+		$atts['custom_role'] = wp_strip_all_tags( $atts['custom_role'] );
+		$atts['recipient']   = wp_strip_all_tags( $atts['recipient'] );
+		$atts['align']       = wp_strip_all_tags( $atts['align'] );
+		$atts['container']   = wp_strip_all_tags( $atts['container'] );
 
 		/*
 		 * Allow the usage of some HTML tags in the shortcode "alt" parameter.
@@ -398,6 +401,7 @@ class UBN_Private {
 	protected function get_text( $args ) {
 		$defaults = array(
 			'role'            => 'administrator', // The default role if none has been provided.
+			'custom_role'     => '',
 			'recipient'       => '',
 			'reverse'         => false,
 			'align_style'     => '',
@@ -547,6 +551,18 @@ class UBN_Private {
 				}
 				break;
 
+			case 'custom-role':
+				$current_user = wp_get_current_user();
+				if ( in_array( $args['custom_role'], (array) $current_user->roles, true ) ) {
+					$text = $args['container_open'] . ' class="private ' . $this->clean_class( $args['custom_role'] ) . '-content"' . $args['align_style'] . '>' . $args['content'] . $args['container_close'];
+				} else {
+					$text = '';
+					if ( $args['alt'] ) {
+						$text = $args['container_open'] . ' class="private alt-text"' . $args['align_style'] . '>' . $args['alt'] . $args['container_close'];
+					}
+				}
+				break;
+
 			default:
 				$text = '';
 		}
@@ -557,5 +573,23 @@ class UBN_Private {
 		}
 
 		return $text;
+	}
+
+	/**
+	 * Clean input for HTML class.
+	 *
+	 * @param  string $string The input string to be cleaned.
+	 * @return string The cleaned string.
+	 * @since 6.0
+	 */
+	private function clean_class( $string ) {
+		if ( ! is_string( $string ) ) {
+			return '';
+		}
+
+		// Change any space and underscore into dash and remove leading/trailing spaces.
+		$string = trim( preg_replace( '([\s_]+)', '-', $string ) );
+
+		return $string;
 	}
 }
