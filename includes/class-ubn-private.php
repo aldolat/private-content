@@ -551,7 +551,7 @@ class UBN_Private {
 				}
 				break;
 
-			case 'custom-role':
+			case 'custom':
 				$current_user = wp_get_current_user();
 				if ( in_array( $args['custom_role'], (array) $current_user->roles, true ) ) {
 					$text = $args['container_open'] . ' class="private ' . $this->clean_class( $args['custom_role'] ) . '-content"' . $args['align_style'] . '>' . $args['content'] . $args['container_close'];
