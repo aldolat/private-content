@@ -17,3 +17,8 @@ $wp_roles->remove_cap( 'editor', 'read_ubn_editor_notes' );
 $wp_roles->remove_cap( 'author', 'read_ubn_author_notes' );
 $wp_roles->remove_cap( 'contributor', 'read_ubn_contributor_notes' );
 $wp_roles->remove_cap( 'subscriber', 'read_ubn_subscriber_notes' );
+
+/*
+ * "So long, and thanks for all the fish."
+ * (Douglas Adams)
+ */
