@@ -1,5 +1,9 @@
 == Changelog ==
 
+= 6.0 =
+
+* Added use of custom roles.
+
 = 5.1 =
 
 * Changed the coding paradigm to OOP.
