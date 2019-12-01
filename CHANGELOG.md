@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [6.0] - 2019-12-01
+### Added
+* Added use of custom roles.
+
 ## [5.1] - 2019-10-27
 ### Changed
 * Changed the coding paradigm to OOP.
@@ -91,6 +95,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * First release of the plugin.
 
 [Unreleased]: https://github.com/aldolat/private-content/commits/develop
+[6.0]: https://github.com/aldolat/private-content/compare/5.1...6.0
 [5.1]: https://github.com/aldolat/private-content/compare/5.0...5.1
 [5.0]: https://github.com/aldolat/private-content/compare/4.4...5.0
 [4.3]: https://github.com/aldolat/private-content/compare/4.3...4.4
