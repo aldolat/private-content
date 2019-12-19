@@ -554,6 +554,24 @@ class UBN_Private {
 			case 'custom':
 				$current_user = wp_get_current_user();
 				$custom_role  = $this->prepare_custom_role( $args['custom_role'] );
+				if (
+					// The role of current user is authorized to read.
+					array_intersect( $custom_role, (array) $current_user->roles ) ||
+					// Current user is an administrator, so he can read.
+					( $this->custom_role_exists( $custom_role ) && current_user_can( 'create_users' ) )
+				) {
+					$text = $args['container_open'] . ' class="private ' . $this->clean_class( $args['custom_role'] ) . '-content"' . $args['align_style'] . '>' . $args['content'] . $args['container_close'];
+				} else {
+					$text = '';
+					if ( $args['alt'] ) {
+						$text = $args['container_open'] . ' class="private alt-text"' . $args['align_style'] . '>' . $args['alt'] . $args['container_close'];
+					}
+				}
+				break;
+
+			case 'custom-only':
+				$current_user = wp_get_current_user();
+				$custom_role  = $this->prepare_custom_role( $args['custom_role'] );
 				if ( array_intersect( $custom_role, (array) $current_user->roles ) ) {
 					$text = $args['container_open'] . ' class="private ' . $this->clean_class( $args['custom_role'] ) . '-content"' . $args['align_style'] . '>' . $args['content'] . $args['container_close'];
 				} else {
@@ -612,5 +630,26 @@ class UBN_Private {
 		$custom_role = explode( ',', $custom_role );
 
 		return $custom_role;
+	}
+
+	/**
+	 * Check if role exists among defined roles.
+	 *
+	 * @param array $custom_role The array containing the custom roles to check.
+	 * @return bool True if custom role exists, false if not.
+	 * @since 6.1
+	 */
+	private function custom_role_exists( $custom_role ) {
+		if ( ! is_array( $custom_role ) ) {
+			return false;
+		}
+
+		foreach ( $custom_role as $role ) {
+			if ( get_role( $role ) ) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 }
