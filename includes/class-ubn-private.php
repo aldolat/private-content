@@ -553,7 +553,8 @@ class UBN_Private {
 
 			case 'custom':
 				$current_user = wp_get_current_user();
-				if ( in_array( $args['custom_role'], (array) $current_user->roles, true ) ) {
+				$custom_role  = $this->prepare_custom_role( $args['custom_role'] );
+				if ( array_intersect( $custom_role, (array) $current_user->roles ) ) {
 					$text = $args['container_open'] . ' class="private ' . $this->clean_class( $args['custom_role'] ) . '-content"' . $args['align_style'] . '>' . $args['content'] . $args['container_close'];
 				} else {
 					$text = '';
@@ -587,9 +588,29 @@ class UBN_Private {
 			return '';
 		}
 
-		// Change any space and underscore into dash and remove leading/trailing spaces.
-		$string = trim( preg_replace( '([\s_]+)', '-', $string ) );
+		// Change any space, underscore, and comma into dash and remove leading/trailing dash.
+		$string = trim( preg_replace( '([\s_,]+)', '-', $string ), '-' );
 
 		return $string;
+	}
+
+	/**
+	 * Prepare custom role(s) from user input.
+	 *
+	 * @param  string $custom_role The custom role entered by user.
+	 * @return array  The custom role(s) as an array.
+	 * @since 6.1
+	 */
+	private function prepare_custom_role( $custom_role ) {
+		// Remove any space.
+		$custom_role = preg_replace( '([\s]+)', '', $custom_role );
+
+		// Add a trailing comma.
+		$custom_role .= ',';
+
+		// Make $custom roles an array.
+		$custom_role = explode( ',', $custom_role );
+
+		return $custom_role;
 	}
 }
