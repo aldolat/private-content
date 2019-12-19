@@ -28,6 +28,7 @@ Display a portion of a post content only to users of a specific role or to a sin
     * [1. At the center of the screen, the shortcode is used in the WordPress editor. The text inside the shortcode will be displayed only to Authors and above roles](#1-at-the-center-of-the-screen-the-shortcode-is-used-in-the-wordpress-editor-the-text-inside-the-shortcode-will-be-displayed-only-to-authors-and-above-roles)
     * [2. The shortcode in action. On the left, the text revealed to Administrators only; on the right, the page as seen by lower roles (Editors, Authors, etc., or simply readers)](#2-the-shortcode-in-action-on-the-left-the-text-revealed-to-administrators-only-on-the-right-the-page-as-seen-by-lower-roles-editors-authors-etc-or-simply-readers)
   * [Upgrade Notice](#upgrade-notice)
+    * [6.1](#61)
     * [2.0](#20)
     * [2.5](#25)
     * [1.0](#10)
@@ -50,6 +51,8 @@ As of version 4.3 you can use either the usual `private` shortcode or the extra 
 As of version 5.0 you can use the new option `reverse` to change the logic of the `recipient` option. If `reverse` is activated, it will not allow users in `recipient` read the private note.
 
 As of version 6.0 you can use custom roles.
+
+As of version 6.1 you can use multiple custom roles. Also Administrators can always read text for custom roles, unless a `role="custom-only"` option has been used.
 
 For more information, please see the [official Wiki on GitHub](https://github.com/aldolat/private-content/wiki).
 
@@ -101,6 +104,10 @@ Yes, custom roles are fully supported starting from version 6.0.
 ![2. The shortcode in action. On the left, the text revealed to Administrators only; on the right, the page as seen by lower roles (Editors, Authors, etc., or simply readers).](http://ps.w.org/private-content/assets/screenshot-2.png)
 
 ## Upgrade Notice
+
+### 6.1
+
+Now Administrators can always read text for custom roles, unless a `role="custom-only"` option has been used.
 
 ### 2.0
 

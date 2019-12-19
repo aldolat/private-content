@@ -4,7 +4,7 @@ Donate link: https://dev.aldolat.it/projects/private-content/
 Tags: content, private, shortcode
 Requires at least: 3.0
 Tested up to: 5.3
-Stable tag: 6.0
+Stable tag: 6.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -27,6 +27,8 @@ As of version 4.3 you can use either the usual `private` shortcode or the extra 
 As of version 5.0 you can use the new option `reverse` to change the logic of the `recipient` option. If `reverse` is activated, it will not allow users in `recipient` read the private note.
 
 As of version 6.0 you can use custom roles.
+
+As of version 6.1 you can use multiple custom roles. Also Administrators can always read text for custom roles, unless a `role="custom-only"` option has been used.
 
 For more information, please see the [official Wiki on GitHub](https://github.com/aldolat/private-content/wiki).
 
@@ -73,6 +75,10 @@ Yes, custom roles are fully supported starting from version 6.0.
 2. The shortcode in action. On the left, the text revealed to Administrators only; on the right, the page as seen by lower roles (Editors, Authors, etc., or simply readers).
 
 == Upgrade Notice ==
+
+= 6.1 =
+
+Now Administrators can always read text for custom roles, unless a `role="custom-only"` option has been used.
 
 = 2.0 =
 

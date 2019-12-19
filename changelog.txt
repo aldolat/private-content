@@ -1,5 +1,10 @@
 == Changelog ==
 
+= 6.1 =
+
+* Added use of multiple custom roles.
+* Now Administrators can always read text for custom roles, unless a `role="custom-only"` option has been used.
+
 = 6.0 =
 
 * Added use of custom roles.
