@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [6.1] - 2019-12-22
 ### Added
 * Added use of multiple custom roles.
+* Added a new filter when there is no text to be displayed.
 ### Changed
 * Now Administrators can always read text for custom roles, unless a `role="custom-only"` option has been used.
 

@@ -586,9 +586,18 @@ class UBN_Private {
 				$text = '';
 		}
 
-		// Filter the $text variable if $text is not empty.
+		/**
+		 * Filter the $text variable based on $text content.
+		 *
+		 * @since 5.1 Initial single filter available only when $text is not empty.
+		 * @since 6.1 Added filter when $text is empty.
+		 */
 		if ( '' !== $text ) {
+			// $text is populated.
 			$text = apply_filters( 'ubn_private_text', $text );
+		} else {
+			// $text is empty.
+			$text = apply_filters( 'ubn_private_text_empty', $text );
 		}
 
 		return $text;

@@ -3,6 +3,7 @@
 = 6.1 =
 
 * Added use of multiple custom roles.
+* Added a new filter when there is no text to be displayed.
 * Now Administrators can always read text for custom roles, unless a `role="custom-only"` option has been used.
 
 = 6.0 =
