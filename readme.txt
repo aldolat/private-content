@@ -8,7 +8,7 @@ Stable tag: 6.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Display a portion of a post content only to users of a specific role or to a single or multiple users.
+Display a portion of a post content only to users of a specific or multiple roles, or to a single or multiple users.
 
 == Description ==
 

@@ -1,10 +1,5 @@
 # Private Content
 
-[![version][version-badge]][CHANGELOG]
-[![requires][requires-badge]][README]
-[![tested][tested-badge]][README]
-[![license][license-badge]][LICENSE]
-
 **Contributors:** aldolat, specialk, thewanderingbrit  
 **Donate link:** <https://dev.aldolat.it/projects/private-content/>  
 **Tags:** content, private, shortcode  
@@ -14,7 +9,7 @@
 **License:** GPLv3 or later  
 **License URI:** <https://www.gnu.org/licenses/gpl-3.0.html>  
 
-Display a portion of a post content only to users of a specific role or to a single or multiple users.
+Display a portion of a post content only to users of a specific or multiple roles, or to a single or multiple users.
 
 * [Private Content](#private-content)
   * [Description](#description)
@@ -127,11 +122,3 @@ Many thanks to:
 
 * [Jean Baptiste Jung](http://www.wprecipes.com/add-private-notes-to-your-wordpress-blog-posts) for the idea behind this plugin;
 * [Jeff Starr](http://digwp.com/2010/05/private-content-posts-shortcode) for the initial code.
-
-[CHANGELOG]: ./CHANGELOG.md
-[LICENSE]: ./gpl-3.0.txt
-[README]: ./README.md
-[version-badge]: https://img.shields.io/badge/Version-6.0-blue.svg
-[requires-badge]: https://img.shields.io/badge/Requires_WordPress-3.0.0-green.svg
-[tested-badge]: https://img.shields.io/badge/Tested_up_to_WordPress-5.3-green.svg
-[license-badge]: https://img.shields.io/badge/License-GPLv3-ff69b4.svg
