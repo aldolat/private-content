@@ -10,7 +10,7 @@
 **Tags:** content, private, shortcode  
 **Requires at least:** 3.0  
 **Tested up to:** 5.3  
-**Stable tag:** 6.0  
+**Stable tag:** 6.1  
 **License:** GPLv3 or later  
 **License URI:** <https://www.gnu.org/licenses/gpl-3.0.html>  
 
@@ -28,6 +28,7 @@ Display a portion of a post content only to users of a specific role or to a sin
     * [1. At the center of the screen, the shortcode is used in the WordPress editor. The text inside the shortcode will be displayed only to Authors and above roles](#1-at-the-center-of-the-screen-the-shortcode-is-used-in-the-wordpress-editor-the-text-inside-the-shortcode-will-be-displayed-only-to-authors-and-above-roles)
     * [2. The shortcode in action. On the left, the text revealed to Administrators only; on the right, the page as seen by lower roles (Editors, Authors, etc., or simply readers)](#2-the-shortcode-in-action-on-the-left-the-text-revealed-to-administrators-only-on-the-right-the-page-as-seen-by-lower-roles-editors-authors-etc-or-simply-readers)
   * [Upgrade Notice](#upgrade-notice)
+    * [6.1](#61)
     * [2.0](#20)
     * [2.5](#25)
     * [1.0](#10)
@@ -51,6 +52,8 @@ As of version 5.0 you can use the new option `reverse` to change the logic of th
 
 As of version 6.0 you can use custom roles.
 
+As of version 6.1 you can use multiple custom roles. Also Administrators can always read text for custom roles, unless a `role="custom-only"` option has been used.
+
 For more information, please see the [official Wiki on GitHub](https://github.com/aldolat/private-content/wiki).
 
 ### Privacy Policy
@@ -69,7 +72,7 @@ This section describes how to install the plugin and get it working.
 
 ### Is there a way to display an alternate text to readers that haven't the rights to read the hidden text?
 
-This plugin is not intended to be used in such way, but only in order to display a portion of a post to certain readers. Also, the hidden text must remain hidden, without the presence of an alternate text that could reveal the presence of the hidden text. Anyway, as of version 2.2, the plugin can display an alternate text, if it's necessary: you can use the `alt` option to do that.
+This plugin is not intended to be used in such way, but only in order to display a portion of a post to certain readers. Also, the hidden text must remain hidden, without the presence of an alternate text that could reveal the presence of the hidden text. Anyway, as of version 2.2, the plugin can display an alternate text, if it's necessary: you can use the `alt` option to do that. You can find more information in the [Wiki page](https://github.com/aldolat/private-content/wiki#alt-alternate-text-for-excluded-users).
 
 Also, this plugin was created only to show a small piece of text (i.e. a couple of lines) as a note to the post for particular readers.
 
@@ -88,7 +91,7 @@ See the [official Wiki](https://github.com/aldolat/private-content/wiki#giving-a
 
 ### Does this plugin work with custom roles?
 
-Yes, custom roles are fully supported starting from version 6.0.
+Yes, custom roles are fully supported starting from version 6.0. You can find more informationin the [Wiki page](https://github.com/aldolat/private-content/wiki#custom_role-display-a-text-portion-to-a-custom-role-or-multiple-roles).
 
 ## Screenshots
 
@@ -101,6 +104,10 @@ Yes, custom roles are fully supported starting from version 6.0.
 ![2. The shortcode in action. On the left, the text revealed to Administrators only; on the right, the page as seen by lower roles (Editors, Authors, etc., or simply readers).](http://ps.w.org/private-content/assets/screenshot-2.png)
 
 ## Upgrade Notice
+
+### 6.1
+
+Now Administrators can always read text for custom roles, unless a `role="custom-only"` option has been used.
 
 ### 2.0
 

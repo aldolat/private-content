@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [6.1] - 2019-12-22
+### Added
+* Added use of multiple custom roles.
+* Added a new filter when there is no text to be displayed.
+* Added a new filter for hidden text.
+* Added a new filter for alternate text.
+### Changed
+* Now Administrators can always read text for custom roles, unless a `role="custom-only"` option has been used.
+* Code optimization.
+
 ## [6.0] - 2019-12-01
 ### Added
 * Added use of custom roles.
@@ -53,7 +63,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 * Removed CSS class in the alternate text, in order to hide which type of users was the recipent of the text.
 
-## [2.5] -
+## [2.5] - 2015-08-08
 ### Added
 * NEW: Added ability to use "span" as a container.
 ### Fixed
@@ -95,15 +105,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * First release of the plugin.
 
 [Unreleased]: https://github.com/aldolat/private-content/commits/develop
+[6.1]: https://github.com/aldolat/private-content/compare/6.0...6.1
 [6.0]: https://github.com/aldolat/private-content/compare/5.1...6.0
 [5.1]: https://github.com/aldolat/private-content/compare/5.0...5.1
 [5.0]: https://github.com/aldolat/private-content/compare/4.4...5.0
-[4.3]: https://github.com/aldolat/private-content/compare/4.3...4.4
+[4.4]: https://github.com/aldolat/private-content/compare/4.3...4.4
 [4.3]: https://github.com/aldolat/private-content/compare/4.2...4.3
 [4.2]: https://github.com/aldolat/private-content/compare/4.1...4.2
 [4.1]: https://github.com/aldolat/private-content/compare/4.0...4.1
 [4.0]: https://github.com/aldolat/private-content/compare/3.0...4.0
-[3.0]: https://github.com/aldolat/private-content/compare/v2.4...3.0
+[3.0]: https://github.com/aldolat/private-content/compare/2.5...3.0
+[2.5]: https://github.com/aldolat/private-content/compare/v2.4...2.5
 [2.4]: https://github.com/aldolat/private-content/compare/v2.3...v2.4
 [2.3]: https://github.com/aldolat/private-content/releases/tag/v2.3
 [2.2]: https://plugins.trac.wordpress.org/browser/private-content/tags/2.2

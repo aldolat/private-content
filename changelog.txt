@@ -1,5 +1,14 @@
 == Changelog ==
 
+= 6.1 =
+
+* Added use of multiple custom roles.
+* Added a new filter when there is no text to be displayed.
+* Added a new filter for hidden text.
+* Added a new filter for alternate text.
+* Now Administrators can always read text for custom roles, unless a `role="custom-only"` option has been used.
+* Code optimization.
+
 = 6.0 =
 
 * Added use of custom roles.
