@@ -10,7 +10,7 @@
 **Tags:** content, private, shortcode  
 **Requires at least:** 3.0  
 **Tested up to:** 5.3  
-**Stable tag:** 6.0  
+**Stable tag:** 6.1  
 **License:** GPLv3 or later  
 **License URI:** <https://www.gnu.org/licenses/gpl-3.0.html>  
 
@@ -72,7 +72,7 @@ This section describes how to install the plugin and get it working.
 
 ### Is there a way to display an alternate text to readers that haven't the rights to read the hidden text?
 
-This plugin is not intended to be used in such way, but only in order to display a portion of a post to certain readers. Also, the hidden text must remain hidden, without the presence of an alternate text that could reveal the presence of the hidden text. Anyway, as of version 2.2, the plugin can display an alternate text, if it's necessary: you can use the `alt` option to do that.
+This plugin is not intended to be used in such way, but only in order to display a portion of a post to certain readers. Also, the hidden text must remain hidden, without the presence of an alternate text that could reveal the presence of the hidden text. Anyway, as of version 2.2, the plugin can display an alternate text, if it's necessary: you can use the `alt` option to do that. You can find more information in the [Wiki page](https://github.com/aldolat/private-content/wiki#alt-alternate-text-for-excluded-users).
 
 Also, this plugin was created only to show a small piece of text (i.e. a couple of lines) as a note to the post for particular readers.
 
@@ -91,7 +91,7 @@ See the [official Wiki](https://github.com/aldolat/private-content/wiki#giving-a
 
 ### Does this plugin work with custom roles?
 
-Yes, custom roles are fully supported starting from version 6.0.
+Yes, custom roles are fully supported starting from version 6.0. You can find more informationin the [Wiki page](https://github.com/aldolat/private-content/wiki#custom_role-display-a-text-portion-to-a-custom-role-or-multiple-roles).
 
 ## Screenshots
 

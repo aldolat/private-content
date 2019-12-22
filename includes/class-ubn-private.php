@@ -413,114 +413,126 @@ class UBN_Private {
 
 		$args = wp_parse_args( $args, $defaults );
 
+		$text = '';
+
 		switch ( $args['role'] ) {
 
 			case 'administrator':
 				if ( current_user_can( 'create_users' ) ) {
-					$text = $args['container_open'] . ' class="private administrator-content"' . $args['align_style'] . '>' . $args['content'] . $args['container_close'];
+					$class = 'class="private administrator-content"';
+					$text  = apply_filters( 'ubn_private_content', $args['content'] );
 				} else {
-					$text = '';
 					if ( $args['alt'] ) {
-						$text = $args['container_open'] . ' class="private alt-text"' . $args['align_style'] . '>' . $args['alt'] . $args['container_close'];
+						$class = 'class="private alt-text"';
+						$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
 					}
 				}
 				break;
 
 			case 'editor':
 				if ( current_user_can( 'edit_others_posts' ) ) {
-					$text = $args['container_open'] . ' class="private editor-content"' . $args['align_style'] . '>' . $args['content'] . $args['container_close'];
+					$class = 'class="private editor-content"';
+					$text  = apply_filters( 'ubn_private_content', $args['content'] );
 				} else {
-					$text = '';
 					if ( $args['alt'] ) {
-						$text = $args['container_open'] . ' class="private alt-text"' . $args['align_style'] . '>' . $args['alt'] . $args['container_close'];
+						$class = 'class="private alt-text"';
+						$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
 					}
 				}
 				break;
 
 			case 'editor-only':
 				if ( current_user_can( 'read_ubn_editor_notes' ) ) {
-					$text = $args['container_open'] . ' class="private editor-content editor-only"' . $args['align_style'] . '>' . $args['content'] . $args['container_close'];
+					$class = 'class="private editor-content editor-only';
+					$text  = apply_filters( 'ubn_private_content', $args['content'] );
 				} else {
-					$text = '';
 					if ( $args['alt'] ) {
-						$text = $args['container_open'] . ' class="private alt-text"' . $args['align_style'] . '>' . $args['alt'] . $args['container_close'];
+						$class = 'class="private alt-text"';
+						$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
 					}
 				}
 				break;
 
 			case 'author':
 				if ( current_user_can( 'publish_posts' ) ) {
-					$text = $args['container_open'] . ' class="private author-content"' . $args['align_style'] . '>' . $args['content'] . $args['container_close'];
+					$class = 'class="private author-content"';
+					$text  = apply_filters( 'ubn_private_content', $args['content'] );
 				} else {
-					$text = '';
 					if ( $args['alt'] ) {
-						$text = $args['container_open'] . ' class="private alt-text"' . $args['align_style'] . '>' . $args['alt'] . $args['container_close'];
+						$class = 'class="private alt-text"';
+						$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
 					}
 				}
 				break;
 
 			case 'author-only':
 				if ( current_user_can( 'read_ubn_author_notes' ) ) {
-					$text = $args['container_open'] . ' class="private author-content author-only"' . $args['align_style'] . '>' . $args['content'] . $args['container_close'];
+					$class = 'class="private author-content author-only"';
+					$text  = apply_filters( 'ubn_private_content', $args['content'] );
 				} else {
-					$text = '';
 					if ( $args['alt'] ) {
-						$text = $args['container_open'] . ' class="private alt-text"' . $args['align_style'] . '>' . $args['alt'] . $args['container_close'];
+						$class = 'class="private alt-text"';
+						$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
 					}
 				}
 				break;
 
 			case 'contributor':
 				if ( current_user_can( 'edit_posts' ) ) {
-					$text = $args['container_open'] . ' class="private contributor-content"' . $args['align_style'] . '>' . $args['content'] . $args['container_close'];
+					$class = 'class="private contributor-content"';
+					$text  = apply_filters( 'ubn_private_content', $args['content'] );
 				} else {
-					$text = '';
 					if ( $args['alt'] ) {
-						$text = $args['container_open'] . ' class="private alt-text"' . $args['align_style'] . '>' . $args['alt'] . $args['container_close'];
+						$class = 'class="private alt-text"';
+						$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
 					}
 				}
 				break;
 
 			case 'contributor-only':
 				if ( current_user_can( 'read_ubn_contributor_notes' ) ) {
-					$text = $args['container_open'] . ' class="private contributor-content contributor-only"' . $args['align_style'] . '>' . $args['content'] . $args['container_close'];
+					$class = 'class="private contributor-content contributor-only"';
+					$text  = apply_filters( 'ubn_private_content', $args['content'] );
 				} else {
-					$text = '';
 					if ( $args['alt'] ) {
-						$text = $args['container_open'] . ' class="private alt-text"' . $args['align_style'] . '>' . $args['alt'] . $args['container_close'];
+						$class = 'class="private alt-text"';
+						$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
 					}
 				}
 				break;
 
 			case 'subscriber':
 				if ( current_user_can( 'read' ) ) {
-					$text = $args['container_open'] . ' class="private subscriber-content"' . $args['align_style'] . '>' . $args['content'] . $args['container_close'];
+					$class = 'class="private subscriber-content"';
+					$text  = apply_filters( 'ubn_private_content', $args['content'] );
 				} else {
-					$text = '';
 					if ( $args['alt'] ) {
-						$text = $args['container_open'] . ' class="private alt-text"' . $args['align_style'] . '>' . $args['alt'] . $args['container_close'];
+						$class = 'class="private alt-text"';
+						$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
 					}
 				}
 				break;
 
 			case 'subscriber-only':
 				if ( current_user_can( 'read_ubn_subscriber_notes' ) ) {
-					$text = $args['container_open'] . ' class="private subscriber-content subscriber-only"' . $args['align_style'] . '>' . $args['content'] . $args['container_close'];
+					$class = 'class="private subscriber-content subscriber-only"';
+					$text  = apply_filters( 'ubn_private_content', $args['content'] );
 				} else {
-					$text = '';
 					if ( $args['alt'] ) {
-						$text = $args['container_open'] . ' class="private alt-text"' . $args['align_style'] . '>' . $args['alt'] . $args['container_close'];
+						$class = 'class="private alt-text"';
+						$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
 					}
 				}
 				break;
 
 			case 'visitor-only':
 				if ( ! is_user_logged_in() ) {
-					$text = $args['container_open'] . ' class="private visitor-content visitor-only"' . $args['align_style'] . '>' . $args['content'] . $args['container_close'];
+					$class = 'class="private visitor-content visitor-only"';
+					$text  = apply_filters( 'ubn_private_content', $args['content'] );
 				} else {
-					$text = '';
 					if ( $args['alt'] ) {
-						$text = $args['container_open'] . ' class="private alt-text"' . $args['align_style'] . '>' . $args['alt'] . $args['container_close'];
+						$class = 'class="private alt-text"';
+						$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
 					}
 				}
 				break;
@@ -531,21 +543,23 @@ class UBN_Private {
 				if ( $args['reverse'] ) {
 					// Reverse the logic of the function. Users added in recipient WILL NOT see the private note.
 					if ( in_array( $current_user->user_login, $all_recipients, true ) ) {
-						$text = '';
 						if ( $args['alt'] ) {
-							$text = $args['container_open'] . ' class="private alt-text"' . $args['align_style'] . '>' . $args['alt'] . $args['container_close'];
+							$class = 'class="private alt-text"';
+							$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
 						}
 					} else {
-						$text = $args['container_open'] . ' class="private user-content user-only-reverse"' . $args['align_style'] . '>' . $args['content'] . $args['container_close'];
+						$class = 'class="private user-content user-only-reverse"';
+						$text  = apply_filters( 'ubn_private_content', $args['content'] );
 					}
 				} else {
 					// The standard logic of the function. Users added in recipient WILL see the private note.
 					if ( in_array( $current_user->user_login, $all_recipients, true ) ) {
-						$text = $args['container_open'] . ' class="private user-content user-only ' . esc_attr( $current_user->user_login ) . '-only"' . $args['align_style'] . '>' . $args['content'] . $args['container_close'];
+						$class = 'class="private user-content user-only ' . esc_attr( $current_user->user_login ) . '-only"';
+						$text  = apply_filters( 'ubn_private_content', $args['content'] );
 					} else {
-						$text = '';
 						if ( $args['alt'] ) {
-							$text = $args['container_open'] . ' class="private alt-text"' . $args['align_style'] . '>' . $args['alt'] . $args['container_close'];
+							$class = 'class="private alt-text"';
+							$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
 						}
 					}
 				}
@@ -555,16 +569,17 @@ class UBN_Private {
 				$current_user = wp_get_current_user();
 				$custom_role  = $this->prepare_custom_role( $args['custom_role'] );
 				if (
-					// The role of current user is authorized to read.
+					// Check if one of the current user roles is among authorized roles.
 					array_intersect( $custom_role, (array) $current_user->roles ) ||
 					// Current user is an administrator, so he can read.
 					( $this->custom_role_exists( $custom_role ) && current_user_can( 'create_users' ) )
 				) {
-					$text = $args['container_open'] . ' class="private ' . $this->clean_class( $args['custom_role'] ) . '-content"' . $args['align_style'] . '>' . $args['content'] . $args['container_close'];
+					$class = 'class="private ' . $this->clean_class( $args['custom_role'] ) . '-content"';
+					$text  = apply_filters( 'ubn_private_content', $args['content'] );
 				} else {
-					$text = '';
 					if ( $args['alt'] ) {
-						$text = $args['container_open'] . ' class="private alt-text"' . $args['align_style'] . '>' . $args['alt'] . $args['container_close'];
+						$class = 'class="private alt-text"';
+						$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
 					}
 				}
 				break;
@@ -573,11 +588,12 @@ class UBN_Private {
 				$current_user = wp_get_current_user();
 				$custom_role  = $this->prepare_custom_role( $args['custom_role'] );
 				if ( array_intersect( $custom_role, (array) $current_user->roles ) ) {
-					$text = $args['container_open'] . ' class="private ' . $this->clean_class( $args['custom_role'] ) . '-content"' . $args['align_style'] . '>' . $args['content'] . $args['container_close'];
+					$class = 'class="private ' . $this->clean_class( $args['custom_role'] ) . '-content"';
+					$text  = apply_filters( 'ubn_private_content', $args['content'] );
 				} else {
-					$text = '';
 					if ( $args['alt'] ) {
-						$text = $args['container_open'] . ' class="private alt-text"' . $args['align_style'] . '>' . $args['alt'] . $args['container_close'];
+						$class = 'class="private alt-text"';
+						$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
 					}
 				}
 				break;
@@ -586,17 +602,24 @@ class UBN_Private {
 				$text = '';
 		}
 
-		/**
-		 * Filter the $text variable based on $text content.
-		 *
-		 * @since 5.1 Initial single filter available only when $text is not empty.
-		 * @since 6.1 Added filter when $text is empty.
-		 */
 		if ( '' !== $text ) {
-			// $text is populated.
+			// $text is not empty.
+			$text = $args['container_open'] . ' ' . $class . $args['align_style'] . '>' . $text . $args['container_close'];
+
+			/**
+			 * Filter $text if not empty.
+			 *
+			 * @since 5.1 Initial single filter available only when $text is not empty.
+			 */
 			$text = apply_filters( 'ubn_private_text', $text );
 		} else {
 			// $text is empty.
+
+			/**
+			 * Filter $text if empty.
+			 *
+			 * @since 6.1 Added filter when $text is empty.
+			 */
 			$text = apply_filters( 'ubn_private_text_empty', $text );
 		}
 
