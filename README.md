@@ -5,7 +5,7 @@
 **Tags:** content, private, shortcode  
 **Requires at least:** 3.0  
 **Tested up to:** 5.3  
-**Stable tag:** 6.1  
+**Stable tag:** 6.2  
 **License:** GPLv3 or later  
 **License URI:** <https://www.gnu.org/licenses/gpl-3.0.html>  
 
@@ -48,6 +48,8 @@ As of version 5.0 you can use the new option `reverse` to change the logic of th
 As of version 6.0 you can use custom roles.
 
 As of version 6.1 you can use multiple custom roles. Also Administrators can always read text for custom roles, unless a `role="custom-only"` option has been used.
+
+As of version 6.2 you can use custom IDs and/or classes for the HTML container.
 
 For more information, please see the [official Wiki on GitHub](https://github.com/aldolat/private-content/wiki).
 
