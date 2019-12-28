@@ -539,7 +539,9 @@ class UBN_Private {
 				$all_recipients = array_map( 'trim', explode( ',', $args['recipient'] ) );
 				$current_user   = wp_get_current_user();
 				if ( $args['reverse'] ) {
-					// Reverse the logic of the function. Users added in recipient WILL NOT see the private note.
+					/* Reverse the logic of the function.
+					 * Users added in recipient WILL NOT see the private note.
+					 */
 					if ( in_array( $current_user->user_login, $all_recipients, true ) ) {
 						if ( $args['alt'] ) {
 							$class = $this->get_selector( 'class', 'private alt-text', $args['class'] );
@@ -550,7 +552,9 @@ class UBN_Private {
 						$text  = apply_filters( 'ubn_private_content', $args['content'] );
 					}
 				} else {
-					// The standard logic of the function. Users added in recipient WILL see the private note.
+					/* The standard logic of the function.
+					 * Users added in recipient WILL see the private note.
+					 */
 					if ( in_array( $current_user->user_login, $all_recipients, true ) ) {
 						$class = $this->get_selector(
 							'class',
@@ -572,18 +576,20 @@ class UBN_Private {
 				$current_user = wp_get_current_user();
 
 				if ( $args['reverse'] ) {
-					// Reverse the logic of the function. Users added in recipient WILL NOT see the private note.
+					/* Reverse the logic of the function.
+					 * Users added in custom_role WILL NOT see the private note, unless they are Administrators.
+					 */
 					if (
-						// Check if one of the current user roles is among authorized roles.
-						array_intersect( $custom_role, (array) $current_user->roles ) ||
-						// Current user is an administrator, so he can read.
-						( $this->custom_role_exists( $custom_role ) && current_user_can( 'create_users' ) )
+						// Check if one of the current user roles is among excluded roles.
+						array_intersect( $custom_role, (array) $current_user->roles ) && ! current_user_can( 'create_users' )
 					) {
+						// Current user IS in the excluded roles, so he can't read.
 						if ( $args['alt'] ) {
 							$class = $this->get_selector( 'class', 'private alt-text', $args['class'] );
 							$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
 						}
 					} else {
+						// Current user IS NOT in the excluded roles, so he can read.
 						$custom_role_class = $this->prepare_custom_role_class( $args['custom_role'] );
 
 						$class = $this->get_selector(
@@ -595,7 +601,9 @@ class UBN_Private {
 						$text = apply_filters( 'ubn_private_content', $args['content'] );
 					}
 				} else {
-					// The standard logic of the function. Users added in recipient WILL see the private note.
+					/* The standard logic of the function.
+					 * Users added in custom_role WILL see the private note.
+					 */
 					if (
 						// Check if one of the current user roles is among authorized roles.
 						array_intersect( $custom_role, (array) $current_user->roles ) ||
