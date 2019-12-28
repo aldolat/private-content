@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [6.2] - 2019-12-27
 ### Added
 * Added support for custom HTML classes and HTML IDs.
+* Added reverse option for custom roles.
+### Changed
+* Convert user-entered custom roles into lowercase.
 
 ## [6.1] - 2019-12-22
 ### Added

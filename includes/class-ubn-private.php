@@ -124,7 +124,7 @@ class UBN_Private {
 	 * This function will be removed in the future.
 	 *
 	 * @access public
-	 * @since 2.0.0
+	 * @since 2.0
 	 */
 	public function ubn_private_check_capability_exists() {
 		$editor_role = get_role( 'editor' );
@@ -207,6 +207,7 @@ class UBN_Private {
 	 *
 	 * @access public
 	 * @param null  $content The content is defined inside the two square brackets.
+	 * @since 1.0
 	 * @example [private role="editor" align="center" alt="Please, login to view this note." container="div"]All Editors - Meeting on Slack every day at 9am![/private]
 	 */
 	public function ubn_private_content( $atts, $content = null ) {
@@ -567,35 +568,61 @@ class UBN_Private {
 				break;
 
 			case 'custom':
-				$current_user = wp_get_current_user();
 				$custom_role  = $this->prepare_custom_role( $args['custom_role'] );
+				$current_user = wp_get_current_user();
 
-				if (
-					// Check if one of the current user roles is among authorized roles.
-					array_intersect( $custom_role, (array) $current_user->roles ) ||
-					// Current user is an administrator, so he can read.
-					( $this->custom_role_exists( $custom_role ) && current_user_can( 'create_users' ) )
-				) {	
-					$custom_role_class = $this->prepare_custom_role_class( $args['custom_role'] );
+				if ( $args['reverse'] ) {
+					// Reverse the logic of the function. Users added in recipient WILL NOT see the private note.
+					if (
+						// Check if one of the current user roles is among authorized roles.
+						array_intersect( $custom_role, (array) $current_user->roles ) ||
+						// Current user is an administrator, so he can read.
+						( $this->custom_role_exists( $custom_role ) && current_user_can( 'create_users' ) )
+					) {
+						if ( $args['alt'] ) {
+							$class = $this->get_selector( 'class', 'private alt-text', $args['class'] );
+							$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
+						}
+					} else {
+						$custom_role_class = $this->prepare_custom_role_class( $args['custom_role'] );
 
-					$class = $this->get_selector(
-						'class',
-						'private',
-						$custom_role_class . '-content ' . $args['class']
-					);
+						$class = $this->get_selector(
+							'class',
+							'private',
+							$custom_role_class . '-content ' . $args['class']
+						);
 
-					$text = apply_filters( 'ubn_private_content', $args['content'] );
+						$text = apply_filters( 'ubn_private_content', $args['content'] );
+					}
 				} else {
-					if ( $args['alt'] ) {
-						$class = $this->get_selector( 'class', 'private alt-text', $args['class'] );
-						$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
+					// The standard logic of the function. Users added in recipient WILL see the private note.
+					if (
+						// Check if one of the current user roles is among authorized roles.
+						array_intersect( $custom_role, (array) $current_user->roles ) ||
+						// Current user is an administrator, so he can read.
+						( $this->custom_role_exists( $custom_role ) && current_user_can( 'create_users' ) )
+					) {
+						$custom_role_class = $this->prepare_custom_role_class( $args['custom_role'] );
+
+						$class = $this->get_selector(
+							'class',
+							'private',
+							$custom_role_class . '-content ' . $args['class']
+						);
+
+						$text = apply_filters( 'ubn_private_content', $args['content'] );
+					} else {
+						if ( $args['alt'] ) {
+							$class = $this->get_selector( 'class', 'private alt-text', $args['class'] );
+							$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
+						}
 					}
 				}
 				break;
 
 			case 'custom-only':
-				$current_user = wp_get_current_user();
 				$custom_role  = $this->prepare_custom_role( $args['custom_role'] );
+				$current_user = wp_get_current_user();
 
 				if ( array_intersect( $custom_role, (array) $current_user->roles ) ) {
 					$custom_role_class = $this->prepare_custom_role_class( $args['custom_role'] );
@@ -740,7 +767,6 @@ class UBN_Private {
 	 * @param string $type The selector type (class or id).
 	 * @param string $fixed_selector The selectors that must be unchanged.
 	 * @param string $user_selector The selector name (or names comma separated) entered by user.
-	 * @uses sanitize_html_classes
 	 * @access private
 	 * @since 6.2
 	 */

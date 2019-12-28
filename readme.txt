@@ -12,27 +12,11 @@ Display a portion of a post content only to users of a specific or multiple role
 
 == Description ==
 
-This plugin provides a shortcode to display a portion of a post content only to users of a specific role. For example, you can show the hidden text to Editors or to Authors or to any other WordPress role.
+This plugin provides a shortcode to display a small portion of a post content only to users of a specific role. For example, you can show the hidden text to Editors or to Authors or to any other WordPress role, even a custom role.
 
-Please, note that an Administrator can read an Editor private content or a Subscriber private content, and so on. Same thing for Editor, Author, Contributor, and Subscriber: a higher role can read a lower role content.
+Private Content is not intended to be used as a memberhip plugin management, but instead it should be used to show small parts of a post only to certain users or roles.
 
-Also you can show the hidden text **only** to a certain role. For example, you can mark a text as visible only to Contributors and hide it to higher roles, such as Administrators or Editors and so on.
-
-As of version 3.0 you can mark a text as visible only to a certain user, using his login name.
-
-As of version 4.0 you can mark a text as visible to multiple users, using their login names comma separated.
-
-As of version 4.3 you can use either the usual `private` shortcode or the extra `ubn_private`, in case the first is already in use.
-
-As of version 5.0 you can use the new option `reverse` to change the logic of the `recipient` option. If `reverse` is activated, it will not allow users in `recipient` read the private note.
-
-As of version 6.0 you can use custom roles.
-
-As of version 6.1 you can use multiple custom roles. Also Administrators can always read text for custom roles, unless a `role="custom-only"` option has been used.
-
-As of version 6.2 you can use custom IDs and/or classes for the HTML container.
-
-For more information, please see the [official Wiki on GitHub](https://github.com/aldolat/private-content/wiki).
+For a comprehensive explanation, please see [the official Wiki on GitHub](https://github.com/aldolat/private-content/wiki).
 
 = Privacy Policy =
 
@@ -69,7 +53,7 @@ See the [official Wiki](https://github.com/aldolat/private-content/wiki#giving-a
 
 = Does this plugin work with custom roles? =
 
-Yes, custom roles are fully supported starting from version 6.0. You can find more informationin the [Wiki page](https://github.com/aldolat/private-content/wiki#custom_role-display-a-text-portion-to-a-custom-role-or-multiple-roles).
+Yes, custom roles are fully supported starting from version 6.0. You can find more informationin in the [Wiki page](https://github.com/aldolat/private-content/wiki#custom_role-display-a-text-portion-to-a-custom-role-or-multiple-roles).
 
 == Screenshots ==
 

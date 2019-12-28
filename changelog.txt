@@ -3,6 +3,8 @@
 = 6.2 =
 
 * Added support for custom HTML classes and HTML IDs.
+* Added reverse option for custom roles.
+* Convert user-entered custom roles into lowercase.
 
 = 6.1 =
 
