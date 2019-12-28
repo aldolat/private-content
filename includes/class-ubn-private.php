@@ -657,6 +657,9 @@ class UBN_Private {
 		// Remove any leading and trailing comma.
 		$custom_role = trim( $custom_role, ',' );
 
+		// Convert all characters into lowercase.
+		$custom_role = strtolower( $custom_role );
+
 		// Make $custom roles an array.
 		$custom_role = explode( ',', $custom_role );
 
