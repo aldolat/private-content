@@ -523,6 +523,11 @@ class UBN_Private {
 				}
 				break;
 
+			/*
+			 * `visitor` and `visitor-only` are equivalent and have the same behaviour,
+			 * because the check for the role is `! is_user_logged_in()` which excludes any other role.
+			 */
+			case 'visitor':
 			case 'visitor-only':
 				if ( ! is_user_logged_in() ) {
 					$class = $this->get_selector( 'class', 'private visitor-content visitor-only', $args['class'] );

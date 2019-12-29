@@ -5,6 +5,7 @@
 * Added support for custom HTML classes and HTML IDs.
 * Added reverse option for custom roles.
 * Convert user-entered custom roles into lowercase.
+* Added case `visitor` which is equivalent to `visitor-only`.
 
 = 6.1 =
 
