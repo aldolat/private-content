@@ -7,36 +7,16 @@
  */
 
 /*
- * Shortcode to display private post content only to users of a specific role.
+ * Shortcode to display a portion of a post content only to users of a specific or multiple roles,
+ * or to a single or multiple users.
  *
  * @example
  * [private role="administrator"]Text for administrators[/private]
- * [private role="editor" align="center"]Text for editors[/private]
  * [private role="author"]Text for authors[/private]
- * [private role="author-only"]Text for authors only[/private]
- * [private role="contributor" align="right"]Text for contributors[/private]
- * [private role="subscriber" align="justify"]Text for subscribers[/private]
- * [private role="subscriber-only" align="justify"]Text for subscribers only[/private]
+ * [private role="subscriber-only"]Text for subscribers only[/private]
  * [private role="visitor-only"]Text for visitors only[/private]
  *
- * Please, note that an administrator can read an editor private content or a subscriber private content, and so on.
- * Same thing for editor, author, contributor, and subscriber: a higher role can read a lower role content.
- *
- * If you want to show a note only to a certain role, you have to use a <role>-only option.
- * For example:
- * [private role="author-only"]Text for authors only[/private]
- * In this way, Administrators and Editors (roles higher than Editors) can't read this note.
- *
- * If you want to show an alternate text in case the user can't read, you can use `alt` option:
- * [private role="author" alt="You have not rights to read this."]Text for authors only[/private]
- * Please, take note that the alternate text, if defined, is always publicly displayed.
- *
- * WordPress Roles in descending order:
- * Administrator,
- * Editor,
- * Author,
- * Contributor,
- * Subscriber.
+ * For more information, see the official wiki at <https://github.com/aldolat/private-content/wiki>.
  */
 
 /**
@@ -62,7 +42,7 @@ class UBN_Private {
 	 */
 	public function __construct() {
 		// Define the plugin version.
-		$this->plugin_version = '6.1';
+		$this->plugin_version = '6.2';
 	}
 
 	/**
@@ -144,7 +124,7 @@ class UBN_Private {
 	 * This function will be removed in the future.
 	 *
 	 * @access public
-	 * @since 2.0.0
+	 * @since 2.0
 	 */
 	public function ubn_private_check_capability_exists() {
 		$editor_role = get_role( 'editor' );
@@ -185,39 +165,49 @@ class UBN_Private {
 	 * @param array $atts {
 	 *    The array containing the user defined parameters.
 	 *
-	 *    @type string $role      The intended role to view the note.
-	 *                            It can be:
-	 *                            "administrator",
-	 *                            "editor",
-	 *                            "editor-only",
-	 *                            "author",
-	 *                            "author-only",
-	 *                            "contributor",
-	 *                            "contributor-only",
-	 *                            "subscriber",
-	 *                            "subscriber-only",
-	 *                            "visitor-only",
-	 *                            "none". When using "none", you must specify a recipients list in $recipient.
-	 *    @type string $recipient The target role to view the note.
-	 *                            It is used when $role = "none".
-	 *    @type bool   $reverse   Reverse the logic of recipient.
-	 *                            If activated, users added in $recipient will not read the private note.
-	 *    @type string $align     The alignment of text.
-	 *                            It can be:
-	 *                            "left"
-	 *                            "center"
-	 *                            "right"
-	 *                            "justify"
-	 *    @type string $alt       The alternate text to be displayed when the viewer is not the target user.
-	 *    @type string $container The container for the note.
-	 *                            It can be:
-	 *                            "p"
-	 *                            "div"
-	 *                            "span"
+	 *    @type string $role        The intended role to view the note.
+	 *                              It can be:
+	 *                              "administrator",
+	 *                              "editor",
+	 *                              "editor-only",
+	 *                              "author",
+	 *                              "author-only",
+	 *                              "contributor",
+	 *                              "contributor-only",
+	 *                              "subscriber",
+	 *                              "subscriber-only",
+	 *                              "visitor-only",
+	 *                              "none" (when used, you must specify a recipients list in $recipient),
+	 *                              "custom" (when used, you must specify a recipients list in $custom_role),
+	 *                              "custom-only" (when used, you must specify a recipients list in $custom_role).
+	 *    @type string $custom_role The custom roles, comma separated.
+	 *    @type string $recipient   The target role to view the note.
+	 *                              It is used when $role = "none".
+	 *    @type bool   $reverse     Reverse the logic of recipient.
+	 *                              If activated, users added in $recipient will not read the private note.
+	 *    @type string $align       The alignment of text.
+	 *                              It can be:
+	 *                              "left"
+	 *                              "center"
+	 *                              "right"
+	 *                              "justify"
+	 *    @type string $alt         The alternate text to be displayed when the viewer is not the target user.
+	 *    @type string $container   The container for the note.
+	 *                              It can be:
+	 *                              "p"
+	 *                              "div"
+	 *                              "span"
+	 *    @type string $id          The ID selectors, comma separated.
+	 *                              If composed by more words, the words must be separated by a dash or by an underscore,
+	 *                              otherwise the words will be considered as separated ID names.
+	 *    @type string $class       The class selectors, comma separated.
+	 *                              If composed by more words, the words must be separated by a dash or by an underscore,
+	 *                              otherwise the words will be considered as separated class names.
 	 * }
 	 *
 	 * @access public
 	 * @param null  $content The content is defined inside the two square brackets.
+	 * @since 1.0
 	 * @example [private role="editor" align="center" alt="Please, login to view this note." container="div"]All Editors - Meeting on Slack every day at 9am![/private]
 	 */
 	public function ubn_private_content( $atts, $content = null ) {
@@ -229,6 +219,8 @@ class UBN_Private {
 			'align'       => '',
 			'alt'         => '',
 			'container'   => 'p',
+			'id'          => '',
+			'class'       => '',
 		);
 
 		$atts = shortcode_atts( $defaults, $atts );
@@ -254,6 +246,8 @@ class UBN_Private {
 			'alt'             => $atts['alt'],
 			'container_open'  => $container_open,
 			'container_close' => $container_close,
+			'id'              => $atts['id'],
+			'class'           => $atts['class'],
 			'content'         => $content,
 		);
 		$text = $this->get_text( $args );
@@ -279,6 +273,8 @@ class UBN_Private {
 		$atts['custom_role'] = wp_strip_all_tags( $atts['custom_role'] );
 		$atts['recipient']   = wp_strip_all_tags( $atts['recipient'] );
 		$atts['align']       = wp_strip_all_tags( $atts['align'] );
+		$atts['id']          = wp_strip_all_tags( $atts['id'] );
+		$atts['class']       = wp_strip_all_tags( $atts['class'] );
 		$atts['container']   = wp_strip_all_tags( $atts['container'] );
 
 		/*
@@ -400,7 +396,7 @@ class UBN_Private {
 	 */
 	protected function get_text( $args ) {
 		$defaults = array(
-			'role'            => 'administrator', // The default role if none has been provided.
+			'role'            => 'administrator',   // The default role if none has been provided.
 			'custom_role'     => '',
 			'recipient'       => '',
 			'reverse'         => false,
@@ -408,6 +404,8 @@ class UBN_Private {
 			'alt'             => '',
 			'container_open'  => '<p',
 			'container_close' => '</p>',
+			'id'              => '',
+			'class'           => '',
 			'content'         => null,
 		);
 
@@ -419,11 +417,11 @@ class UBN_Private {
 
 			case 'administrator':
 				if ( current_user_can( 'create_users' ) ) {
-					$class = 'class="private administrator-content"';
+					$class = $this->get_selector( 'class', 'private administrator-content', $args['class'] );
 					$text  = apply_filters( 'ubn_private_content', $args['content'] );
 				} else {
 					if ( $args['alt'] ) {
-						$class = 'class="private alt-text"';
+						$class = $this->get_selector( 'class', 'private alt-text', $args['class'] );
 						$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
 					}
 				}
@@ -431,11 +429,11 @@ class UBN_Private {
 
 			case 'editor':
 				if ( current_user_can( 'edit_others_posts' ) ) {
-					$class = 'class="private editor-content"';
+					$class = $this->get_selector( 'class', 'private editor-content', $args['class'] );
 					$text  = apply_filters( 'ubn_private_content', $args['content'] );
 				} else {
 					if ( $args['alt'] ) {
-						$class = 'class="private alt-text"';
+						$class = $this->get_selector( 'class', 'private alt-text', $args['class'] );
 						$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
 					}
 				}
@@ -443,11 +441,11 @@ class UBN_Private {
 
 			case 'editor-only':
 				if ( current_user_can( 'read_ubn_editor_notes' ) ) {
-					$class = 'class="private editor-content editor-only';
+					$class = $this->get_selector( 'class', 'private editor-content editor-only', $args['class'] );
 					$text  = apply_filters( 'ubn_private_content', $args['content'] );
 				} else {
 					if ( $args['alt'] ) {
-						$class = 'class="private alt-text"';
+						$class = $this->get_selector( 'class', 'private alt-text', $args['class'] );
 						$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
 					}
 				}
@@ -455,11 +453,11 @@ class UBN_Private {
 
 			case 'author':
 				if ( current_user_can( 'publish_posts' ) ) {
-					$class = 'class="private author-content"';
+					$class = $this->get_selector( 'class', 'private author-content', $args['class'] );
 					$text  = apply_filters( 'ubn_private_content', $args['content'] );
 				} else {
 					if ( $args['alt'] ) {
-						$class = 'class="private alt-text"';
+						$class = $this->get_selector( 'class', 'private alt-text', $args['class'] );
 						$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
 					}
 				}
@@ -467,11 +465,11 @@ class UBN_Private {
 
 			case 'author-only':
 				if ( current_user_can( 'read_ubn_author_notes' ) ) {
-					$class = 'class="private author-content author-only"';
+					$class = $this->get_selector( 'class', 'private author-content author-only', $args['class'] );
 					$text  = apply_filters( 'ubn_private_content', $args['content'] );
 				} else {
 					if ( $args['alt'] ) {
-						$class = 'class="private alt-text"';
+						$class = $this->get_selector( 'class', 'private alt-text', $args['class'] );
 						$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
 					}
 				}
@@ -479,11 +477,11 @@ class UBN_Private {
 
 			case 'contributor':
 				if ( current_user_can( 'edit_posts' ) ) {
-					$class = 'class="private contributor-content"';
+					$class = $this->get_selector( 'class', 'private contributor-content', $args['class'] );
 					$text  = apply_filters( 'ubn_private_content', $args['content'] );
 				} else {
 					if ( $args['alt'] ) {
-						$class = 'class="private alt-text"';
+						$class = $this->get_selector( 'class', 'private alt-text', $args['class'] );
 						$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
 					}
 				}
@@ -491,11 +489,11 @@ class UBN_Private {
 
 			case 'contributor-only':
 				if ( current_user_can( 'read_ubn_contributor_notes' ) ) {
-					$class = 'class="private contributor-content contributor-only"';
+					$class = $this->get_selector( 'class', 'private contributor-content contributor-only', $args['class'] );
 					$text  = apply_filters( 'ubn_private_content', $args['content'] );
 				} else {
 					if ( $args['alt'] ) {
-						$class = 'class="private alt-text"';
+						$class = $this->get_selector( 'class', 'private alt-text', $args['class'] );
 						$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
 					}
 				}
@@ -503,11 +501,11 @@ class UBN_Private {
 
 			case 'subscriber':
 				if ( current_user_can( 'read' ) ) {
-					$class = 'class="private subscriber-content"';
+					$class = $this->get_selector( 'class', 'private subscriber-content', $args['class'] );
 					$text  = apply_filters( 'ubn_private_content', $args['content'] );
 				} else {
 					if ( $args['alt'] ) {
-						$class = 'class="private alt-text"';
+						$class = $this->get_selector( 'class', 'private alt-text', $args['class'] );
 						$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
 					}
 				}
@@ -515,23 +513,28 @@ class UBN_Private {
 
 			case 'subscriber-only':
 				if ( current_user_can( 'read_ubn_subscriber_notes' ) ) {
-					$class = 'class="private subscriber-content subscriber-only"';
+					$class = $this->get_selector( 'class', 'private subscriber-content subscriber-only', $args['class'] );
 					$text  = apply_filters( 'ubn_private_content', $args['content'] );
 				} else {
 					if ( $args['alt'] ) {
-						$class = 'class="private alt-text"';
+						$class = $this->get_selector( 'class', 'private alt-text', $args['class'] );
 						$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
 					}
 				}
 				break;
 
+			/*
+			 * `visitor` and `visitor-only` are equivalent and have the same behaviour,
+			 * because the check for the role is `! is_user_logged_in()` which excludes any other role.
+			 */
+			case 'visitor':
 			case 'visitor-only':
-				if ( ! is_user_logged_in() ) {
-					$class = 'class="private visitor-content visitor-only"';
+				if ( ! is_user_logged_in() || current_user_can( 'create_users' ) ) {
+					$class = $this->get_selector( 'class', 'private visitor-content visitor-only', $args['class'] );
 					$text  = apply_filters( 'ubn_private_content', $args['content'] );
 				} else {
 					if ( $args['alt'] ) {
-						$class = 'class="private alt-text"';
+						$class = $this->get_selector( 'class', 'private alt-text', $args['class'] );
 						$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
 					}
 				}
@@ -541,24 +544,32 @@ class UBN_Private {
 				$all_recipients = array_map( 'trim', explode( ',', $args['recipient'] ) );
 				$current_user   = wp_get_current_user();
 				if ( $args['reverse'] ) {
-					// Reverse the logic of the function. Users added in recipient WILL NOT see the private note.
+					/* Reverse the logic of the function.
+					 * Users added in recipient WILL NOT see the private note.
+					 */
 					if ( in_array( $current_user->user_login, $all_recipients, true ) ) {
 						if ( $args['alt'] ) {
-							$class = 'class="private alt-text"';
+							$class = $this->get_selector( 'class', 'private alt-text', $args['class'] );
 							$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
 						}
 					} else {
-						$class = 'class="private user-content user-only-reverse"';
+						$class = $this->get_selector( 'class', 'private user-content user-only-reverse', $args['class'] );
 						$text  = apply_filters( 'ubn_private_content', $args['content'] );
 					}
 				} else {
-					// The standard logic of the function. Users added in recipient WILL see the private note.
+					/* The standard logic of the function.
+					 * Users added in recipient WILL see the private note.
+					 */
 					if ( in_array( $current_user->user_login, $all_recipients, true ) ) {
-						$class = 'class="private user-content user-only ' . esc_attr( $current_user->user_login ) . '-only"';
+						$class = $this->get_selector(
+							'class',
+							'private user-content user-only ' . esc_attr( $current_user->user_login ) . '-only',
+							$args['class']
+						);
 						$text  = apply_filters( 'ubn_private_content', $args['content'] );
 					} else {
 						if ( $args['alt'] ) {
-							$class = 'class="private alt-text"';
+							$class = $this->get_selector( 'class', 'private alt-text', $args['class'] );
 							$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
 						}
 					}
@@ -566,33 +577,79 @@ class UBN_Private {
 				break;
 
 			case 'custom':
-				$current_user = wp_get_current_user();
 				$custom_role  = $this->prepare_custom_role( $args['custom_role'] );
-				if (
-					// Check if one of the current user roles is among authorized roles.
-					array_intersect( $custom_role, (array) $current_user->roles ) ||
-					// Current user is an administrator, so he can read.
-					( $this->custom_role_exists( $custom_role ) && current_user_can( 'create_users' ) )
-				) {
-					$class = 'class="private ' . $this->clean_class( $args['custom_role'] ) . '-content"';
-					$text  = apply_filters( 'ubn_private_content', $args['content'] );
+				$current_user = wp_get_current_user();
+
+				if ( $args['reverse'] ) {
+					/* Reverse the logic of the function.
+					 * Users added in custom_role WILL NOT see the private note, unless they are Administrators.
+					 */
+					if (
+						// Check if one of the current user roles is among excluded roles.
+						array_intersect( $custom_role, (array) $current_user->roles ) && ! current_user_can( 'create_users' )
+					) {
+						// Current user IS in the excluded roles, so he can't read.
+						if ( $args['alt'] ) {
+							$class = $this->get_selector( 'class', 'private alt-text', $args['class'] );
+							$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
+						}
+					} else {
+						// Current user IS NOT in the excluded roles, so he can read.
+						$custom_role_class = $this->prepare_custom_role_class( $args['custom_role'] );
+
+						$class = $this->get_selector(
+							'class',
+							'private',
+							$custom_role_class . '-content ' . $args['class']
+						);
+
+						$text = apply_filters( 'ubn_private_content', $args['content'] );
+					}
 				} else {
-					if ( $args['alt'] ) {
-						$class = 'class="private alt-text"';
-						$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
+					/* The standard logic of the function.
+					 * Users added in custom_role WILL see the private note.
+					 */
+					if (
+						// Check if one of the current user roles is among authorized roles.
+						array_intersect( $custom_role, (array) $current_user->roles ) ||
+						// Current user is an administrator, so he can read.
+						( $this->custom_role_exists( $custom_role ) && current_user_can( 'create_users' ) )
+					) {
+						$custom_role_class = $this->prepare_custom_role_class( $args['custom_role'] );
+
+						$class = $this->get_selector(
+							'class',
+							'private',
+							$custom_role_class . '-content ' . $args['class']
+						);
+
+						$text = apply_filters( 'ubn_private_content', $args['content'] );
+					} else {
+						if ( $args['alt'] ) {
+							$class = $this->get_selector( 'class', 'private alt-text', $args['class'] );
+							$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
+						}
 					}
 				}
 				break;
 
 			case 'custom-only':
-				$current_user = wp_get_current_user();
 				$custom_role  = $this->prepare_custom_role( $args['custom_role'] );
+				$current_user = wp_get_current_user();
+
 				if ( array_intersect( $custom_role, (array) $current_user->roles ) ) {
-					$class = 'class="private ' . $this->clean_class( $args['custom_role'] ) . '-content"';
-					$text  = apply_filters( 'ubn_private_content', $args['content'] );
+					$custom_role_class = $this->prepare_custom_role_class( $args['custom_role'] );
+
+					$class = $this->get_selector(
+						'class',
+						'private',
+						$custom_role_class . '-content ' . $args['class']
+					);
+
+					$text = apply_filters( 'ubn_private_content', $args['content'] );
 				} else {
 					if ( $args['alt'] ) {
-						$class = 'class="private alt-text"';
+						$class = $this->get_selector( 'class', 'private alt-text', $args['class'] );
 						$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
 					}
 				}
@@ -602,9 +659,10 @@ class UBN_Private {
 				$text = '';
 		}
 
-		if ( '' !== $text ) {
-			// $text is not empty.
-			$text = $args['container_open'] . ' ' . $class . $args['align_style'] . '>' . $text . $args['container_close'];
+		if ( '' !== $text ) { // $text is not empty.
+			$args['id'] ? $container_id = $this->get_selector( 'id', '', $args['id'] ) : $container_id = '';
+
+			$text = $args['container_open'] . ' ' . $container_id . ' ' . $class . $args['align_style'] . '>' . $text . $args['container_close'];
 
 			/**
 			 * Filter $text if not empty.
@@ -612,9 +670,7 @@ class UBN_Private {
 			 * @since 5.1 Initial single filter available only when $text is not empty.
 			 */
 			$text = apply_filters( 'ubn_private_text', $text );
-		} else {
-			// $text is empty.
-
+		} else { // $text is empty.
 			/**
 			 * Filter $text if empty.
 			 *
@@ -627,36 +683,22 @@ class UBN_Private {
 	}
 
 	/**
-	 * Clean input for HTML class.
-	 *
-	 * @param  string $string The input string to be cleaned.
-	 * @return string The cleaned string.
-	 * @since 6.0
-	 */
-	private function clean_class( $string ) {
-		if ( ! is_string( $string ) ) {
-			return '';
-		}
-
-		// Change any space, underscore, and comma into dash and remove leading/trailing dash.
-		$string = trim( preg_replace( '([\s_,]+)', '-', $string ), '-' );
-
-		return $string;
-	}
-
-	/**
 	 * Prepare custom role(s) from user input.
 	 *
 	 * @param  string $custom_role The custom role entered by user.
 	 * @return array  The custom role(s) as an array.
+	 * @access private
 	 * @since 6.1
 	 */
 	private function prepare_custom_role( $custom_role ) {
-		// Remove any space.
-		$custom_role = preg_replace( '([\s]+)', '', $custom_role );
+		// Convert any space into a comma.
+		$custom_role = preg_replace( '([\s]+)', ',', $custom_role );
 
-		// Add a trailing comma.
-		$custom_role .= ',';
+		// Remove any leading and trailing comma.
+		$custom_role = trim( $custom_role, ',' );
+
+		// Convert all characters into lowercase.
+		$custom_role = strtolower( $custom_role );
 
 		// Make $custom roles an array.
 		$custom_role = explode( ',', $custom_role );
@@ -669,6 +711,7 @@ class UBN_Private {
 	 *
 	 * @param array $custom_role The array containing the custom roles to check.
 	 * @return bool True if custom role exists, false if not.
+	 * @access private
 	 * @since 6.1
 	 */
 	private function custom_role_exists( $custom_role ) {
@@ -683,5 +726,86 @@ class UBN_Private {
 		}
 
 		return false;
+	}
+
+	/**
+	 * Prepare the HTML class(es) from the custom role(s).
+	 *
+	 * @param string $custom_role The custom role(s).
+	 * @return string The custom role(s) converted into a classname.
+	 * @since 6.2
+	 */
+	private function prepare_custom_role_class( $custom_role ) {
+		// Remove any space.
+		$custom_role = preg_replace( '([\s,]+)', '-', $custom_role );
+
+		// Remove any leading and trailing dash.
+		$custom_role = rtrim( $custom_role, '-' );
+
+		return $custom_role;
+	}
+
+	/**
+	 * Sanitize classes entered by the user.
+	 *
+	 * @param string|array $classes The classe(s) entered by the user.
+	 * @param string $sep The separator between single classes, if $classes is a string.
+	 * @link https://developer.wordpress.org/reference/functions/sanitize_html_class/#comment-2084
+	 * @access private
+	 * @since 6.2
+	 */
+	private function sanitize_html_classes( $classes, $sep = ',' ) {
+		$output = '';
+
+		if ( ! is_array( $classes ) ) {
+			$classes = preg_replace( '([\s,]+)', $sep, $classes );
+			$classes = trim( $classes, ' ,' );
+			$classes = explode( $sep, $classes );
+		}
+
+		if ( ! empty( $classes ) ) {
+			foreach ( $classes as $class ) {
+				$output .= sanitize_html_class( $class ) . ' ';
+			}
+		}
+
+		$output = rtrim( strtolower( $output ), ' ' );
+
+		return $output;
+	}
+
+	/**
+	 * Get HTML selector.
+	 *
+	 * @param string $type The selector type (class or id).
+	 * @param string $fixed_selector The selectors that must be unchanged.
+	 * @param string $user_selector The selector name (or names comma separated) entered by user.
+	 * @access private
+	 * @since 6.2
+	 */
+	private function get_selector( $type = 'class', $fixed_selector = '', $user_selector = '' ) {
+		if ( ! is_string( $user_selector ) ) {
+			return;
+		}
+
+		$user_selector = $this->sanitize_html_classes( $user_selector );
+
+		switch ( $type ) {
+			case 'class':
+				$output = 'class="' . rtrim( $fixed_selector . ' ' . $user_selector ) . '"';
+				$output = apply_filters( 'ubn_private_class_selector', $output );
+				break;
+
+			case 'id':
+				$output = 'id="' . $user_selector . '"';
+				$output = apply_filters( 'ubn_private_id_selector', $output );
+				break;
+
+			default:
+				$output = '';
+				break;
+		}
+
+		return $output;
 	}
 }

@@ -1,5 +1,13 @@
 == Changelog ==
 
+= 6.2 =
+
+* Added support for custom HTML classes and HTML IDs.
+* Added reverse option for custom roles.
+* Convert user-entered custom roles into lowercase.
+* Added case `visitor` which is equivalent to `visitor-only`.
+* Administrators can read hidden texts for Visitors.
+
 = 6.1 =
 
 * Added use of multiple custom roles.

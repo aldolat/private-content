@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [6.2] - 2019-12-29
+### Added
+* Added support for custom HTML classes and HTML IDs.
+* Added reverse option for custom roles.
+* Added case `visitor` which is equivalent to `visitor-only`.
+### Changed
+* Convert user-entered custom roles into lowercase.
+* Administrators can read hidden texts for Visitors.
+
 ## [6.1] - 2019-12-22
 ### Added
 * Added use of multiple custom roles.
@@ -105,6 +114,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * First release of the plugin.
 
 [Unreleased]: https://github.com/aldolat/private-content/commits/develop
+[6.2]: https://github.com/aldolat/private-content/compare/6.1...6.2
 [6.1]: https://github.com/aldolat/private-content/compare/6.0...6.1
 [6.0]: https://github.com/aldolat/private-content/compare/5.1...6.0
 [5.1]: https://github.com/aldolat/private-content/compare/5.0...5.1
