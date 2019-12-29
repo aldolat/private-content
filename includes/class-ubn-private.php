@@ -529,7 +529,7 @@ class UBN_Private {
 			 */
 			case 'visitor':
 			case 'visitor-only':
-				if ( ! is_user_logged_in() ) {
+				if ( ! is_user_logged_in() || current_user_can( 'create_users' ) ) {
 					$class = $this->get_selector( 'class', 'private visitor-content visitor-only', $args['class'] );
 					$text  = apply_filters( 'ubn_private_content', $args['content'] );
 				} else {

@@ -62,6 +62,10 @@ Yes, custom roles are fully supported starting from version 6.0. You can find mo
 
 == Upgrade Notice ==
 
+= 6.2 =
+
+Now Administrators can always read text for Visitors.
+
 = 6.1 =
 
 Now Administrators can always read text for custom roles, unless a `role="custom-only"` option has been used.
