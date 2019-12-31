@@ -733,6 +733,7 @@ class UBN_Private {
 	 *
 	 * @param string $custom_role The custom role(s).
 	 * @return string The custom role(s) converted into a classname.
+	 * @access private
 	 * @since 6.2
 	 */
 	private function prepare_custom_role_class( $custom_role ) {

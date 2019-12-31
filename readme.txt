@@ -53,7 +53,7 @@ See the [official Wiki](https://github.com/aldolat/private-content/wiki#giving-a
 
 = Does this plugin work with custom roles? =
 
-Yes, custom roles are fully supported starting from version 6.0. You can find more informationin in the [Wiki page](https://github.com/aldolat/private-content/wiki#custom_role-display-a-text-portion-to-a-custom-role-or-multiple-roles).
+Yes, custom roles are fully supported starting from version 6.0. You can find more information in the [Wiki page](https://github.com/aldolat/private-content/wiki#custom_role-display-a-text-portion-to-a-custom-role-or-multiple-roles).
 
 == Screenshots ==
 
