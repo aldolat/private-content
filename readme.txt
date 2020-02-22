@@ -12,7 +12,7 @@ Display a portion of a post content only to users of a specific or multiple role
 
 == Description ==
 
-This plugin provides a shortcode to display a small portion of a post content only to users of a specific role. For example, you can show the hidden text to Editors or to Authors or to any other WordPress role, even a custom role.
+Private Content provides a shortcode to display a small portion of a post content only to users of a specific role. For example, you can show the hidden text to Editors or to Authors or to any other WordPress role, even a custom role.
 
 Private Content is not intended to be used as a memberhip plugin management, but instead it should be used to show small parts of a post only to certain users or roles.
 
