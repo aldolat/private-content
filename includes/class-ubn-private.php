@@ -552,7 +552,7 @@ class UBN_Private {
 					 */
 					if (
 						in_array( $current_user->user_login, $all_recipients, true ) ||
-						in_array( $current_user->ID, $all_recipients, false )
+						in_array( $current_user->ID, $this->arrstr_to_arrint( $all_recipients ), true )
 					) {
 						if ( $args['alt'] ) {
 							$class = $this->get_selector( 'class', 'private alt-text', $args['class'] );
@@ -568,7 +568,7 @@ class UBN_Private {
 					 */
 					if (
 						in_array( $current_user->user_login, $all_recipients, true ) ||
-						in_array( $current_user->ID, $all_recipients, false )
+						in_array( $current_user->ID, $this->arrstr_to_arrint( $all_recipients ), true )
 					) {
 						$class = $this->get_selector(
 							'class',
@@ -817,5 +817,27 @@ class UBN_Private {
 		}
 
 		return $output;
+	}
+
+	/**
+	 * Converts an array of strings into an array of integers.
+	 *
+	 * @param array  $array The input array of strings.
+	 * @return array $array The output array of integers.
+	 * @since 6.3
+	 */
+	private function arrstr_to_arrint( $array ) {
+		if ( ! is_array( $array ) ) {
+			return;
+		}
+
+		foreach ( $array as &$value ) {
+			if ( is_numeric( $value ) ) {
+				// is_numeric finds whether a variable is a number or a numeric string.
+				$value = intval( $value );
+			}
+		}
+
+		return $array;
 	}
 }
