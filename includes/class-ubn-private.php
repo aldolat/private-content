@@ -42,7 +42,7 @@ class UBN_Private {
 	 */
 	public function __construct() {
 		// Define the plugin version.
-		$this->plugin_version = '6.2';
+		$this->plugin_version = '6.3';
 	}
 
 	/**
