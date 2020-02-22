@@ -181,10 +181,13 @@ class UBN_Private {
 	 *                              "custom" (when used, you must specify a recipients list in $custom_role),
 	 *                              "custom-only" (when used, you must specify a recipients list in $custom_role).
 	 *    @type string $custom_role The custom roles, comma separated.
+	 *                              It is used when $role = "custom".
 	 *    @type string $recipient   The target role to view the note.
 	 *                              It is used when $role = "none".
+	 *                              It accepts both usernames and user IDs, even mixing them.
 	 *    @type bool   $reverse     Reverse the logic of recipient.
-	 *                              If activated, users added in $recipient will not read the private note.
+	 *                              If activated, users added in $recipient or in $custom_role
+	 *                              will not read the private note.
 	 *    @type string $align       The alignment of text.
 	 *                              It can be:
 	 *                              "left"
@@ -547,7 +550,10 @@ class UBN_Private {
 					/* Reverse the logic of the function.
 					 * Users added in recipient WILL NOT see the private note.
 					 */
-					if ( in_array( $current_user->user_login, $all_recipients, true ) ) {
+					if (
+						in_array( $current_user->user_login, $all_recipients, true ) ||
+						in_array( $current_user->ID, $all_recipients, false )
+					) {
 						if ( $args['alt'] ) {
 							$class = $this->get_selector( 'class', 'private alt-text', $args['class'] );
 							$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
@@ -560,10 +566,13 @@ class UBN_Private {
 					/* The standard logic of the function.
 					 * Users added in recipient WILL see the private note.
 					 */
-					if ( in_array( $current_user->user_login, $all_recipients, true ) ) {
+					if (
+						in_array( $current_user->user_login, $all_recipients, true ) ||
+						in_array( $current_user->ID, $all_recipients, false )
+					) {
 						$class = $this->get_selector(
 							'class',
-							'private user-content user-only ' . esc_attr( $current_user->user_login ) . '-only',
+							'private user-content user-only ' . esc_attr( $current_user->user_login ) . '-only user-' . esc_attr( $current_user->ID ) . '-only',
 							$args['class']
 						);
 						$text  = apply_filters( 'ubn_private_content', $args['content'] );
