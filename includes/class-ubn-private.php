@@ -167,23 +167,23 @@ class UBN_Private {
 	 *
 	 *    @type string $role        The intended role to view the note.
 	 *                              It can be:
-	 *                              "administrator",
-	 *                              "editor",
-	 *                              "editor-only",
-	 *                              "author",
-	 *                              "author-only",
-	 *                              "contributor",
-	 *                              "contributor-only",
-	 *                              "subscriber",
-	 *                              "subscriber-only",
-	 *                              "visitor-only",
-	 *                              "none" (when used, you must specify a recipients list in $recipient),
-	 *                              "custom" (when used, you must specify a recipients list in $custom_role),
-	 *                              "custom-only" (when used, you must specify a recipients list in $custom_role).
-	 *    @type string $custom_role The custom roles, comma separated.
-	 *                              It is used when $role = "custom".
+	 *                                  "administrator",
+	 *                                  "editor",
+	 *                                  "editor-only",
+	 *                                  "author",
+	 *                                  "author-only",
+	 *                                  "contributor",
+	 *                                  "contributor-only",
+	 *                                  "subscriber",
+	 *                                  "subscriber-only",
+	 *                                  "visitor-only",
+	 *                                  "none" (when used, you must specify a recipients list in $recipient),
+	 *                                  "custom" (when used, you must specify a recipients list in $custom_role),
+	 *                                  "custom-only" (when used, you must specify a recipients list in $custom_role).
 	 *    @type string $recipient   The target role to view the note.
 	 *                              It is used when $role = "none".
+	 *    @type string $custom_role The custom roles, comma separated.
+	 *                              It is used when $role = "custom".
 	 *                              It accepts both usernames and user IDs, even mixing them.
 	 *    @type bool   $reverse     Reverse the logic of recipient.
 	 *                              If activated, users added in $recipient or in $custom_role
