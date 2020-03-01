@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [6.3] - 2020-02-22
+## [6.3] - 2020-03-01
 ### Added
 * Added support for user IDs in recipient option.
 
