@@ -4,7 +4,7 @@ Donate link: https://dev.aldolat.it/projects/private-content/
 Tags: content, private, shortcode
 Requires at least: 3.0
 Tested up to: 5.3
-Stable tag: 6.2
+Stable tag: 6.3
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -12,7 +12,7 @@ Display a portion of a post content only to users of a specific or multiple role
 
 == Description ==
 
-This plugin provides a shortcode to display a small portion of a post content only to users of a specific role. For example, you can show the hidden text to Editors or to Authors or to any other WordPress role, even a custom role.
+Private Content provides a shortcode to display a small portion of a post content only to users of a specific role. For example, you can show the hidden text to Editors or to Authors or to any other WordPress role, even a custom role.
 
 Private Content is not intended to be used as a memberhip plugin management, but instead it should be used to show small parts of a post only to certain users or roles.
 
@@ -53,7 +53,7 @@ See the [official Wiki](https://github.com/aldolat/private-content/wiki#giving-a
 
 = Does this plugin work with custom roles? =
 
-Yes, custom roles are fully supported starting from version 6.0. You can find more informationin in the [Wiki page](https://github.com/aldolat/private-content/wiki#custom_role-display-a-text-portion-to-a-custom-role-or-multiple-roles).
+Yes, custom roles are fully supported starting from version 6.0. You can find more information in the [Wiki page](https://github.com/aldolat/private-content/wiki#custom_role-display-a-text-portion-to-a-custom-role-or-multiple-roles).
 
 == Screenshots ==
 

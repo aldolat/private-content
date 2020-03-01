@@ -1,5 +1,9 @@
 == Changelog ==
 
+= 6.3 =
+
+* Added support for user IDs in recipient option.
+
 = 6.2 =
 
 * Added support for custom HTML classes and HTML IDs.

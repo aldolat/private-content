@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [6.3] - 2020-03-01
+### Added
+* Added support for user IDs in recipient option.
+
 ## [6.2] - 2019-12-29
 ### Added
 * Added support for custom HTML classes and HTML IDs.
@@ -114,6 +118,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * First release of the plugin.
 
 [Unreleased]: https://github.com/aldolat/private-content/commits/develop
+[6.3]: https://github.com/aldolat/private-content/compare/6.2...6.3
 [6.2]: https://github.com/aldolat/private-content/compare/6.1...6.2
 [6.1]: https://github.com/aldolat/private-content/compare/6.0...6.1
 [6.0]: https://github.com/aldolat/private-content/compare/5.1...6.0

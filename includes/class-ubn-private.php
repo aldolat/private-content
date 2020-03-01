@@ -42,7 +42,7 @@ class UBN_Private {
 	 */
 	public function __construct() {
 		// Define the plugin version.
-		$this->plugin_version = '6.2';
+		$this->plugin_version = '6.3';
 	}
 
 	/**
@@ -167,24 +167,27 @@ class UBN_Private {
 	 *
 	 *    @type string $role        The intended role to view the note.
 	 *                              It can be:
-	 *                              "administrator",
-	 *                              "editor",
-	 *                              "editor-only",
-	 *                              "author",
-	 *                              "author-only",
-	 *                              "contributor",
-	 *                              "contributor-only",
-	 *                              "subscriber",
-	 *                              "subscriber-only",
-	 *                              "visitor-only",
-	 *                              "none" (when used, you must specify a recipients list in $recipient),
-	 *                              "custom" (when used, you must specify a recipients list in $custom_role),
-	 *                              "custom-only" (when used, you must specify a recipients list in $custom_role).
-	 *    @type string $custom_role The custom roles, comma separated.
+	 *                                  "administrator",
+	 *                                  "editor",
+	 *                                  "editor-only",
+	 *                                  "author",
+	 *                                  "author-only",
+	 *                                  "contributor",
+	 *                                  "contributor-only",
+	 *                                  "subscriber",
+	 *                                  "subscriber-only",
+	 *                                  "visitor-only",
+	 *                                  "none" (when used, you must specify a recipients list in $recipient),
+	 *                                  "custom" (when used, you must specify a recipients list in $custom_role),
+	 *                                  "custom-only" (when used, you must specify a recipients list in $custom_role).
 	 *    @type string $recipient   The target role to view the note.
 	 *                              It is used when $role = "none".
+	 *    @type string $custom_role The custom roles, comma separated.
+	 *                              It is used when $role = "custom".
+	 *                              It accepts both usernames and user IDs, even mixing them.
 	 *    @type bool   $reverse     Reverse the logic of recipient.
-	 *                              If activated, users added in $recipient will not read the private note.
+	 *                              If activated, users added in $recipient or in $custom_role
+	 *                              will not read the private note.
 	 *    @type string $align       The alignment of text.
 	 *                              It can be:
 	 *                              "left"
@@ -547,7 +550,10 @@ class UBN_Private {
 					/* Reverse the logic of the function.
 					 * Users added in recipient WILL NOT see the private note.
 					 */
-					if ( in_array( $current_user->user_login, $all_recipients, true ) ) {
+					if (
+						in_array( $current_user->user_login, $all_recipients, true ) ||
+						in_array( $current_user->ID, $this->arrstr_to_arrint( $all_recipients ), true )
+					) {
 						if ( $args['alt'] ) {
 							$class = $this->get_selector( 'class', 'private alt-text', $args['class'] );
 							$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
@@ -560,10 +566,13 @@ class UBN_Private {
 					/* The standard logic of the function.
 					 * Users added in recipient WILL see the private note.
 					 */
-					if ( in_array( $current_user->user_login, $all_recipients, true ) ) {
+					if (
+						in_array( $current_user->user_login, $all_recipients, true ) ||
+						in_array( $current_user->ID, $this->arrstr_to_arrint( $all_recipients ), true )
+					) {
 						$class = $this->get_selector(
 							'class',
-							'private user-content user-only ' . esc_attr( $current_user->user_login ) . '-only',
+							'private user-content user-only ' . esc_attr( $current_user->user_login ) . '-only user-' . esc_attr( $current_user->ID ) . '-only',
 							$args['class']
 						);
 						$text  = apply_filters( 'ubn_private_content', $args['content'] );
@@ -733,6 +742,7 @@ class UBN_Private {
 	 *
 	 * @param string $custom_role The custom role(s).
 	 * @return string The custom role(s) converted into a classname.
+	 * @access private
 	 * @since 6.2
 	 */
 	private function prepare_custom_role_class( $custom_role ) {
@@ -807,5 +817,27 @@ class UBN_Private {
 		}
 
 		return $output;
+	}
+
+	/**
+	 * Converts an array of strings into an array of integers.
+	 *
+	 * @param array  $array The input array of strings.
+	 * @return array $array The output array of integers.
+	 * @since 6.3
+	 */
+	private function arrstr_to_arrint( $array ) {
+		if ( ! is_array( $array ) ) {
+			return;
+		}
+
+		foreach ( $array as &$value ) {
+			if ( is_numeric( $value ) ) {
+				// is_numeric finds whether a variable is a number or a numeric string.
+				$value = intval( $value );
+			}
+		}
+
+		return $array;
 	}
 }
