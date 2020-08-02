@@ -4,7 +4,7 @@
 **Donate link:** <https://dev.aldolat.it/projects/private-content/>  
 **Tags:** content, private, shortcode  
 **Requires at least:** 3.0  
-**Tested up to:** 5.4  
+**Tested up to:** 5.5  
 **Stable tag:** 6.3  
 **License:** GPLv3 or later  
 **License URI:** <https://www.gnu.org/licenses/gpl-3.0.html>  
