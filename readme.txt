@@ -3,7 +3,7 @@ Contributors: aldolat, specialk, thewanderingbrit
 Donate link: https://dev.aldolat.it/projects/private-content/
 Tags: content, private, shortcode
 Requires at least: 3.0
-Tested up to: 5.4
+Tested up to: 5.5
 Stable tag: 6.3
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -16,7 +16,7 @@ Private Content provides a shortcode to display a small portion of a post conten
 
 Private Content is not intended to be used as a memberhip plugin management, but instead it should be used to show small parts of a post only to certain users or roles.
 
-For a comprehensive explanation, please see [the official Wiki on GitHub](https://github.com/aldolat/private-content/wiki).
+For a comprehensive explanation, please see [the official Wiki on GitHub](https://github.com/aldolat/private-content/wiki). The text of the Wiki is also available as a PDF, that you can download [from here](https://github.com/aldolat/private-content/blob/master/documentation/private-content.pdf).
 
 = Privacy Policy =
 
