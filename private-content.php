@@ -59,11 +59,46 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 /**
- * Include the class.
+ * Launch Private Content.
  *
- * @since 5.1
+ * @since 1.0
  */
-require_once plugin_dir_path( __FILE__ ) . 'includes/class-ubn-private.php';
+add_action( 'plugins_loaded', 'private_content_setup' );
+
+/**
+ * Setup the plugin and fire the necessary files.
+ *
+ *  @since 6.4
+ */
+function private_content_setup() {
+	/**
+	 * Load the translation.
+	 *
+	 * @since 6.4
+	 */
+	load_plugin_textdomain( 'private-content', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+
+	/**
+	 * Include the class.
+	 *
+	 * @since 5.1
+	 */
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-ubn-private.php';
+
+	/**
+	 * Add links to plugins list line.
+	 *
+	 * @since 6.4
+	 */
+	add_filter( 'plugin_row_meta', 'private_content_add_links', 10, 2 );
+
+	/**
+	 * Run the plugin.
+	 *
+	 * @since 6.4 Moved from root to the setup function.
+	 */
+	ubn_private_run();
+}
 
 /**
  * Instantiate the object and run the plugin.
@@ -75,7 +110,33 @@ function ubn_private_run() {
 	$ubn_private->run();
 }
 
-ubn_private_run();
+/**
+ * Add links to plugins list line.
+ *
+ * @param array  $links The array containing links.
+ * @param string $file The path to the current file.
+ * @since 6.4
+ */
+function private_content_add_links( $links, $file ) {
+	if ( plugin_basename( __FILE__ ) === $file ) {
+		// Changelog.
+		$changelog_url = 'https://github.com/aldolat/private-content/blob/master/CHANGELOG.md';
+		$links[]       = '<a target="_blank" href="' . $changelog_url . '">' . esc_html__( 'Changelog', 'private-content' ) . '</a>';
+
+		// Documentation.
+		$doc_url = 'https://github.com/aldolat/private-content/wiki';
+		$links[] = '<a target="_blank" href="' . $doc_url . '">' . esc_html__( 'Documentation', 'private-content' ) . '</a>';
+
+		// PDF Documentation.
+		$doc_url = 'https://github.com/aldolat/private-content/raw/master/documentation/private-content.pdf';
+		$links[] = '<a target="_blank" href="' . $doc_url . '">' . esc_html__( 'PDF Documentation', 'private-content' ) . '</a>';
+
+		// Reviews.
+		$rate_url = 'https://wordpress.org/support/plugin/' . basename( dirname( __FILE__ ) ) . '/reviews/#new-post';
+		$links[]  = '<a target="_blank" href="' . $rate_url . '">' . esc_html__( 'Rate this plugin', 'private-content' ) . '</a>';
+	}
+	return $links;
+}
 
 /*
  * CODE IS POETRY
