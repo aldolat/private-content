@@ -60,6 +60,13 @@ Yes, custom roles are fully supported starting from version 6.0. You can find mo
 1. At the center of the screen, the shortcode is used in the WordPress editor. The text inside the shortcode will be displayed only to Authors and above roles.
 2. The shortcode in action. On the left, the text revealed to Administrators only; on the right, the page as seen by lower roles (Editors, Authors, etc., or simply readers).
 
+== Changelog ==
+
+= 6.3.1 =
+
+* Added new link to plugin line in the WordPress plugins management page.
+* Updated compatibility to WordPress 5.6.
+
 == Upgrade Notice ==
 
 = 6.2 =
@@ -77,10 +84,6 @@ Upgrade in order to use the new role-only feature.
 = 2.5 =
 
 Removed shortcode execution in feed.
-
-= 1.0 =
-
-No upgrade notice.
 
 == Credits ==
 
