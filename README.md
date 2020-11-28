@@ -93,6 +93,8 @@ Yes, custom roles are fully supported starting from version 6.0. You can find mo
 * Added new link to plugin line in the WordPress plugins management page.
 * Updated compatibility to WordPress 5.6.
 
+For the complete changelog see [here](https://github.com/aldolat/private-content/blob/master/CHANGELOG.md).
+
 ## Upgrade Notice
 
 ### 6.2
