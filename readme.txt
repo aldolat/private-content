@@ -3,7 +3,7 @@ Contributors: aldolat, specialk, thewanderingbrit
 Donate link: https://dev.aldolat.it/projects/private-content/
 Tags: content, private, shortcode
 Requires at least: 3.0
-Tested up to: 5.6
+Tested up to: 5.7
 Stable tag: 6.3.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -17,6 +17,10 @@ Private Content provides a shortcode to display a small portion of a post conten
 Private Content is not intended to be used as a memberhip plugin management, but instead it should be used to show small parts of a post only to certain users or roles.
 
 For a comprehensive explanation, please see [the official Wiki on GitHub](https://github.com/aldolat/private-content/wiki). The text of the Wiki is also available as a PDF, that you can download [from here](https://github.com/aldolat/private-content/blob/master/documentation/private-content.pdf).
+
+= Credits =
+
+I would like to say *Thank You* to all the people who helped me in making this plugin better and translated it into their respective languages.
 
 = Privacy Policy =
 
@@ -66,6 +70,8 @@ Yes, custom roles are fully supported starting from version 6.0. You can find mo
 
 * Added new link to plugin line in the WordPress plugins management page.
 * Updated compatibility to WordPress 5.6.
+
+The full changelog is documented in the changelog file released along with the plugin package and is hosted on [GitHub](https://github.com/aldolat/private-content/blob/master/CHANGELOG.md).
 
 == Upgrade Notice ==
 

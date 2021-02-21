@@ -4,7 +4,7 @@
 **Donate link:** <https://dev.aldolat.it/projects/private-content/>  
 **Tags:** content, private, shortcode  
 **Requires at least:** 3.0  
-**Tested up to:** 5.6  
+**Tested up to:** 5.7  
 **Stable tag:** 6.3.1  
 **License:** GPLv3 or later  
 **License URI:** <https://www.gnu.org/licenses/gpl-3.0.html>  
@@ -13,6 +13,7 @@ Display a portion of a post content only to users of a specific or multiple role
 
 * [Private Content](#private-content)
   * [Description](#description)
+    * [Credits](#credits)
     * [Privacy Policy](#privacy-policy)
   * [Installation](#installation)
   * [Frequently Asked Questions](#frequently-asked-questions)
@@ -29,7 +30,6 @@ Display a portion of a post content only to users of a specific or multiple role
     * [6.1](#61)
     * [2.0](#20)
     * [2.5](#25)
-  * [Credits](#credits)
 
 ## Description
 
@@ -38,6 +38,15 @@ Private Content provides a shortcode to display a small portion of a post conten
 Private Content is not intended to be used as a memberhip plugin management, but instead it should be used to show small parts of a post only to certain users or roles.
 
 For a comprehensive explanation, please see [the official Wiki on GitHub](https://github.com/aldolat/private-content/wiki). The text of the Wiki is also available as a PDF, that you can download [from here](https://github.com/aldolat/private-content/blob/master/documentation/private-content.pdf).
+
+### Credits
+
+Many thanks to:
+
+* [Jean Baptiste Jung](http://www.wprecipes.com/add-private-notes-to-your-wordpress-blog-posts) for the idea behind this plugin;
+* [Jeff Starr](http://digwp.com/2010/05/private-content-posts-shortcode) for the initial code.
+
+I would like to say *Thank You* to all the people who helped me in making this plugin better and translated it into their respective languages.
 
 ### Privacy Policy
 
@@ -93,7 +102,7 @@ Yes, custom roles are fully supported starting from version 6.0. You can find mo
 * Added new link to plugin line in the WordPress plugins management page.
 * Updated compatibility to WordPress 5.6.
 
-For the complete changelog see [here](https://github.com/aldolat/private-content/blob/master/CHANGELOG.md).
+The full changelog is documented in the changelog file released along with the plugin package and is hosted on [GitHub](https://github.com/aldolat/private-content/blob/master/CHANGELOG.md).
 
 ## Upgrade Notice
 
@@ -112,10 +121,3 @@ Upgrade in order to use the new role-only feature.
 ### 2.5
 
 Removed shortcode execution in feed.
-
-## Credits
-
-Many thanks to:
-
-* [Jean Baptiste Jung](http://www.wprecipes.com/add-private-notes-to-your-wordpress-blog-posts) for the idea behind this plugin;
-* [Jeff Starr](http://digwp.com/2010/05/private-content-posts-shortcode) for the initial code.
