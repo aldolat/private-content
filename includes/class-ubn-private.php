@@ -396,6 +396,7 @@ class UBN_Private {
 	 * @return string $text The processed text for the shortcode.
 	 * @access protected
 	 * @since 5.1
+	 * @since 6.4.0 Added post-author and post-author-only cases.
 	 */
 	protected function get_text( $args ) {
 		$defaults = array(
