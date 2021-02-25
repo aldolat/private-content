@@ -5,7 +5,7 @@
 **Tags:** content, private, shortcode  
 **Requires at least:** 3.0  
 **Tested up to:** 5.7  
-**Stable tag:** 6.3.1  
+**Stable tag:** 6.4.0  
 **License:** GPLv3 or later  
 **License URI:** <https://www.gnu.org/licenses/gpl-3.0.html>  
 

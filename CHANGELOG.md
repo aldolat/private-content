@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [6.4.0] - 2021-02-27
+### Added
+* Added `post-author` and `post-author-only` cases for `role` option (props to @agenziae20 for the suggestion).
+### Updated
+* Updated compatibility to WordPress 5.7.
+
 ## [6.3.1] - 2020-11-21
 ### Added
 * Added new link to plugin line in the WordPress plugins management page.

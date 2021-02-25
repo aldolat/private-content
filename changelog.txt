@@ -1,5 +1,9 @@
 == Changelog ==
 
+= 6.4.0 =
+
+* Added `post-author` and `post-author-only` cases for `role` option (props to @agenziae20 for the suggestion).
+
 = 6.3.1 =
 
 * Added new link to plugin line in the WordPress plugins management page.
