@@ -664,6 +664,46 @@ class UBN_Private {
 				}
 				break;
 
+			case 'post-author':
+				$post_author  = get_the_author_meta( 'ID' );
+				$current_user = wp_get_current_user();
+
+				if ( $post_author === $current_user->ID || current_user_can( 'create_users' ) ) {
+					$class = $this->get_selector(
+						'class',
+						'private post-author-content',
+						get_the_author_meta( 'user_login' ) . '-content ' . $args['class']
+					);
+
+					$text = apply_filters( 'ubn_private_content', $args['content'] );
+				} else {
+					if ( $args['alt'] ) {
+						$class = $this->get_selector( 'class', 'private alt-text', $args['class'] );
+						$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
+					}
+				}
+				break;
+
+			case 'post-author-only':
+				$post_author  = get_the_author_meta( 'ID' );
+				$current_user = wp_get_current_user();
+
+				if ( $post_author === $current_user->ID ) {
+					$class = $this->get_selector(
+						'class',
+						'private post-author-content post-author-content-only',
+						get_the_author_meta( 'user_login' ) . '-content ' . $args['class']
+					);
+
+					$text = apply_filters( 'ubn_private_content', $args['content'] );
+				} else {
+					if ( $args['alt'] ) {
+						$class = $this->get_selector( 'class', 'private alt-text', $args['class'] );
+						$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
+					}
+				}
+				break;
+
 			default:
 				$text = '';
 		}
