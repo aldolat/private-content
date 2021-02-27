@@ -7,10 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [6.4.0] - 2021-02-27
+### Added
+* Added `post-author` and `post-author-only` cases for `role` option (props to @agenziae20 for the suggestion).
+### Changed
+* Underscore (`_`) is changed into a dash (`-`) when building the CSS class.
+* Updated compatibility to WordPress 5.7.
+
 ## [6.3.1] - 2020-11-21
 ### Added
+### Changed
 * Added new link to plugin line in the WordPress plugins management page.
-### Updated
 * Updated compatibility to WordPress 5.6.
 
 ## [6.3] - 2020-03-01
@@ -124,6 +131,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * First release of the plugin.
 
 [Unreleased]: https://github.com/aldolat/private-content/commits/develop
+[6.4.0]: https://github.com/aldolat/private-content/compare/6.3.1...6.4.0
 [6.3.1]: https://github.com/aldolat/private-content/compare/6.3...6.3.1
 [6.3]: https://github.com/aldolat/private-content/compare/6.2...6.3
 [6.2]: https://github.com/aldolat/private-content/compare/6.1...6.2

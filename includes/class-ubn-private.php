@@ -42,7 +42,7 @@ class UBN_Private {
 	 */
 	public function __construct() {
 		// Define the plugin version.
-		$this->plugin_version = '6.3.1';
+		$this->plugin_version = '6.4.0';
 	}
 
 	/**
@@ -71,7 +71,7 @@ class UBN_Private {
 		register_activation_hook( __FILE__, array( $this, 'ubn_private_add_cap' ) );
 
 		/**
-		 * Make sure we have the right capabilities during plugin's lifetime.
+		 * Make sure we have the right capabilities during plugin lifetime.
 		 *
 		 * @since 2.0.0
 		 */
@@ -396,6 +396,7 @@ class UBN_Private {
 	 * @return string $text The processed text for the shortcode.
 	 * @access protected
 	 * @since 5.1
+	 * @since 6.4.0 Added post-author and post-author-only cases.
 	 */
 	protected function get_text( $args ) {
 		$defaults = array(
@@ -546,6 +547,7 @@ class UBN_Private {
 			case 'none':
 				$all_recipients = array_map( 'trim', explode( ',', $args['recipient'] ) );
 				$current_user   = wp_get_current_user();
+
 				if ( $args['reverse'] ) {
 					/* Reverse the logic of the function.
 					 * Users added in recipient WILL NOT see the private note.
@@ -664,6 +666,46 @@ class UBN_Private {
 				}
 				break;
 
+			case 'post-author':
+				$post_author  = get_the_author_meta( 'ID' );
+				$current_user = wp_get_current_user();
+
+				if ( $post_author === $current_user->ID || current_user_can( 'create_users' ) ) {
+					$class = $this->get_selector(
+						'class',
+						'private post-author-content',
+						get_the_author_meta( 'user_login' ) . '-content ' . $args['class']
+					);
+
+					$text = apply_filters( 'ubn_private_content', $args['content'] );
+				} else {
+					if ( $args['alt'] ) {
+						$class = $this->get_selector( 'class', 'private alt-text', $args['class'] );
+						$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
+					}
+				}
+				break;
+
+			case 'post-author-only':
+				$post_author  = get_the_author_meta( 'ID' );
+				$current_user = wp_get_current_user();
+
+				if ( $post_author === $current_user->ID ) {
+					$class = $this->get_selector(
+						'class',
+						'private post-author-content post-author-content-only',
+						get_the_author_meta( 'user_login' ) . '-content ' . $args['class']
+					);
+
+					$text = apply_filters( 'ubn_private_content', $args['content'] );
+				} else {
+					if ( $args['alt'] ) {
+						$class = $this->get_selector( 'class', 'private alt-text', $args['class'] );
+						$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
+					}
+				}
+				break;
+
 			default:
 				$text = '';
 		}
@@ -747,7 +789,7 @@ class UBN_Private {
 	 */
 	private function prepare_custom_role_class( $custom_role ) {
 		// Remove any space.
-		$custom_role = preg_replace( '([\s,]+)', '-', $custom_role );
+		$custom_role = preg_replace( '([\s,_]+)', '-', $custom_role );
 
 		// Remove any leading and trailing dash.
 		$custom_role = rtrim( $custom_role, '-' );

@@ -4,8 +4,8 @@
 **Donate link:** <https://dev.aldolat.it/projects/private-content/>  
 **Tags:** content, private, shortcode  
 **Requires at least:** 3.0  
-**Tested up to:** 5.6  
-**Stable tag:** 6.3.1  
+**Tested up to:** 5.7  
+**Stable tag:** 6.4.0  
 **License:** GPLv3 or later  
 **License URI:** <https://www.gnu.org/licenses/gpl-3.0.html>  
 
@@ -13,6 +13,7 @@ Display a portion of a post content only to users of a specific or multiple role
 
 * [Private Content](#private-content)
   * [Description](#description)
+    * [Credits](#credits)
     * [Privacy Policy](#privacy-policy)
   * [Installation](#installation)
   * [Frequently Asked Questions](#frequently-asked-questions)
@@ -22,21 +23,30 @@ Display a portion of a post content only to users of a specific or multiple role
   * [Screenshots](#screenshots)
     * [1. At the center of the screen, the shortcode is used in the WordPress editor. The text inside the shortcode will be displayed only to Authors and above roles](#1-at-the-center-of-the-screen-the-shortcode-is-used-in-the-wordpress-editor-the-text-inside-the-shortcode-will-be-displayed-only-to-authors-and-above-roles)
     * [2. The shortcode in action. On the left, the text revealed to Administrators only; on the right, the page as seen by lower roles (Editors, Authors, etc., or simply readers)](#2-the-shortcode-in-action-on-the-left-the-text-revealed-to-administrators-only-on-the-right-the-page-as-seen-by-lower-roles-editors-authors-etc-or-simply-readers)
+  * [Changelog](#changelog)
+    * [6.4.0](#640)
   * [Upgrade Notice](#upgrade-notice)
     * [6.2](#62)
     * [6.1](#61)
     * [2.0](#20)
     * [2.5](#25)
-    * [1.0](#10)
-  * [Credits](#credits)
 
 ## Description
 
 Private Content provides a shortcode to display a small portion of a post content only to users of a specific role. For example, you can show the hidden text to Editors or to Authors or to any other WordPress role, even a custom role.
 
-Private Content is not intended to be used as a memberhip plugin management, but instead it should be used to show small parts of a post only to certain users or roles.
+Private Content is not intended to be used as a membership plugin management, but instead it should be used to show small parts of a post only to certain users or roles.
 
 For a comprehensive explanation, please see [the official Wiki on GitHub](https://github.com/aldolat/private-content/wiki). The text of the Wiki is also available as a PDF, that you can download [from here](https://github.com/aldolat/private-content/blob/master/documentation/private-content.pdf).
+
+### Credits
+
+Many thanks to:
+
+* [Jean Baptiste Jung](http://www.wprecipes.com/add-private-notes-to-your-wordpress-blog-posts) for the idea behind this plugin;
+* [Jeff Starr](http://digwp.com/2010/05/private-content-posts-shortcode) for the initial code.
+
+I would like to say *Thank You* to all the people who helped me in making this plugin better and translated it into their respective languages.
 
 ### Privacy Policy
 
@@ -85,6 +95,15 @@ Yes, custom roles are fully supported starting from version 6.0. You can find mo
 
 ![2. The shortcode in action. On the left, the text revealed to Administrators only; on the right, the page as seen by lower roles (Editors, Authors, etc., or simply readers).](http://ps.w.org/private-content/assets/screenshot-2.png)
 
+## Changelog
+
+### 6.4.0
+
+* Added `post-author` and `post-author-only` cases for `role` option (props to @agenziae20 for the suggestion).
+* Underscore (`_`) is changed into a dash (`-`) when building the CSS class.
+
+The full changelog is documented in the changelog file released along with the plugin package and is hosted also on [GitHub](https://github.com/aldolat/private-content/blob/master/CHANGELOG.md).
+
 ## Upgrade Notice
 
 ### 6.2
@@ -102,14 +121,3 @@ Upgrade in order to use the new role-only feature.
 ### 2.5
 
 Removed shortcode execution in feed.
-
-### 1.0
-
-No upgrade notice.
-
-## Credits
-
-Many thanks to:
-
-* [Jean Baptiste Jung](http://www.wprecipes.com/add-private-notes-to-your-wordpress-blog-posts) for the idea behind this plugin;
-* [Jeff Starr](http://digwp.com/2010/05/private-content-posts-shortcode) for the initial code.
