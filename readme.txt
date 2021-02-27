@@ -14,7 +14,7 @@ Display a portion of a post content only to users of a specific or multiple role
 
 Private Content provides a shortcode to display a small portion of a post content only to users of a specific role. For example, you can show the hidden text to Editors or to Authors or to any other WordPress role, even a custom role.
 
-Private Content is not intended to be used as a memberhip plugin management, but instead it should be used to show small parts of a post only to certain users or roles.
+Private Content is not intended to be used as a membership plugin management, but instead it should be used to show small parts of a post only to certain users or roles.
 
 For a comprehensive explanation, please see [the official Wiki on GitHub](https://github.com/aldolat/private-content/wiki). The text of the Wiki is also available as a PDF, that you can download [from here](https://github.com/aldolat/private-content/blob/master/documentation/private-content.pdf).
 
@@ -66,12 +66,12 @@ Yes, custom roles are fully supported starting from version 6.0. You can find mo
 
 == Changelog ==
 
-= 6.3.1 =
+= 6.4.0 =
 
-* Added new link to plugin line in the WordPress plugins management page.
-* Updated compatibility to WordPress 5.6.
+* Added `post-author` and `post-author-only` cases for `role` option (props to @agenziae20 for the suggestion).
+* Underscore (`_`) is changed into a dash (`-`) when building the CSS class.
 
-The full changelog is documented in the changelog file released along with the plugin package and is hosted on [GitHub](https://github.com/aldolat/private-content/blob/master/CHANGELOG.md).
+The full changelog is documented in the changelog file released along with the plugin package and is hosted also on [GitHub](https://github.com/aldolat/private-content/blob/master/CHANGELOG.md).
 
 == Upgrade Notice ==
 

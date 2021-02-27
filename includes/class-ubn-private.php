@@ -71,7 +71,7 @@ class UBN_Private {
 		register_activation_hook( __FILE__, array( $this, 'ubn_private_add_cap' ) );
 
 		/**
-		 * Make sure we have the right capabilities during plugin's lifetime.
+		 * Make sure we have the right capabilities during plugin lifetime.
 		 *
 		 * @since 2.0.0
 		 */
@@ -547,6 +547,7 @@ class UBN_Private {
 			case 'none':
 				$all_recipients = array_map( 'trim', explode( ',', $args['recipient'] ) );
 				$current_user   = wp_get_current_user();
+
 				if ( $args['reverse'] ) {
 					/* Reverse the logic of the function.
 					 * Users added in recipient WILL NOT see the private note.
