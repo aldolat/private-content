@@ -788,7 +788,7 @@ class UBN_Private {
 	 */
 	private function prepare_custom_role_class( $custom_role ) {
 		// Remove any space.
-		$custom_role = preg_replace( '([\s,]+)', '-', $custom_role );
+		$custom_role = preg_replace( '([\s,_]+)', '-', $custom_role );
 
 		// Remove any leading and trailing dash.
 		$custom_role = rtrim( $custom_role, '-' );
