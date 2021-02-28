@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [6.4.1] - 2021-02-28
+### Changed
+* Updated links to documentation.
+
 ## [6.4.0] - 2021-02-27
 ### Added
 * Added `post-author` and `post-author-only` cases for `role` option (props to @agenziae20 for the suggestion).
@@ -131,6 +135,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 * First release of the plugin.
 
 [Unreleased]: https://github.com/aldolat/private-content/commits/develop
+[6.4.1]: https://github.com/aldolat/private-content/compare/6.4.0...6.4.1
 [6.4.0]: https://github.com/aldolat/private-content/compare/6.3.1...6.4.0
 [6.3.1]: https://github.com/aldolat/private-content/compare/6.3...6.3.1
 [6.3]: https://github.com/aldolat/private-content/compare/6.2...6.3

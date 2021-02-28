@@ -18,7 +18,7 @@
  * Plugin URI: https://dev.aldolat.it/projects/private-content/
  * Author: Aldo Latino
  * Author URI: https://www.aldolat.it/
- * Version: 6.4.0
+ * Version: 6.4.1
  * License: GPLv3 or later
  * Text Domain: private-content
  * Domain Path: /languages/
@@ -128,7 +128,7 @@ function private_content_add_links( $links, $file ) {
 		$links[] = '<a target="_blank" href="' . $doc_url . '">' . esc_html__( 'Documentation', 'private-content' ) . '</a>';
 
 		// PDF Documentation.
-		$doc_url = 'https://github.com/aldolat/private-content/raw/master/documentation/private-content.pdf';
+		$doc_url = 'https://github.com/aldolat/private-content.latex/raw/master/private-content.pdf';
 		$links[] = '<a target="_blank" href="' . $doc_url . '">' . esc_html__( 'PDF Documentation', 'private-content' ) . '</a>';
 
 		// Reviews.
