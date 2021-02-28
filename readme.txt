@@ -4,7 +4,7 @@ Donate link: https://dev.aldolat.it/projects/private-content/
 Tags: content, private, shortcode
 Requires at least: 3.0
 Tested up to: 5.7
-Stable tag: 6.4.0
+Stable tag: 6.4.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -16,7 +16,7 @@ Private Content provides a shortcode to display a small portion of a post conten
 
 Private Content is not intended to be used as a membership plugin management, but instead it should be used to show small parts of a post only to certain users or roles.
 
-For a comprehensive explanation, please see [the official Wiki on GitHub](https://github.com/aldolat/private-content/wiki). The text of the Wiki is also available as a PDF, that you can download [from here](https://github.com/aldolat/private-content/blob/master/documentation/private-content.pdf).
+For a comprehensive explanation, please see [the official Wiki on GitHub](https://github.com/aldolat/private-content/wiki). The text of the Wiki is also available as a PDF, that you can download [from here](https://github.com/aldolat/private-content.latex/blob/master/private-content.pdf).
 
 = Credits =
 
@@ -66,10 +66,9 @@ Yes, custom roles are fully supported starting from version 6.0. You can find mo
 
 == Changelog ==
 
-= 6.4.0 =
+= 6.4.1 =
 
-* Added `post-author` and `post-author-only` cases for `role` option (props to @agenziae20 for the suggestion).
-* Underscore (`_`) is changed into a dash (`-`) when building the CSS class.
+* Updated links to documentation.
 
 The full changelog is documented in the changelog file released along with the plugin package and is hosted also on [GitHub](https://github.com/aldolat/private-content/blob/master/CHANGELOG.md).
 
