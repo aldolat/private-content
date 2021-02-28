@@ -1,5 +1,7 @@
 # Private Content
 
+![banner](https://ps.w.org/private-content/assets/banner-772x250.png)
+
 **Contributors:** aldolat, specialk, thewanderingbrit  
 **Donate link:** <https://dev.aldolat.it/projects/private-content/>  
 **Tags:** content, private, shortcode  
