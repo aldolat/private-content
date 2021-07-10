@@ -6,7 +6,7 @@
 **Donate link:** <https://dev.aldolat.it/projects/private-content/>  
 **Tags:** content, private, shortcode  
 **Requires at least:** 3.0  
-**Tested up to:** 5.7  
+**Tested up to:** 5.8  
 **Stable tag:** 6.4.1  
 **License:** GPLv3 or later  
 **License URI:** <https://www.gnu.org/licenses/gpl-3.0.html>  
@@ -26,7 +26,7 @@ Display a portion of a post content only to users of a specific or multiple role
     * [1. At the center of the screen, the shortcode is used in the WordPress editor. The text inside the shortcode will be displayed only to Authors and above roles](#1-at-the-center-of-the-screen-the-shortcode-is-used-in-the-wordpress-editor-the-text-inside-the-shortcode-will-be-displayed-only-to-authors-and-above-roles)
     * [2. The shortcode in action. On the left, the text revealed to Administrators only; on the right, the page as seen by lower roles (Editors, Authors, etc., or simply readers)](#2-the-shortcode-in-action-on-the-left-the-text-revealed-to-administrators-only-on-the-right-the-page-as-seen-by-lower-roles-editors-authors-etc-or-simply-readers)
   * [Changelog](#changelog)
-    * [6.4.0](#640)
+    * [6.4.1](#641)
   * [Upgrade Notice](#upgrade-notice)
     * [6.2](#62)
     * [6.1](#61)
