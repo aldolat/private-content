@@ -706,6 +706,32 @@ class UBN_Private {
 				}
 				break;
 
+			case 'post-author-custom':
+				// Get the post author info object.
+				$post_author_info = get_userdata( get_the_author_meta( 'ID' ) );
+				// Get the post author roles as an array.
+				$post_author_roles = $post_author_info->roles;
+
+				// Get the custom role.
+				$custom_role = $this->prepare_custom_role( $args['custom_role'] );
+
+				// Check if the post author has the role defined in $custom_role.
+				if ( array_intersect( $custom_role, (array) $post_author_roles ) ) {
+					$class = $this->get_selector(
+						'class',
+						'private post-author-content',
+						get_the_author_meta( 'user_login' ) . '-content ' . $args['class']
+					);
+
+					$text = apply_filters( 'ubn_private_content', $args['content'] );
+				} else {
+					if ( $args['alt'] ) {
+						$class = $this->get_selector( 'class', 'private alt-text', $args['class'] );
+						$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
+					}
+				}
+				break;
+
 			default:
 				$text = '';
 		}
