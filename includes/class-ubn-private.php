@@ -179,7 +179,10 @@ class UBN_Private {
 	 *                                  "visitor-only",
 	 *                                  "none" (when used, you must specify a recipients list in $recipient),
 	 *                                  "custom" (when used, you must specify a recipients list in $custom_role),
-	 *                                  "custom-only" (when used, you must specify a recipients list in $custom_role).
+	 *                                  "custom-only" (when used, you must specify a recipients list in $custom_role),
+	 *                                  "post-author",
+	 *                                  "post-author-only",
+	 *                                  "post-author-custom" (when used, you must specify a recipients list in $custom_role).
 	 *    @type string $recipient   The target role to view the note.
 	 *                              It is used when $role = "none".
 	 *    @type string $custom_role The custom roles, comma separated.
