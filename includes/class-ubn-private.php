@@ -397,6 +397,7 @@ class UBN_Private {
 	 * @access protected
 	 * @since 5.1
 	 * @since 6.4.0 Added post-author and post-author-only cases.
+	 * @since 6.5.0 Added post-author-custom case.
 	 */
 	protected function get_text( $args ) {
 		$defaults = array(
@@ -717,10 +718,12 @@ class UBN_Private {
 
 				// Check if the post author has the role defined in $custom_role.
 				if ( array_intersect( $custom_role, (array) $post_author_roles ) ) {
+					$custom_role_class = $this->prepare_custom_role_class( $args['custom_role'] );
+
 					$class = $this->get_selector(
 						'class',
-						'private post-author-content',
-						get_the_author_meta( 'user_login' ) . '-content ' . $args['class']
+						'private post-author-custom',
+						get_the_author_meta( 'user_login' ) . '-content ' . $custom_role_class . ' ' . $args['class']
 					);
 
 					$text = apply_filters( 'ubn_private_content', $args['content'] );
