@@ -3,8 +3,8 @@ Contributors: aldolat, specialk, thewanderingbrit
 Donate link: https://dev.aldolat.it/projects/private-content/
 Tags: content, private, shortcode
 Requires at least: 3.0
-Tested up to: 5.8
-Stable tag: 6.4.1
+Tested up to: 5.9
+Stable tag: 6.5.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -66,9 +66,9 @@ Yes, custom roles are fully supported starting from version 6.0. You can find mo
 
 == Changelog ==
 
-= 6.4.1 =
+= 6.5.0 =
 
-* Updated links to documentation.
+* Added `post-author-custom` case for `role` option (thanks to @agenziae20).
 
 The full changelog is documented in the changelog file released along with the plugin package and is hosted also on [GitHub](https://github.com/aldolat/private-content/blob/master/CHANGELOG.md).
 

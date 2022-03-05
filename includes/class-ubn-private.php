@@ -42,7 +42,7 @@ class UBN_Private {
 	 */
 	public function __construct() {
 		// Define the plugin version.
-		$this->plugin_version = '6.4.1';
+		$this->plugin_version = '6.5.0';
 	}
 
 	/**
@@ -179,7 +179,10 @@ class UBN_Private {
 	 *                                  "visitor-only",
 	 *                                  "none" (when used, you must specify a recipients list in $recipient),
 	 *                                  "custom" (when used, you must specify a recipients list in $custom_role),
-	 *                                  "custom-only" (when used, you must specify a recipients list in $custom_role).
+	 *                                  "custom-only" (when used, you must specify a recipients list in $custom_role),
+	 *                                  "post-author",
+	 *                                  "post-author-only",
+	 *                                  "post-author-custom" (when used, you must specify a recipients list in $custom_role).
 	 *    @type string $recipient   The target role to view the note.
 	 *                              It is used when $role = "none".
 	 *    @type string $custom_role The custom roles, comma separated.
@@ -397,6 +400,7 @@ class UBN_Private {
 	 * @access protected
 	 * @since 5.1
 	 * @since 6.4.0 Added post-author and post-author-only cases.
+	 * @since 6.5.0 Added post-author-custom case.
 	 */
 	protected function get_text( $args ) {
 		$defaults = array(
@@ -695,6 +699,34 @@ class UBN_Private {
 						'class',
 						'private post-author-content post-author-content-only',
 						get_the_author_meta( 'user_login' ) . '-content ' . $args['class']
+					);
+
+					$text = apply_filters( 'ubn_private_content', $args['content'] );
+				} else {
+					if ( $args['alt'] ) {
+						$class = $this->get_selector( 'class', 'private alt-text', $args['class'] );
+						$text  = apply_filters( 'ubn_private_alt', $args['alt'] );
+					}
+				}
+				break;
+
+			case 'post-author-custom':
+				// Get the post author info object.
+				$post_author_info = get_userdata( get_the_author_meta( 'ID' ) );
+				// Get the post author roles as an array.
+				$post_author_roles = $post_author_info->roles;
+
+				// Get the custom role.
+				$custom_role = $this->prepare_custom_role( $args['custom_role'] );
+
+				// Check if the post author has the role defined in $custom_role.
+				if ( array_intersect( $custom_role, (array) $post_author_roles ) ) {
+					$custom_role_class = $this->prepare_custom_role_class( $args['custom_role'] );
+
+					$class = $this->get_selector(
+						'class',
+						'private post-author-custom',
+						get_the_author_meta( 'user_login' ) . '-content ' . $custom_role_class . ' ' . $args['class']
 					);
 
 					$text = apply_filters( 'ubn_private_content', $args['content'] );
